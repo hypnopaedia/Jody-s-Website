@@ -1,7 +1,7 @@
 import React, { JSX } from 'react';
 
 type Props = {
-    children: JSX.Element[] | JSX.Element | undefined,
+    children?: JSX.Element[] | JSX.Element,
 
     width?: string,
     flexGrow?: number,

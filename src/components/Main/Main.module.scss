@@ -1,0 +1,27 @@
+@import 'src/theme/variables';
+
+$bufferHeight: calc($headerHeight + ($headerYPadding * 2));
+
+.headerBuffer {
+    display: block;
+    position: relative;
+
+    height: $bufferHeight;
+    width: 100vw;    
+}
+
+.appBackground {
+    display: block;
+    position: relative;
+
+    width: 100%;
+    height: 100%;
+
+    opacity: 0.4;
+
+    background-image: url("https://s13.gifyu.com/images/b2bMf.jpg");
+    background-attachment: fixed;
+    background-size: 100vw calc(100vh - $bufferHeight);
+    background-repeat: no-repeat;
+    background-position-y: top $bufferHeight;
+}

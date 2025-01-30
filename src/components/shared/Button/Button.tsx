@@ -2,17 +2,18 @@ import React, { JSX, MouseEventHandler } from 'react';
 import { Theme } from 'src/theme/types';
 import { applyTheme } from 'src/theme/helpers/applyTheme';
 
-type Props = {
+export type ButtonProps = {
     children: JSX.Element | string | undefined,
+    className?: string,
     onClick?: MouseEventHandler<HTMLButtonElement>,
 
     theme?: Theme,
 }
 
-export const Button = ({ children: label, onClick, theme = 'primary' }: Props) => {
+export const Button = ({ children: label, className, onClick, theme = 'primary' }: ButtonProps) => {
     return (
         <button
-            {...applyTheme(theme, { fillOnHover: true })}
+            {...applyTheme(theme, className, { fillOnHover: true })}
             onClick={onClick}
         >
             {label}

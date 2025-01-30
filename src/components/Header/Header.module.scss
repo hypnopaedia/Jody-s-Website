@@ -1,7 +1,14 @@
-.header {
-    height: fit-content;
+@import 'src/theme/variables';
 
-    padding: 10px 15px;
+.header {
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: $headerHeight;
+    width: calc(100vw - ($headerXPadding * 2));
+
+    padding: $headerYPadding $headerXPadding;
 
     background-image: linear-gradient(to bottom right,darkorchid,slateblue,slateblue,slateblue,slateblue,slateblue,slateblue,darkorchid);
     
@@ -9,6 +16,8 @@
 
     border-bottom-right-radius: 8px;
     box-shadow: 1px 1px 5px black;
+    
+    z-index: 10;
 
     * {
         color: white;
@@ -42,7 +51,6 @@
     }
 
     .navigation {
-        // padding-left: 4px;
         opacity: 0;
 
         &:global {

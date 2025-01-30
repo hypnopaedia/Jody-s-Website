@@ -34,6 +34,11 @@ $secondary-color: white;
   &:hover {
     animation: fill-secondary-to-primary 0.35s;
     animation-fill-mode: forwards;
+
+    * {
+      animation: fill-secondary-to-primary 0.35s;
+      animation-fill-mode: forwards;
+    }
   }
 }
 
@@ -55,6 +60,11 @@ $secondary-color: white;
   &:hover {
     animation: fill-primary-to-secondary 0.35s;
     animation-fill-mode: forwards;
+
+    * {
+      animation: fill-primary-to-secondary 0.35s;
+      animation-fill-mode: forwards;
+    }
   }
   
 }
