@@ -1,0 +1,71 @@
+/* THEME */
+$primary-color : slateblue;
+$secondary-color: white;
+
+
+.font-primary {
+  color: $primary-color;
+}
+.font-secondary {
+  color: $secondary-color;
+}
+
+
+.fill-primary {
+    background-color: $primary-color;
+}
+.fill-secondary {
+    background-color: $secondary-color;
+}
+
+
+.border-primary {
+    border-color: $primary-color;
+}
+.border-secondary {
+    border-color: $secondary-color;
+}
+
+
+.fill-on-hover-primary {
+  animation: fill-primary-to-secondary 0.35s;
+  animation-fill-mode: forwards;
+
+  &:hover {
+    animation: fill-secondary-to-primary 0.35s;
+    animation-fill-mode: forwards;
+  }
+}
+
+@keyframes fill-secondary-to-primary {
+  from { 
+    background-color: $secondary-color; 
+    color: $primary-color;
+  }
+  to { 
+    background-color: $primary-color; 
+    color: $secondary-color;
+  }
+}
+
+.fill-on-hover-secondary {
+  animation: fill-secondary-to-primary 0.35s;
+  animation-fill-mode: forwards;
+    
+  &:hover {
+    animation: fill-primary-to-secondary 0.35s;
+    animation-fill-mode: forwards;
+  }
+  
+}
+
+@keyframes fill-primary-to-secondary {
+  from { 
+    background-color: $primary-color; 
+    color: $secondary-color;
+  }
+  to { 
+    background-color: $secondary-color; 
+    color: $primary-color;
+  }
+}

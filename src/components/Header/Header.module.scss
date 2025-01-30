@@ -1,0 +1,54 @@
+.header {
+    height: fit-content;
+
+    padding: 10px 15px;
+
+    background-image: linear-gradient(to bottom right,darkorchid,slateblue,slateblue,slateblue,slateblue,slateblue,slateblue,darkorchid);
+    
+    color: white;
+
+    border-bottom-right-radius: 8px;
+    box-shadow: 1px 1px 5px black;
+
+    * {
+        color: white;
+    }
+
+    h1 {
+        font-size: 16pt;
+        vertical-align: bottom;
+
+        &:global {
+            animation: fade-in-from-right 1s;
+        }
+
+        & .business {
+            font-size: 14pt;
+        }
+    }
+
+    h5 {
+        padding-left: 2px;
+        font-size: 9pt;
+        font-style: italic;
+        font-weight: normal;
+        opacity: 0;
+        
+        &:global {
+            animation: fade-in-from-right 1s;
+            animation-delay: 0.5s;
+            animation-fill-mode: both;
+        }
+    }
+
+    .navigation {
+        // padding-left: 4px;
+        opacity: 0;
+
+        &:global {
+            animation: fade-in-from-right 1s;
+            animation-delay: 1s;
+            animation-fill-mode: both;
+        }
+    }
+}

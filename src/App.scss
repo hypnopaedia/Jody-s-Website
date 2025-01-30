@@ -1,0 +1,30 @@
+@import './theme/theme.scss';
+
+/* GLOBAL */
+button {
+  border: 2px solid;
+  border-radius: 6px;
+  font-size: 10.5pt;
+  padding: 2px 5px;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+h1, h2, h3, h4, h5, h6 {
+  padding: 0;
+  margin: 0;
+}
+
+/* ANIMATIONS */
+@keyframes fade-in-from-right {
+  from {
+    opacity: 0;
+    margin-left: -15px;
+  }
+  to {
+    opacity: 1;
+    margin-left: 0;
+  }
+}
