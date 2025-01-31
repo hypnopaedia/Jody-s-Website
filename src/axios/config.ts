@@ -1,6 +1,6 @@
 import axios from "axios";
 
-export const jodyswebsite = axios.create({
+export const backend = axios.create({
     baseURL: 'http://127.0.0.1:8000',
     timeout: 3000,
     headers: { 

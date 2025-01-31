@@ -2,20 +2,26 @@ import { Flex } from "src/components/shared/Flex/Flex";
 import { FlexItem } from "src/components/shared/Flex/FlexItem/FlexItem";
 import classes from './Home.module.scss';
 import { useEffect, useState } from "react";
-import { jodyswebsite } from "src/axios/config"; 
-import { Post } from "./types";
+import { backend } from "src/axios/config"; 
+import { Post } from "../../../../redux/Home/types";
 import { AxiosResponse } from "axios";
+import { useAppDispatch } from "src/redux/store";
+import { usePosts } from "src/redux/Home/hooks/usePosts";
+import { useIsLoading } from "src/redux/Home/hooks/useIsLoading";
+import { useError } from "src/redux/Home/hooks/useError";
+import { getPosts } from "src/redux/Home/thunks/getPosts";
 
 export const Home = () => {
 
-    const [posts,setPosts] = useState<Post[]>([]);
+    const dispatch = useAppDispatch();
+
+    const posts = usePosts();
+    const isLoading = useIsLoading();
+    const error = useError();
 
     useEffect(() => {
-        jodyswebsite.get('posts.php').then((res: AxiosResponse<Post[]>) => {
-            setPosts(res.data);
-        });
+        if ( !posts.length && !isLoading && !error ) dispatch(getPosts());
     },[]);
-
 
     return (
         <Flex justifyContent="center" flexWrap="wrap" className={classes.home}>
@@ -28,9 +34,12 @@ export const Home = () => {
             </FlexItem>
 
             <FlexItem width='20%'>
-                {posts.map((post,i) => (
-                    <p key={i}>{post.title}</p>
-                ))}
+                {isLoading 
+                    ? <Flex justifyContent="center"><p>Loading...</p></Flex>
+                    : posts.map((post,i) => (
+                        <p key={i}>{post.title}</p>
+                    ))
+                }
             </FlexItem>
         </Flex>
     );
