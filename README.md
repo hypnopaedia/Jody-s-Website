@@ -11,7 +11,11 @@ Personal, MySpace-style app made with the following stack:
 Enjoy!
 
 ## To-Do:
-
+- back button fade in from right
+- embeds -> embed type + link
+- figure out multiple google icons problem
+- carousel
+- fix descriptions in db
 - 404 page
 - Dark Mode
 - Alternate Post display

@@ -1,4 +1,3 @@
-import { decode } from 'html-entities';
 import { useEffect } from "react";
 import { useParams } from "react-router-dom"
 import { usePost } from "src/redux/Home/hooks/usePost";
@@ -40,6 +39,7 @@ export const PostPage = () => {
             <Flex justifyContent='center' alignContent='flex-start' flexWrap='wrap' className={classes.postPage}>
                 <Controls />
 
+                {/*TODO: Title*/}
                 <FlexItem width="100%">
                     <h2>{post.title}</h2>
                 </FlexItem>
@@ -47,6 +47,7 @@ export const PostPage = () => {
                     <hr/>
                 </FlexItem>
 
+                {/*TODO: Body*/}
                 <FlexItem width="100%" className={classes.postContent}>
                     <Flex justifyContent="center" flexWrap='wrap'>
                         <FlexItem width='100%' className={classes.mainContent}>
