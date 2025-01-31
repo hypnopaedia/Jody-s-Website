@@ -39,3 +39,12 @@ main {
     margin-left: 0;
   }
 }
+
+.fade-in-from-right {
+  opacity: 0;
+
+  & {
+      animation: fade-in-from-right 0.5s;
+      animation-fill-mode: forwards;
+  }
+}

@@ -1,7 +1,5 @@
 @import 'src/theme/variables';
 
-$bufferHeight: calc($headerHeight + ($headerYPadding * 2));
-
 .headerBuffer {
     display: block;
     position: relative;
@@ -11,12 +9,14 @@ $bufferHeight: calc($headerHeight + ($headerYPadding * 2));
 }
 
 .contentOuter {
-    padding: 15px;
+    padding: $pageContentPadding;
 
-    height: fit-content;
+    height: calc(100vh - $bufferHeight - ($pageContentPadding * 2));
 
     background-color: rgba(0, 0, 0, 0);;
     background-image: none;
+    
+    overflow-y: clip;
 }
 
 .appBackground {
@@ -30,7 +30,9 @@ $bufferHeight: calc($headerHeight + ($headerYPadding * 2));
 
     background-image: url("https://s13.gifyu.com/images/b2bMf.jpg");
     background-attachment: fixed;
-    background-size: 100vw calc(100vh - $bufferHeight);
+    background-size: 100vw calc(100vh - $bufferHeight - ($pageContentPadding * 2));
     background-repeat: no-repeat;
     background-position-y: top $bufferHeight;
+
+    z-index: -1;
 }

@@ -4,12 +4,14 @@ import { Post } from './types';
 
 type HomeState = {
   posts: Post[],
+  didAnimationPlay: boolean,
   isLoading: boolean,
   error: string | undefined,
 }
 
 const initialState: HomeState = { 
     posts: [], 
+    didAnimationPlay: false,
     isLoading: false,
     error: undefined,
 } satisfies HomeState as HomeState;
@@ -19,8 +21,10 @@ const homeSlice = createSlice({
   initialState,
   reducers: {
     setPosts(state, { payload: posts }: PayloadAction<Post[]>) {
-      console.log(posts)
       state.posts = posts;
+    },
+    setDidAnimationPlay(state, { payload: didAnimationPlay }: PayloadAction<boolean>) {
+      state.didAnimationPlay = didAnimationPlay;
     },
     setIsLoading(state, { payload: isLoading }: PayloadAction<boolean>) {
         state.isLoading = isLoading;
@@ -31,5 +35,5 @@ const homeSlice = createSlice({
   },
 })
 
-export const { setPosts, setIsLoading, setError } = homeSlice.actions;
+export const { setPosts, setDidAnimationPlay, setIsLoading, setError } = homeSlice.actions;
 export default homeSlice.reducer;

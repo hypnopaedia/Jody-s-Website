@@ -14,3 +14,7 @@ export const THEME_CLASS_DATA: { [ key in ThemeClassPrefix ]: ThemeClassData} = 
     border: { },
     "fill-on-hover": { optionKey: 'fillOnHover', },
 }
+
+export const ANIMATION_CLASSES = {
+    fadeInFromRight: 'fade-in-from-right',
+}

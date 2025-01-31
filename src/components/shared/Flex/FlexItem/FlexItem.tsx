@@ -1,15 +1,16 @@
-import React, { JSX } from 'react';
+import { CSSProperties, JSX } from 'react';
 
 type Props = {
     children?: JSX.Element[] | JSX.Element,
     className?: string,
+    style?: CSSProperties,
 
     width?: string,
     flexGrow?: number,
     flexShrink?: number
 }
 
-export const FlexItem = ({ children, className, width, flexGrow, flexShrink }: Props) => (
+export const FlexItem = ({ children, className, style, width, flexGrow, flexShrink }: Props) => (
     <div 
         className={className}
         style={{
@@ -17,7 +18,8 @@ export const FlexItem = ({ children, className, width, flexGrow, flexShrink }: P
             flexBasis: 'auto',
             width,
             flexGrow,
-            flexShrink
+            flexShrink,
+            ...style
         }}
     >
         {children}

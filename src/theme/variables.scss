@@ -1,3 +1,7 @@
 $headerHeight: 80px;
 $headerYPadding: 10px;
 $headerXPadding: 15px;
+
+$bufferHeight: calc($headerHeight + ($headerYPadding * 2));
+
+$pageContentPadding: 15px;
