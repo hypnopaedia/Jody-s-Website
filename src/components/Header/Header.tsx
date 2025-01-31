@@ -1,4 +1,4 @@
-import React from "react";
+import { Link } from "react-router-dom";
 
 import { Button } from "src/components/shared/Button/Button";
 import { IconButton } from "../shared/Button/IconButton";
@@ -7,6 +7,7 @@ import { FlexItem } from "src/components/shared/Flex/FlexItem/FlexItem";
 import { VerticalSpace } from 'src/components/shared/VerticalSpace';
 
 import classes from './Header.module.scss';
+
 
 export const Header = () => {
     return (
@@ -25,15 +26,15 @@ export const Header = () => {
 
                 <FlexItem width={'75%'}>
                     <Flex gap={'15px'} className={classes.navigation}>
-                        <Button theme='secondary'>Click Me!</Button>
-                        <Button theme='secondary'>No, Click Me!</Button>
-                        <Button theme='secondary'>I Yearn to be clicked!</Button>
+                        <Link to="/"><Button theme='secondary'>Blog</Button></Link>
+                        <Link to="/music"><Button theme='secondary'>Music</Button></Link>
+                        <Link to="/code"><Button theme='secondary'>Code</Button></Link>
                         <Button theme='secondary'>Click Someone Else!</Button>     
                     </Flex>
                 </FlexItem>
 
                 <FlexItem width={'25%'}>
-                    <Flex justifyContent={'right'}>
+                    <Flex justifyContent={'right'} className={classes.other}>
                         <IconButton theme='secondary'>
                             settings
                         </IconButton>
