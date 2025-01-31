@@ -9,6 +9,7 @@ import classes from './Post.module.scss';
 import clsx from "clsx";
 import { applyTheme } from "src/theme/helpers/applyTheme";
 import { FlexItem } from "src/components/shared/Flex/FlexItem/FlexItem"
+import { Link } from 'react-router-dom';
 
 type Props = {
     post: PostType,
@@ -27,14 +28,16 @@ export const Post = ({ post, number }: Props) => {
                 className={fadeInFromRight}
                 style={{animationDelay: (didAnimationPlay ? 0 : animationDelay) + 's'}}
             >
-                <div 
-                    {...applyTheme('primary', clsx(classes.postSquare), { fillOnHover: true })}
-                >
-                    <img src={post.photo} className={classes.photo} alt="post picture" />
-                    <hr />
-                    <p className={classes.title}>{decode(post.title)}</p>
-                    <p className={classes.date}>{post.date}</p>
-                </div>
+                <Link to={`/${number}`} className='no-underline'>
+                    <div 
+                        {...applyTheme('primary', clsx(classes.postSquare), { fillOnHover: true })}
+                    >
+                        <img src={post.photo} className={classes.photo} alt="post picture" />
+                        <hr />
+                        <p className={classes.title}>{decode(post.title)}</p>
+                        <p className={classes.date}>{post.date}</p>
+                    </div>
+                </Link>
             </div>
         </FlexItem>
     )

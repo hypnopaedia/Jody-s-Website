@@ -12,6 +12,7 @@ Enjoy!
 
 ## To-Do:
 
+- 404 page
 - Dark Mode
 - Alternate Post display
 - RWD (Bootstrap?)

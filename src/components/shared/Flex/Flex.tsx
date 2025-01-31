@@ -7,19 +7,19 @@ type Props = {
 
     justifyContent?: string;
     alignItems?: string;
+    alignContent?: string;
     flexWrap?: FlexWrap;
     gap?: string;
 }
 
-export const Flex = ({ children, className, justifyContent, alignItems, flexWrap, gap }: Props) => (
+export const Flex = ({ 
+    children, className, 
+    ...flexProperties }: Props) => (
     <div 
         className={className}
         style={{
             display: 'flex',
-            justifyContent,
-            alignItems,
-            flexWrap,
-            gap
+            ...flexProperties
         }}
     >
         {children}

@@ -9,16 +9,15 @@ import { useError } from "src/redux/Home/hooks/useError";
 import classes from './Home.module.scss';
 import { Flex } from "src/components/shared/Flex/Flex";
 import { FlexItem } from "src/components/shared/Flex/FlexItem/FlexItem";
-import { Post } from "./Posts/Post";
+import { Post } from "./Post/Post";
 import { BASE_ANIMATION_DELAY } from "./constants";
 import { useDidAnimationPlay } from "src/redux/Home/hooks/useDidAnimationPlay";
 import { setDidAnimationPlay } from "src/redux/Home/slice";
 import { VerticalSpace } from "src/components/shared/VerticalSpace";
 
 export const Home = () => {
-
     const dispatch = useAppDispatch();
-
+    
     const posts = usePosts();
     const isLoading = useIsLoading();
     const error = useError();
@@ -33,7 +32,7 @@ export const Home = () => {
         if ( !didAnimationPlay ) {
             setTimeout(() => {
                 dispatch(setDidAnimationPlay(true));
-            }, BASE_ANIMATION_DELAY + 3000);
+            }, BASE_ANIMATION_DELAY + 2000);
         }
     },[]);
 
