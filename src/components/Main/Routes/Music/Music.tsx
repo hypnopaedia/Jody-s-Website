@@ -1,5 +1,7 @@
 export const Music = () => {
     return (
-        <div>music-o!</div>
+        <>
+            <div>music-o!</div>
+        </>
     );
 }

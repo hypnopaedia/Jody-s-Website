@@ -1,8 +1,8 @@
-import React, { JSX } from "react";
+import { JSX } from "react";
 import { FlexWrap } from "./types";
 
 type Props = {
-    children: JSX.Element[] | JSX.Element | undefined,
+    children: (JSX.Element | undefined)[] | JSX.Element | undefined,
     className?: string,
 
     justifyContent?: string;

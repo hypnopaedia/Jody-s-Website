@@ -1,5 +1,14 @@
 .iconButton {
+    border: none;
     & span {
         font-size: 14pt;
     }
+}
+
+.iconOnly {
+    padding: 4px;
+}
+
+button.outlined {
+    border: 2px solid;
 }

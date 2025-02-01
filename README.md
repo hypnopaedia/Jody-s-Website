@@ -2,8 +2,8 @@
 
 Personal, MySpace-style app made with the following stack:
     - React
-    - Redux (Toolkit)
     - TypeScript
+    - Redux (Toolkit)
     - React Router
     - Axios
     - Sass/Scss
@@ -11,11 +11,16 @@ Personal, MySpace-style app made with the following stack:
 Enjoy!
 
 ## To-Do:
+- new post ideas:
+    - spotify bad
+    - temple os
+    - modern artists on the cutting edge
+    - shadows on the walls of abandoned asylum thing
+    - roulette game
+    - the article interview i did!
+    - lyra made a website
 - back button fade in from right
-- embeds -> embed type + link
-- figure out multiple google icons problem
 - carousel
-- fix descriptions in db
 - 404 page
 - Dark Mode
 - Alternate Post display
@@ -25,4 +30,3 @@ Enjoy!
 - Code
 - Resumé
 - Other Docs(?)
-- Only animate first time displaying posts, etc.
