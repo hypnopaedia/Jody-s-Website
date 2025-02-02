@@ -7,7 +7,7 @@ import { FlexItem } from "src/components/shared/Flex/FlexItem/FlexItem";
 import { VerticalSpace } from 'src/components/shared/VerticalSpace';
 
 import classes from './Header.module.scss';
-
+import { BACKEND_URL } from "src/axios/config";
 
 export const Header = () => {
     return (
@@ -17,20 +17,26 @@ export const Header = () => {
                     <h1>Jody Salani <span className={classes.business}>• ISO ATIMA Solutions</span></h1>
                     <h5>Composer, programmer, ghost, and generally science-defying homonculus </h5>
                 </FlexItem>
-
-                {/* <FlexItem width={'50%'}></FlexItem> */}
                 
                 <FlexItem width={'100%'}>
                     <VerticalSpace height={'12px'} />
                 </FlexItem>
 
                 <FlexItem width={'75%'}>
-                    <Flex gap={'15px'} className={classes.navigation}>
-                        <Link to="/"><Button theme='secondary'>Blog</Button></Link>
-                        <Link to="/music"><Button theme='secondary'>Music</Button></Link>
-                        <Link to="/code"><Button theme='secondary'>Code</Button></Link>
-                        <Button theme='secondary'>Click Someone Else!</Button>     
-                    </Flex>
+                    <nav>
+                        <Flex gap={'15px'} className={classes.navigation}>
+                            <Link to="/"><Button theme='secondary'>Blog</Button></Link>
+                            <Link to="/music"><Button theme='secondary'>Music</Button></Link>
+                            <Link to="/code"><Button theme='secondary'>Code</Button></Link>
+                            <Link 
+                                to={`${BACKEND_URL}/media/resume.pdf`}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+                                <Button theme='secondary'>Resumé</Button>
+                            </Link>
+                        </Flex>
+                    </nav>
                 </FlexItem>
 
                 <FlexItem width={'25%'}>

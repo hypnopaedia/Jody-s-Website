@@ -1,16 +1,18 @@
 import { Link, useParams } from "react-router-dom";
 
+import { BACKEND_URL } from "src/axios/config";
 import { PostPageParams } from "../../types"
 import { usePost } from "src/redux/Home/hooks/usePost"
 
-import { clsx } from "clsx";
 import classes from './Content.module.scss';
 import { Audio } from "./Audio/Audio";
 import { Carousel } from "./Carousel/Carousel";
+import { Embed } from "./Embed/Embed";
 import { FlexItem } from "src/components/shared/Flex/FlexItem/FlexItem";
 import { Flex } from "src/components/shared/Flex/Flex";
+import { IFrame } from "./IFrame/IFrame";
 
-type EmbedData = {
+export type EmbedData = {
     type?: string,
     className?: string,
     audioClassName?: string,
@@ -22,37 +24,26 @@ export const Content = () => {
 
     const title = `post ${!!post.contentType ? `${post.contentType} `: ''}content`;
 
-    // TODO: Separate these out into separate components
+    const content = post.content.startsWith('/') ? BACKEND_URL + post.content : post.content;
+
     switch ( post.contentType ) {
         case 'iframe':
             return (
                 <div>
-                    <iframe 
-                        src={post.content} 
-                        title={title}
-                        className={clsx(classes.iframe, getiFrameSourceClass())}
-                        frameBorder="0"
-                        loading="lazy" 
-                        allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                        allowFullScreen
-                    ></iframe>
+                    <IFrame title={title} content={content} />
                     {!!post.audio ? <Audio /> : undefined}
                 </div>
             )
         case 'file':
-            const embedData = getEmbedData(post.content);
+            const embedData = getEmbedData(content);
             return (
                 <div>
-                    <embed 
-                        src={post.content}
-                        type={embedData.type}
-                        className={embedData.className}
-                    />
+                    <Embed content={content} embedData={embedData} />
                     {!!post.audio ? <Audio className={embedData.audioClassName} /> : undefined}
                 </div>
             );
         case 'carousel':
-            const images = post.content.split(',');
+            const images = content.split(',');
             return (
                 <>
                     <Carousel id={`post-${params.id}-carousel`} className={classes.carousel} images={images} />
@@ -81,11 +72,5 @@ export const Content = () => {
     function getEmbedData(contentName: string): EmbedData {
         if ( contentName.endsWith('.pdf') ) return { type: 'application/pdf', className: classes.pdf, audioClassName: classes.pdfAudio };
         return {};
-    }
-
-    function getiFrameSourceClass(): string | undefined {
-        if ( post.content.startsWith('https://www.youtube.com/')
-                || post.content.startsWith('https://www.youtube-nocookie.com/') ) return classes.youtube;
-        if ( post.content.startsWith('https://bandcamp.com/') ) return classes.bandcamp;
     }
 }   

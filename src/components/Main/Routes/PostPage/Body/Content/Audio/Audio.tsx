@@ -1,5 +1,6 @@
 import { useParams } from "react-router-dom";
 
+import { BACKEND_URL } from "src/axios/config";
 import { PostPageParams } from "../../../types"
 import { usePost } from "src/redux/Home/hooks/usePost"
 
@@ -13,6 +14,8 @@ type Props = {
 export const Audio = ({ className }: Props) => {
     const params = useParams<PostPageParams>();
     const post = usePost(Number(params.id));
+
+    const audio = post.audio.startsWith('/') ? BACKEND_URL + post.audio : post.audio;
     
     return (
         <>
@@ -21,7 +24,7 @@ export const Audio = ({ className }: Props) => {
                 className={clsx(className, classes.audio)}
                 controls
             >
-                <source src={post.audio} type="audio/mpeg" />
+                <source src={audio} type="audio/mpeg" />
             </audio>
         </>
     );
