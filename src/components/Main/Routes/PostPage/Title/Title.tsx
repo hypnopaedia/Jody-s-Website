@@ -17,7 +17,7 @@ export const Title = () => {
         <>
             <FlexItem width="100%">
                 <Flex justifyContent='center' alignItems="center" gap="8px">
-                    <h2>{decode(post.title)}</h2>
+                    <h4>{decode(post.title)}</h4>
                     {!!post.url ? (
                         <Link to={post.url} target="_blank" rel="noopener noreferrer">
                             <IconButton className={classes.external}>arrow_outward</IconButton>

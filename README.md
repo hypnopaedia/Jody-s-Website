@@ -19,13 +19,12 @@ Enjoy!
     - roulette game
     - the article interview i did!
     - lyra made a website
+- Footer, fix buffers
 - back button fade in from right
-- carousel
 - 404 page
 - Dark Mode
-- Alternate Post display
-- RWD (Bootstrap?)
-- Individual Post display page
+- Alternate Post arrangement display
+- RWD
 - Music
 - Code
 - Resumé

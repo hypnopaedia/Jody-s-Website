@@ -1,5 +1,6 @@
 .iframe, .photo {
     border-radius: 8px;
+    box-shadow: 2px 2px 5px grey;
 }
 
 .youtube {
@@ -18,8 +19,28 @@
 .pdf {
     height: 45vh;
     width: 30vw;
+    box-shadow: 2px 2px 5px grey;
+    border-top-right-radius: 8px;
+    border-top-left-radius: 8px;
+    margin-bottom: -6px;
 }
 
 .pdfAudio {
     width: 30vw;
+}
+
+.carousel {
+    & img {
+        border-top-left-radius: 8px;
+        border-top-right-radius: 8px;
+    }
+
+    & a {
+        text-decoration: none !important;
+    }
+}
+
+.carouselAudio {
+    // margin-top: 1px;
+    width: 30%;
 }

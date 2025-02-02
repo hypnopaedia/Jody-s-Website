@@ -1,4 +1,4 @@
-@import 'src/theme/variables';
+@import 'src/theme/variables.scss';
 
 .header {
     display: block;
@@ -6,7 +6,7 @@
     top: 0;
     left: 0;
     height: $headerHeight;
-    width: calc(100vw - ($headerXPadding * 2));
+    width: 100vw;
 
     padding: $headerYPadding $headerXPadding;
 

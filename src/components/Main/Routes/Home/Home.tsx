@@ -43,10 +43,10 @@ export const Home = () => {
     return (
         <Flex justifyContent="center" flexWrap="wrap" className={classes.home}>
             <FlexItem width={'100%'} className={classes.intro}>
-                <h5>
+                <h6>
                     Hi there! Thanks for coming to my website.<br/>
                     Stay as long as you like, be on the lookout for hidden easter eggs and, please, scroll responsibly!
-                </h5>
+                </h6>
                 <hr/>
             </FlexItem>
 
