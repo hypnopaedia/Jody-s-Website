@@ -1,3 +1,16 @@
+.title {
+    padding-top: 4px;
+    h2 {
+        text-align: center;
+    }
+}
+
+.titleHr {
+    & hr {
+        margin: 8px 5% 16px 5%;
+    }
+}
+
 .external {
     padding: 1px;
 }

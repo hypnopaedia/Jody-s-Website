@@ -1,0 +1,14 @@
+@import 'src/theme/variables';
+
+.footer {
+    display: block;
+    position: relative;
+    
+    height: $footerHeight;
+    width: 100vw;
+
+    padding: 0;
+    margin: 0;
+
+    background: linear-gradient(darkorchid, slateblue, slateblue, slateblue);
+}

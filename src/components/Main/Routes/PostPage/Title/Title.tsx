@@ -15,7 +15,7 @@ export const Title = () => {
 
     return (
         <>
-            <FlexItem width="100%">
+            <FlexItem width="100%" className={classes.title}>
                 <Flex justifyContent='center' alignItems="center" gap="8px">
                     <h4>{decode(post.title)}</h4>
                     {!!post.url ? (
@@ -25,7 +25,7 @@ export const Title = () => {
                     ) : undefined}
                 </Flex>
             </FlexItem>
-            <FlexItem width="100%">
+            <FlexItem width="100%" className={classes.titleHr}>
                 <hr/>
             </FlexItem>
         </>

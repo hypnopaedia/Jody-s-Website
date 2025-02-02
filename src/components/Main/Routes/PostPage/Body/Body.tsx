@@ -8,7 +8,6 @@ import classes from './Body.module.scss';
 import { Content } from "./Content/Content";
 import { Flex } from "src/components/shared/Flex/Flex";
 import { FlexItem } from "src/components/shared/Flex/FlexItem/FlexItem";
-import { VerticalSpace } from "src/components/shared/VerticalSpace";
 
 export const Body = () => {
     const params = useParams<PostPageParams>();
@@ -28,10 +27,6 @@ export const Body = () => {
                     </div>
                 </FlexItem>
             </Flex>  
-
-            <FlexItem width="100%">
-                <VerticalSpace height='35px' fill={true} />
-            </FlexItem>
         </FlexItem>
     )
 }

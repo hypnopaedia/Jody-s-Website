@@ -1,6 +1,7 @@
 .photo {
     height: 35vh;
     border-radius: 8px;
+    margin-bottom: 16px;
     box-shadow: 2px 2px 5px grey;
 }
 
@@ -10,6 +11,10 @@
     box-shadow: 2px 2px 5px grey;
     border-top-right-radius: 8px;
     border-top-left-radius: 8px;
+    margin-bottom: 16px;
+}
+
+embed.pdfWithAudio {
     margin-bottom: -6px;
 }
 

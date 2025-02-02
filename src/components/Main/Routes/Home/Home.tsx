@@ -55,7 +55,7 @@ export const Home = () => {
                     ? <p>Loading...</p>
                     : <>{renderedPosts}</>
                 }
-                <VerticalSpace height="50px" fill={true} />
+                <VerticalSpace height="15px" fill={true} />
             </Flex>
         </Flex>
     );

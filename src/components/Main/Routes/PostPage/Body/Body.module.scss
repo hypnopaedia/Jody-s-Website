@@ -1,5 +1,7 @@
+@import 'src/theme/variables.scss';
+
 .body {
-    height: 100%;
+    height: calc(100% - 72px); // minus Title
     overflow-y: scroll;
 }
 

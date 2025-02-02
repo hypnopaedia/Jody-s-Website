@@ -38,7 +38,7 @@ export const Content = () => {
             const embedData = getEmbedData(content);
             return (
                 <div>
-                    <Embed content={content} embedData={embedData} />
+                    <Embed content={content} embedData={embedData} className={!!post.audio ? classes.pdfWithAudio : undefined}/>
                     {!!post.audio ? <Audio className={embedData.audioClassName} /> : undefined}
                 </div>
             );
