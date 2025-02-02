@@ -2,6 +2,7 @@ import { decode } from 'html-entities';
 
 import { ANIMATION_CLASSES } from 'src/theme/constants';
 import { BASE_ANIMATION_DELAY } from '../constants';
+import { getDate } from 'src/util/date';
 import { Post as PostType } from "src/redux/Home/types"
 import { useDidAnimationPlay } from 'src/redux/Home/hooks/useDidAnimationPlay';
 
@@ -35,7 +36,7 @@ export const Post = ({ post, number }: Props) => {
                         <img src={post.photo} className={classes.photo} alt="post picture" />
                         <hr />
                         <p className={classes.title}>{decode(post.title)}</p>
-                        <p className={classes.date}>{post.date}</p>
+                        <p className={classes.date}>{getDate(post.date)}</p>
                     </div>
                 </Link>
             </div>

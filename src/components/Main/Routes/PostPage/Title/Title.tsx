@@ -1,6 +1,7 @@
 import { decode } from 'html-entities';
 import { Link, useParams } from "react-router-dom"
 
+import { getDate } from 'src/util/date';
 import { PostPageParams } from "../types"
 import { usePost } from "src/redux/Home/hooks/usePost"
 
@@ -24,6 +25,9 @@ export const Title = () => {
                         </Link>
                     ) : undefined}
                 </Flex>
+            </FlexItem>
+            <FlexItem width="100%" className={classes.date}>
+                <>{getDate(post.date)}</>
             </FlexItem>
             <FlexItem width="100%" className={classes.titleHr}>
                 <hr/>

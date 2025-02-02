@@ -8,8 +8,26 @@ import { VerticalSpace } from 'src/components/shared/VerticalSpace';
 
 import classes from './Header.module.scss';
 import { BACKEND_URL } from "src/axios/config";
+import { useState } from "react";
+
+const GIFS = [
+    'https://media.tenor.com/TAFzyHWJB0sAAAAj/okk.gif',
+    'https://media.tenor.com/IR-B2_ZcBDUAAAAj/bits-8bits.gif',
+    'https://media.tenor.com/iGSsICUR-2oAAAAj/mewtwo-sprite.gif',
+    'https://media.tenor.com/WhiAlABG7WMAAAAj/sans-undertale.gif',
+    'https://media.tenor.com/VNYeun1JbTMAAAAj/kirby.gif',
+    'https://media.tenor.com/uX1jpz5E4lcAAAAj/bmo-bounce.gif',
+    'https://media.tenor.com/pZlKyUDs0RgAAAAj/pokemon-nintendo.gif',
+    'https://media.tenor.com/i8Mus4hXSQEAAAAj/ghost-cute.gif',
+    'https://media.tenor.com/ZZu2QC-efdUAAAAj/cute-cat-white.gif',
+    'https://media.tenor.com/qycQatpHyVkAAAAj/vaporeon-pokemon.gif',
+    'https://media.tenor.com/VsI4oUh4-wQAAAAj/pixel-rabbit-rabbit.gif',
+    'https://media.tenor.com/BhoowfjZeSgAAAAj/pixel-art-kitty.gif',
+]
 
 export const Header = () => {
+    const [gifIndex, setGifIndex] = useState<number>(getRandomGifIndex());
+
     return (
         <header className={classes.header}>
             <Flex flexWrap="wrap">
@@ -41,6 +59,7 @@ export const Header = () => {
 
                 <FlexItem width={'25%'}>
                     <Flex justifyContent={'right'} className={classes.other}>
+                        <img src={GIFS[gifIndex]} className={classes.gif} onClick={() => setGifIndex(getRandomGifIndex())} />
                         <IconButton theme='secondary'>
                             settings
                         </IconButton>
@@ -49,4 +68,8 @@ export const Header = () => {
             </Flex>
         </header>
     );
+
+    function getRandomGifIndex() {
+        return Math.floor(Math.random() * GIFS.length);
+    }
 }
