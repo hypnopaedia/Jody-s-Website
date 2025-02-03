@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom"
 
-import { applyMarkdown } from "src/util/applyMarkdown";
+import { applyMarkup } from "src/util/applyMarkup";
 import { PostPageParams } from "../types"
 import { usePost } from "src/redux/Home/hooks/usePost"
 
@@ -23,7 +23,7 @@ export const Body = () => {
                 </FlexItem>
                 <FlexItem width="100%">
                     <div className={classes.description}>
-                        {applyMarkdown(post.description)}
+                        {applyMarkup(post.description)}
                     </div>
                 </FlexItem>
             </Flex>  

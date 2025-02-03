@@ -23,6 +23,7 @@ export const Main = () => {
             </Flex>
 
             <div className={classes.appBackground}></div>
+            <div className={classes.appBackgroundColor}></div>
         </main>
     );
 }

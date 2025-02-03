@@ -19,7 +19,15 @@ Enjoy!
     - roulette game
     - the article interview i did!
     - lyra made a website
-- Footer, fix buffers
+    - green beard altruism
+    - anything in important playlist lol
+    - Polybius
+    - we the people, and the republic we must claim | lawrence lessig
+    - petscop
+    - the personality machine
+    - mummy joe
+- theme primary/secondary context
+- Footer
 - back button fade in from right
 - 404 page
 - Dark Mode

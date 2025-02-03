@@ -5,10 +5,9 @@ import { BASE_ANIMATION_DELAY } from '../constants';
 import { getDate } from 'src/util/date';
 import { Post as PostType } from "src/redux/Home/types"
 import { useDidAnimationPlay } from 'src/redux/Home/hooks/useDidAnimationPlay';
+import { useThemeProps } from "src/theme/memo/useThemeProps";
 
 import classes from './Post.module.scss';
-import clsx from "clsx";
-import { applyTheme } from "src/theme/helpers/applyTheme";
 import { FlexItem } from "src/components/shared/Flex/FlexItem/FlexItem"
 import { Link } from 'react-router-dom';
 
@@ -31,7 +30,7 @@ export const Post = ({ post, number }: Props) => {
             >
                 <Link to={`/${number}`} className='no-underline'>
                     <div 
-                        {...applyTheme('primary', clsx(classes.postSquare), { fillOnHover: true })}
+                        {...useThemeProps(classes.postSquare, { fillOnHover: true })}
                     >
                         <img src={post.photo} className={classes.photo} alt="post picture" />
                         <hr />

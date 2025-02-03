@@ -6,6 +6,8 @@
 
     height: $bufferHeight;
     width: 100vw;
+
+    background-color: var(--primary-color);
 }
 
 .contentOuter {
@@ -19,20 +21,28 @@
     overflow-y: clip;
 }
 
-.appBackground {
+.appBackground, .appBackgroundColor {
     position: fixed;
     top: $bufferHeight;
     left: 0;
     width: 100vw;
     height: calc(100vh - $bufferHeight);
+}
 
-    opacity: 0.4;
+.appBackground {
+    opacity: var(--background-opacity);
 
-    background-image: url("https://s13.gifyu.com/images/b2bMf.jpg");
+    background-image: var(--background);
     background-attachment: fixed;
-    background-size: 100vw calc(100vh - $bufferHeight);
+    background-size: var(--background-size);
     background-repeat: no-repeat;
     background-position-y: top $bufferHeight;
+    filter: var(--background-filter);
 
     z-index: -1;
+}
+
+.appBackgroundColor {
+    background-color: var(--background-color);
+    z-index: -2;
 }

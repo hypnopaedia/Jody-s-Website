@@ -5,6 +5,7 @@ import { getDate } from 'src/util/date';
 import { PostPageParams } from "../types"
 import { usePost } from "src/redux/Home/hooks/usePost"
 
+import { clsx } from 'clsx';
 import classes from './Title.module.scss';
 import { FlexItem } from "src/components/shared/Flex/FlexItem/FlexItem"
 import { Flex } from "src/components/shared/Flex/Flex"
@@ -26,7 +27,7 @@ export const Title = () => {
                     ) : undefined}
                 </Flex>
             </FlexItem>
-            <FlexItem width="100%" className={classes.date}>
+            <FlexItem width="100%" className={clsx(classes.date,'detail-text')}>
                 <>{getDate(post.date)}</>
             </FlexItem>
             <FlexItem width="100%" className={classes.titleHr}>

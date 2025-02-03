@@ -3,19 +3,21 @@
 .header {
     display: block;
     position: fixed;
+
     top: 0;
     left: 0;
+    
     height: $headerHeight;
     width: 100vw;
 
     padding: $headerYPadding $headerXPadding;
 
-    background-image: linear-gradient(to bottom right,darkorchid,slateblue,slateblue,slateblue,slateblue,slateblue,slateblue,darkorchid);
+    background-image: var(--header-gradient);
     
     color: white;
 
     border-bottom-right-radius: 8px;
-    box-shadow: 1px 1px 5px black;
+    box-shadow: 1px 1px 5px grey;
     
     z-index: 10;
 
@@ -58,15 +60,5 @@
             animation-delay: 1s;
             animation-fill-mode: both;
         }
-    }
-}
-
-.gif {
-    max-height: 32px;
-    margin-top: -5px;
-    margin-right: 8px;
-
-    &:hover {
-        cursor: pointer !important;
     }
 }

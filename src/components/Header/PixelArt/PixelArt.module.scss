@@ -1,0 +1,9 @@
+.pixelArt {
+    max-height: 32px;
+    margin-top: -5px;
+    margin-right: 8px;
+
+    &:hover {
+        cursor: pointer !important;
+    }
+}

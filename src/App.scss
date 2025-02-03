@@ -1,5 +1,10 @@
 @import './theme/theme.scss';
 
+.material-icons {
+  font-size: 16pt;
+  height: fit-content;
+}
+
 /* TAGS */
 button {
   border: 2px solid;
@@ -35,7 +40,7 @@ code {
 
 code, .codeblock {
   background-color: #2b2937;
-  color: $secondary-color;
+  color: white;
   font-size: 10pt;
 }
 
@@ -54,6 +59,10 @@ main {
 /* GLOBAL CLASSES */
 .no-underline {
   text-decoration: none;
+}
+
+.reverse-image {
+  transform: scaleX(-1);
 }
 
 /* ANIMATIONS */

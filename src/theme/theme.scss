@@ -1,29 +1,37 @@
 /* THEME */
-$primary-color : slateblue;
-$secondary-color: white;
+p, h1, h2, h3, h4, h5, h6 {
+  color: var(--text-color);
+}
 
+hr {
+  border-color: var(--text-color);
+}
+
+.detail-text {
+  color: var(--detail-text-color)
+}
 
 .font-primary {
-  color: $primary-color;
+  color: var(--primary-color);
 }
 .font-secondary {
-  color: $secondary-color;
+  color: var(--secondary-color);
 }
 
 
 .fill-primary {
-    background-color: $primary-color;
+    background-color: var(--primary-color);
 }
 .fill-secondary {
-    background-color: $secondary-color;
+    background-color: var(--secondary-color);
 }
 
 
 .border-primary {
-    border-color: $primary-color;
+    border-color: var(--primary-color);
 }
 .border-secondary {
-    border-color: $secondary-color;
+    border-color: var(--secondary-color);
 }
 
 
@@ -44,12 +52,12 @@ $secondary-color: white;
 
 @keyframes fill-secondary-to-primary {
   from { 
-    background-color: $secondary-color; 
-    color: $primary-color;
+    background-color: var(--secondary-color); 
+    color: var(--primary-color);
   }
   to { 
-    background-color: $primary-color; 
-    color: $secondary-color;
+    background-color: var(--primary-color); 
+    color: var(--secondary-color);
   }
 }
 
@@ -71,11 +79,11 @@ $secondary-color: white;
 
 @keyframes fill-primary-to-secondary {
   from { 
-    background-color: $primary-color; 
-    color: $secondary-color;
+    background-color: var(--primary-color); 
+    color: var(--secondary-color);
   }
   to { 
-    background-color: $secondary-color; 
-    color: $primary-color;
+    background-color: var(--secondary-color); 
+    color: var(--primary-color);
   }
 }
