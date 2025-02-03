@@ -44,6 +44,8 @@
         font-style: italic;
         font-weight: normal;
         opacity: 0;
+
+        white-space: nowrap;
         
         &:global {
             animation: fade-in-from-right 1s;

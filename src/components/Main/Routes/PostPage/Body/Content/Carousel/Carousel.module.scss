@@ -2,4 +2,16 @@
     box-shadow: 2px 2px 5px grey;
     border-top-left-radius: 8px;
     border-top-right-radius: 8px;
+
+    width: 35vw;
+    min-width: 400px;
+
+    & img {
+        border-top-left-radius: 8px;
+        border-top-right-radius: 8px;
+    }
+
+    & a {
+        text-decoration: none !important;
+    }
 }

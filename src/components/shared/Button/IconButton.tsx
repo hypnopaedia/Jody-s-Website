@@ -19,7 +19,7 @@ export const IconButton = ({children: iconName, additionalText, outlined=true, .
             outlined && classes.outlined
         )}
     >
-        <Flex justifyContent="center" alignItems="center">
+        <Flex justifyContent="center" alignItems="center" padding={0}>
             <><Icon>{iconName}</Icon>{additionalText ?? ''}</>
         </Flex>
     </Button>

@@ -22,18 +22,18 @@ export const Header = () => {
     return (
         <header className={classes.header}>
             <Flex flexWrap="wrap">
-                <FlexItem width={'100%'}>
+                <FlexItem>
                     <h1>Jody Salani <span className={classes.business}>• ISO ATIMA Solutions</span></h1>
                     <h5>Composer, programmer, ghost, and generally science-defying homonculus </h5>
                 </FlexItem>
                 
-                <FlexItem width={'100%'}>
+                <FlexItem>
                     <VerticalSpace height={'12px'} />
                 </FlexItem>
 
-                <FlexItem width={'75%'}>
+                <FlexItem col={6}>
                     <nav>
-                        <Flex gap={'15px'} className={classes.navigation}>
+                        <Flex gap={2} className={classes.navigation} padding={0}>
                             <Link to="/"><Button>Home</Button></Link>
                             <Link to="/music"><Button>Music</Button></Link>
                             <Link to="/code"><Button>Code</Button></Link>
@@ -48,8 +48,8 @@ export const Header = () => {
                     </nav>
                 </FlexItem>
 
-                <FlexItem width={'25%'}>
-                    <Flex justifyContent={'right'} className={classes.other}>
+                <FlexItem col={6}>
+                    <Flex justifyContent={'end'} className={classes.other} gap={0} padding={0}>
                         <PixelArt />
                         <Switch 
                             value={theme === 'dark' ? true : false}

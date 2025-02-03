@@ -31,7 +31,7 @@ export const Switch = ({ className, onClick, value, left, right }: Props) => {
     },[checked]);
 
     return (
-        <Flex justifyContent='center' alignItems='center'>
+        <Flex justifyContent='center' alignItems='center' className='width-fit-content m-0 p-0'>
             {left}
             <div 
                 {...outerThemeProps}

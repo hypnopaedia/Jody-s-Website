@@ -4,7 +4,7 @@ import classes from './Carousel.module.scss';
 
 type Props = {
     id: string,
-    className: string,
+    className?: string,
     images: string[]
 }
 
@@ -12,7 +12,7 @@ export const Carousel = ({ id, className, images }: Props) => {
     const [active, setActive] = useState(0);
 
     return (
-        <FlexItem width="30%" className={classes.carousel}>
+        <FlexItem className={classes.carousel} padding={0}>
             <div id={id} className={`carousel slide embed_carousel ${className}`} data-ride="carousel">
                 <ol className="carousel-indicators">
                     {images.map((img,i) => (

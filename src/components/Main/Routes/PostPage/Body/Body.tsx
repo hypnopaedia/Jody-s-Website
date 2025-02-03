@@ -14,14 +14,14 @@ export const Body = () => {
     const post = usePost(Number(params.id));    
 
     return (
-        <FlexItem width="100%" className={classes.body}>
+        <FlexItem className={classes.body}>
             <Flex justifyContent="center" flexWrap='wrap'>
-                <FlexItem width='100%'>
+                <FlexItem>
                     <Flex justifyContent="center" flexWrap='wrap'>
                         <Content />
                     </Flex>
                 </FlexItem>
-                <FlexItem width="100%">
+                <FlexItem>
                     <div className={classes.description}>
                         {applyMarkup(post.description)}
                     </div>

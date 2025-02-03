@@ -23,7 +23,7 @@ export const Post = ({ post, number }: Props) => {
     const animationDelay = BASE_ANIMATION_DELAY + (number / 10);
 
     return (
-        <FlexItem width='20%'>
+        <FlexItem xxl={3} lg={3} md={4} sm={10} xs={12}>
             <div 
                 className={fadeInFromRight}
                 style={{animationDelay: (didAnimationPlay ? 0 : animationDelay) + 's'}}

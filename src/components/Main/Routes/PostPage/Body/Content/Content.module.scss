@@ -8,6 +8,7 @@
 .pdf {
     height: 45vh;
     width: 30vw;
+    min-width: 400px;
     box-shadow: 2px 2px 5px grey;
     border-top-right-radius: 8px;
     border-top-left-radius: 8px;
@@ -20,20 +21,10 @@ embed.pdfWithAudio {
 
 .pdfAudio {
     width: 30vw;
-}
-
-.carousel {
-    & img {
-        border-top-left-radius: 8px;
-        border-top-right-radius: 8px;
-    }
-
-    & a {
-        text-decoration: none !important;
-    }
+    min-width: 400px;
 }
 
 .carouselAudio {
-    // margin-top: 1px;
-    width: 30%;
+    width: 35vw;
+    min-width: 400px;
 }

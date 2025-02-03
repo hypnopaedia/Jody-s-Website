@@ -42,7 +42,7 @@ export const Home = () => {
 
     return (
         <Flex justifyContent="center" flexWrap="wrap" className={classes.home}>
-            <FlexItem width={'100%'} className={classes.intro}>
+            <FlexItem className={classes.intro}>
                 <h6>
                     Hi there! Thanks for coming to my website.<br/>
                     Stay as long as you like, be on the lookout for hidden easter eggs and, please, scroll responsibly!
@@ -50,7 +50,7 @@ export const Home = () => {
                 <hr/>
             </FlexItem>
 
-            <Flex justifyContent="center" flexWrap="wrap" className={classes.posts}>
+            <Flex justifyContent="md-start center" flexWrap="wrap" className={classes.posts}>
                 {isLoading 
                     ? <p>Loading...</p>
                     : <>{renderedPosts}</>

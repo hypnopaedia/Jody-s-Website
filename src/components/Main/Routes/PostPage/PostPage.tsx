@@ -10,7 +10,6 @@ import { usePost } from "src/redux/Home/hooks/usePost";
 
 import classes from './PostPage.module.scss';
 import { Body } from "./Body/Body";
-import { Controls } from './Controls/Controls';
 import { Flex } from "src/components/shared/Flex/Flex";
 import { Title } from "./Title/Title";
 
@@ -33,7 +32,6 @@ export const PostPage = () => {
 
     return (
         <Flex justifyContent='center' alignContent='flex-start' flexWrap='wrap' className={classes.postPage}>
-            <Controls />
             <Title />
             <Body />
         </Flex>

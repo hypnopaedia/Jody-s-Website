@@ -7,6 +7,7 @@ import { usePost } from "src/redux/Home/hooks/usePost"
 
 import { clsx } from 'clsx';
 import classes from './Title.module.scss';
+import { BackButton } from './BackButton/BackButton';
 import { FlexItem } from "src/components/shared/Flex/FlexItem/FlexItem"
 import { Flex } from "src/components/shared/Flex/Flex"
 import { IconButton } from "src/components/shared/Button/IconButton"
@@ -17,20 +18,23 @@ export const Title = () => {
 
     return (
         <>
-            <FlexItem width="100%" className={classes.title}>
-                <Flex justifyContent='center' alignItems="center" gap="8px">
-                    <h4>{decode(post.title)}</h4>
-                    {!!post.url ? (
-                        <Link to={post.url} target="_blank" rel="noopener noreferrer">
-                            <IconButton className={classes.external}>arrow_outward</IconButton>
-                        </Link>
-                    ) : undefined}
+            <FlexItem className={classes.title}>
+                <Flex justifyContent='center' alignItems="center" gap={1}>
+                    <h4>
+                        {decode(post.title)}
+                        {!!post.url ? (
+                            <Link to={post.url} target="_blank" rel="noopener noreferrer">
+                                <IconButton className={classes.external}>arrow_outward</IconButton>
+                            </Link>
+                        ) : undefined}
+                    </h4>
+                    <BackButton />
                 </Flex>
             </FlexItem>
-            <FlexItem width="100%" className={clsx(classes.date,'detail-text')}>
+            <FlexItem className={clsx(classes.date,'detail-text')}>
                 <>{getDate(post.date)}</>
             </FlexItem>
-            <FlexItem width="100%" className={classes.titleHr}>
+            <FlexItem className={classes.titleHr}>
                 <hr/>
             </FlexItem>
         </>

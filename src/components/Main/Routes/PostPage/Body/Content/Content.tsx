@@ -46,9 +46,9 @@ export const Content = () => {
             const images = content.split(',');
             return (
                 <>
-                    <Carousel id={`post-${params.id}-carousel`} className={classes.carousel} images={images} />
-                    <FlexItem width="100%">
-                        <Flex justifyContent="center">
+                    <Carousel id={`post-${params.id}-carousel`} images={images} />
+                    <FlexItem padding={0}>
+                        <Flex justifyContent="center" padding={0}>
                             {!!post.audio ? <Audio className={classes.carouselAudio} /> : undefined}
                         </Flex>
                     </FlexItem>
