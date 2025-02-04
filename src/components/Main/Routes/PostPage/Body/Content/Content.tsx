@@ -22,12 +22,13 @@ export const Content = () => {
     const params = useParams<PostPageParams>();
     const post = usePost(Number(params.id));
 
-    const title = `post ${!!post.contentType ? `${post.contentType} `: ''}content`;
+    const title = `post ${!!post?.contentType ? `${post.contentType} `: ''}content`;
 
-    const content = post.content.startsWith('/') ? BACKEND_URL + post.content : post.content;
+    const content = post?.content.startsWith('/') ? BACKEND_URL + post.content : post?.content;
 
-    switch ( post.contentType ) {
+    switch ( post?.contentType ) {
         case 'iframe':
+            if ( !content ) return null;
             return (
                 <div>
                     <IFrame title={title} content={content} />
@@ -35,6 +36,7 @@ export const Content = () => {
                 </div>
             )
         case 'file':
+            if ( !content ) return null;
             const embedData = getEmbedData(content);
             return (
                 <div>
@@ -43,6 +45,7 @@ export const Content = () => {
                 </div>
             );
         case 'carousel':
+            if ( !content ) return null;
             const images = content.split(',');
             return (
                 <>
@@ -57,14 +60,14 @@ export const Content = () => {
         default: 
             return (
                 <div>
-                    {!!post.url ? (
+                    {!!post?.url ? (
                         <Link to={post.url} target="_blank" rel="noopener noreferrer">
                             <img src={post.photo} className={classes.photo} title={title} alt={title} />
                         </Link>
                     ) : (
-                        <img src={post.photo} className={classes.photo} title={title} alt={title} />
+                        <img src={post?.photo} className={classes.photo} title={title} alt={title} />
                     )}
-                    {!!post.audio ? <Audio /> : undefined}
+                    {!!post?.audio ? <Audio /> : undefined}
                 </div>
             );
     }

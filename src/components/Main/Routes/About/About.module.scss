@@ -1,0 +1,49 @@
+@import 'src/theme/variables';
+
+.about {
+    padding: 16px;
+}
+
+.profilePhoto {
+    width: 20vw;
+    aspect-ratio: 1;
+    border-radius: 500px;
+    border: 2px solid var(--text-color);
+    box-shadow: 1px 1px 5px grey;
+}
+
+.summaryText {
+    & h4,h5,h6,p {
+        margin-bottom: 8px;
+    }
+
+    & hr {
+        margin: 8px 25%;
+    }
+}
+
+.pronouns {
+    font-size: 14pt;
+    color: var(--detail-text-color) !important;
+}
+
+.answer {
+    font-size: 12pt;
+}
+
+.bio {
+    padding: 16px; 
+
+    border: 2px solid var(--text-color);
+    border-radius: 16px;
+
+    height: calc(100vh - $bufferHeight - 48px - 200px);
+
+    font-size: 12pt;
+
+    overflow-y: scroll;
+
+    @media only screen and (min-width: 768px) {
+        height: calc(100vh - $bufferHeight - 48px);
+    } 
+}

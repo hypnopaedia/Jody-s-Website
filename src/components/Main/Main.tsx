@@ -4,6 +4,7 @@ import { Home } from "./Routes/Home/Home";
 import { PostPage } from "./Routes/PostPage/PostPage";
 // import { Music } from "./Routes/Music/Music";
 import { Code } from "./Routes/Code/Code";
+import { About } from "./Routes/About/About";
 
 import classes from './Main.module.scss';
 import { Flex } from "../shared/Flex/Flex";
@@ -19,6 +20,7 @@ export const Main = () => {
                     <Route path="/:id" element={<PostPage />} />
                     {/* <Route path="/music" element={<Music />} /> */}
                     <Route path="/code" element={<Code />} />
+                    <Route path="/about" element={<About />} />
                 </Routes>
             </Flex>
 

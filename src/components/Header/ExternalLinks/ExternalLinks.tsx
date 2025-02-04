@@ -56,8 +56,8 @@ export const ExternalLinks = () => {
             <p className={classes.follow}>Helpful Links:</p>
             <Flex justifyContent="center" alignItems="center" flexWrap="nowrap" gap={0.8} className='p-0'>
                 <>
-                    {LINKS.map(({title, icon, url}) => (
-                        <Link to={url} target='_blank' rel="noopener noreferrer" className={clsx(classes.link,'shake-on-hover')}>
+                    {LINKS.map(({title, icon, url}, i) => (
+                        <Link key={i} to={url} target='_blank' rel="noopener noreferrer" className={clsx(classes.link,'shake-on-hover')}>
                             <Icon title={title} className={classes.icon}>{`semantic-ui_${icon}`}</Icon>
                         </Link>
                     ))}

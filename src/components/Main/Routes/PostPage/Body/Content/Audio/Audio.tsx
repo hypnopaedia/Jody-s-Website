@@ -15,6 +15,8 @@ export const Audio = ({ className }: Props) => {
     const params = useParams<PostPageParams>();
     const post = usePost(Number(params.id));
 
+    if ( !post?.audio ) return null;
+
     const audio = post.audio.startsWith('/') ? BACKEND_URL + post.audio : post.audio;
     
     return (

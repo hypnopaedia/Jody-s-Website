@@ -1,9 +1,14 @@
 .pixelArt {
     max-height: 32px;
     margin-top: -4px;
-    margin-right: 4px;
+    margin-right: 8px;
 
     &:hover {
         cursor: pointer !important;
     }
+}
+
+img.smallScreenMode {
+    margin-top: 4px;
+    margin-right: 0;
 }

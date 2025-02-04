@@ -1,7 +1,7 @@
 @import 'src/theme/variables.scss';
 
 .body {
-    height: calc(100% - $bufferHeight); // minus Title
+    height: calc(100% - $bufferHeight - 15px);
     overflow-y: scroll;
 }
 

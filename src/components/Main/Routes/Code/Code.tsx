@@ -14,6 +14,7 @@ import { Flex } from "src/components/shared/Flex/Flex";
 import { Intro } from "./Intro/Intro";
 import { Project } from "./Project/Project";
 import { VerticalSpace } from "src/components/shared/VerticalSpace";
+import clsx from "clsx";
 
 const BASE_ANIMATION_DELAY = 750;
 
@@ -45,7 +46,7 @@ export const Code = () => {
     ));
 
     return (
-        <Flex justifyContent="left" alignItems="center" flexWrap="wrap" className={classes.code}>
+        <Flex justifyContent="left" alignItems="center" flexWrap="wrap" className={clsx(classes.code, 'fade-in-from-right')}>
             <Intro />
             <Flex justifyContent="center" flexWrap="wrap" className={classes.projects}>
                 {isLoading 

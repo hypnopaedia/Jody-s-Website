@@ -18,18 +18,16 @@ Enjoy!
 High:
 - 404 page
 - Error handling / Toasts
-- About Page
 
 Medium:
 - Alternate Post arrangement display
 - Post filtering
 - Resumé -> ATS Version
-- Icon/Title
 
-Low:
+Low/Long-term:
 - Other Docs(?): LoR, Business Card
 - Noodle Page!!
-- back button fade in from right
+- CRA -> vite
 
 - new post ideas:
     - website rewrite
@@ -55,6 +53,8 @@ Low:
     - japenese in 5 minutes (best tools, alphabets, structure, culture, etc.)
     - best youtube creators / youtube as an art form
     - graffiti/mural collection
+    - stoicism
+    - wolfram's universe theory
 
 - add projects:
     - gpt-inu links

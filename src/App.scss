@@ -68,12 +68,24 @@ main {
   cursor: default;
 }
 
-.no-underline {
-  text-decoration: none;
+.bold {
+  font-weight: bold;
+}
+
+.italic {
+  font-style: italic;
 }
 
 .reverse-image {
   transform: scaleX(-1);
+}
+
+.underline {
+  text-decoration: underline;
+}
+
+.no-underline {
+  text-decoration: none;
 }
 
 .width-fit-content {

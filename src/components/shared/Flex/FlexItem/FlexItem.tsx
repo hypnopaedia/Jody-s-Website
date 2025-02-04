@@ -1,5 +1,5 @@
 import clsx from 'clsx';
-import { CSSProperties, JSX } from 'react';
+import { CSSProperties } from 'react';
 import { Children } from '../types';
 
 type Props = {

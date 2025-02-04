@@ -9,6 +9,7 @@ import { useIsLoading } from "src/redux/Home/hooks/useIsLoading";
 import { useError } from "src/redux/Home/hooks/useError";
 import { usePost } from "src/redux/Home/hooks/usePost";
 
+import clsx from "clsx";
 import classes from './PostPage.module.scss';
 import { Body } from "./Body/Body";
 import { Flex } from "src/components/shared/Flex/Flex";
@@ -22,7 +23,7 @@ export const PostPage = () => {
     const isLoading = useIsLoading();
     const error = useError();
 
-    useAppTitle(post.title);
+    useAppTitle(post?.title);
 
     useEffect(() => {
         if ( !post && !isLoading && !error ) dispatch(getPosts());
@@ -34,7 +35,7 @@ export const PostPage = () => {
     if ( isLoading ) return <p>Loading...</p>;
 
     return (
-        <Flex justifyContent='center' alignContent='flex-start' flexWrap='wrap' className={classes.postPage}>
+        <Flex justifyContent='center' alignContent='flex-start' flexWrap='wrap' className={clsx(classes.postPage, 'fade-in-from-right', 'px-4')}>
             <Title />
             <Body />
         </Flex>

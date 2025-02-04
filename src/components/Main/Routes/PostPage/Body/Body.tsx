@@ -23,7 +23,7 @@ export const Body = () => {
                 </FlexItem>
                 <FlexItem>
                     <div className={classes.description}>
-                        {applyMarkup(post.description)}
+                        {!!post?.description ? applyMarkup(post.description) : undefined}
                     </div>
                 </FlexItem>
             </Flex>  

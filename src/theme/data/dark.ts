@@ -38,7 +38,7 @@ export const DARK_THEME: ThemeData = {
         },
         backgroundOpacity: {
             key: 'background-opacity',
-            value: 0.5
+            value: 0.35
         },
         backgroundColor: {
             key: 'background-color',

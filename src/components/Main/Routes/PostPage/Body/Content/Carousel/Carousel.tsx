@@ -16,12 +16,12 @@ export const Carousel = ({ id, className, images }: Props) => {
             <div id={id} className={`carousel slide embed_carousel ${className}`} data-ride="carousel">
                 <ol className="carousel-indicators">
                     {images.map((img,i) => (
-                        <li data-target={id} data-slide-to={String(i)} className={active === i ? "active" : ""}></li>    
+                        <li key={i} data-target={id} data-slide-to={String(i)} className={active === i ? "active" : ""}></li>    
                     ))}
                 </ol>
                 <div className="carousel-inner">
                     {images.map((img, i) => (
-                        <div className={`carousel-item ${active === i ? "active" : ""}`}>
+                        <div key={i} className={`carousel-item ${active === i ? "active" : ""}`}>
                             <img className="d-block w-100" src={img} alt={`Slide ${i}`} />
                         </div>
                     ))}

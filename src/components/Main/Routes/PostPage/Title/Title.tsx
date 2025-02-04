@@ -21,8 +21,8 @@ export const Title = () => {
             <FlexItem className={classes.title}>
                 <Flex justifyContent='center' alignItems="center" gap={1}>
                     <h4>
-                        {decode(post.title)}
-                        {!!post.url ? (
+                        {!!post?.title ? decode(post.title) : undefined}
+                        {!!post?.url ? (
                             <Link to={post.url} target="_blank" rel="noopener noreferrer">
                                 <IconButton className={classes.external}>arrow_outward</IconButton>
                             </Link>
@@ -32,7 +32,7 @@ export const Title = () => {
                 </Flex>
             </FlexItem>
             <FlexItem className={clsx(classes.date,'detail-text')}>
-                <>{getDate(post.date)}</>
+                {!!post?.date ? getDate(post.date) : undefined}
             </FlexItem>
             <FlexItem className={classes.titleHr}>
                 <hr/>

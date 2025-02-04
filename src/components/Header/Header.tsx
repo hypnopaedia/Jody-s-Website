@@ -13,12 +13,18 @@ export const Header = () => {
     return (
         <header className={classes.header}>
             <Flex flexWrap="wrap">
-                <FlexItem col={12} sm={8}>
+                <FlexItem col={10}>
                     <h1>Jody Salani <span className={classes.business}>| ISO ATIMA Solutions</span></h1>
                     <h5>Composer, programmer, ghost, and generally science-defying homonculus </h5>
                 </FlexItem>
+
+                <FlexItem col={2} className='d-block d-md-none'>
+                    <Flex justifyContent='end' className='p-0'>
+                        <PixelArt smallScreenMode={true} />
+                    </Flex>
+                </FlexItem>
                 
-                <FlexItem>
+                <FlexItem col={12}>
                     <VerticalSpace height={'12px'} />
                 </FlexItem>
 
@@ -27,8 +33,8 @@ export const Header = () => {
                 </FlexItem>
 
                 <FlexItem col={6}>
-                    <Flex justifyContent={'end'} className={classes.other} gap={1} padding={0}>
-                        <PixelArt />
+                    <Flex justifyContent={'end'} className={classes.other} gap={0.5} padding={0}>
+                        <FlexItem width='fit-content' className='d-none d-md-inline-flex'><PixelArt /></FlexItem>
                         <ExternalLinks />
                         <ThemeSwitch />
                     </Flex>

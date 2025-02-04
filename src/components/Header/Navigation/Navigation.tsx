@@ -2,6 +2,7 @@ import { Link } from "react-router-dom"
 
 import { BACKEND_URL } from "src/axios/config"
 
+import clsx from "clsx"
 import classes from './Navigation.module.scss'
 import { Button } from "src/components/shared/Button/Button"
 import { Flex } from "src/components/shared/Flex/Flex"
@@ -9,7 +10,7 @@ import { Flex } from "src/components/shared/Flex/Flex"
 export const Navigation = () => {
     return (
         <nav>
-            <Flex gap={2} className={classes.navigation} padding={0}>
+            <Flex className={clsx(classes.navigation, 'gap-2', 'gap-md-3')} padding={0}>
                 <Link to="/"><Button>Home</Button></Link>
                 {/* <Link to="/music"><Button>Music</Button></Link> */}
                 <Link to="/code"><Button>Code</Button></Link>
@@ -23,6 +24,7 @@ export const Navigation = () => {
                 <Link to="mailto:jodysalani.dev@gmail.com" target="_blank" rel="noopenner noreferrer">
                     <Button>Contact</Button>
                 </Link>
+                <Link to="/about"><Button>About</Button></Link>
             </Flex>
         </nav>
     )
