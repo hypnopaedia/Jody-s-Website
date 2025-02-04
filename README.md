@@ -55,6 +55,9 @@ Low/Long-term:
     - graffiti/mural collection
     - stoicism
     - wolfram's universe theory
+    - bone graphic nvoel
+    - habibi graphic novel
+    - 
 
 - add projects:
     - gpt-inu links

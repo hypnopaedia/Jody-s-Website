@@ -1,10 +1,11 @@
+import { decode } from 'html-entities';
 import { useEffect } from "react"
 
 const APP_BASE_TITLE = "Jody's Website";
 
 export const useAppTitle = (title?: string) => {
     return useEffect(() => {
-        if ( !!title?.length ) document.title = `${title} | ${APP_BASE_TITLE}`;
-        else document.title = APP_BASE_TITLE;
+        if ( !!title?.length ) document.title = decode(`${title} | ${APP_BASE_TITLE}`);
+        else document.title = decode(APP_BASE_TITLE);
     },[title]);
 }
