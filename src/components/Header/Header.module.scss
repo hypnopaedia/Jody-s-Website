@@ -28,6 +28,8 @@
     h1 {
         font-size: 16pt;
         vertical-align: bottom;
+        width: fit-content;
+        white-space: nowrap;
 
         &:global {
             animation: fade-in-from-right 1s;
@@ -54,7 +56,7 @@
         }
     }
 
-    .navigation, .other {
+    .other {
         opacity: 0;
 
         &:global {

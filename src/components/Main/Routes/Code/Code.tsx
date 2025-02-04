@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import { getProjects } from "src/redux/Code/thunks/getProjects"; 
 import { setDidAnimationPlay } from "src/redux/Code/slice";
 import { useAppDispatch } from "src/redux/store";
+import { useAppTitle } from "src/hooks/useAppTitle";
 import { useDidAnimationPlay } from "src/redux/Code/hooks/useDidAnimationPlay";
 import { useError } from "src/redux/Code/hooks/useError";
 import { useIsLoading } from "src/redux/Code/hooks/useIsLoading";
@@ -24,6 +25,8 @@ export const Code = () => {
     const error = useError();
 
     const didAnimationPlay = useDidAnimationPlay();
+
+    useAppTitle('Code');
 
     useEffect(() => {
         if ( !projects.length && !isLoading && !error ) dispatch(getProjects());

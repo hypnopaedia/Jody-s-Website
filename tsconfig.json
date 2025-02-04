@@ -106,7 +106,8 @@
   "include": [
     "src/custom.d.ts", 
     "src/axios",
-    "src/components",    
+    "src/components",
+    "src/hooks",
     "src/redux",
     "src/theme", 
     "src/util",

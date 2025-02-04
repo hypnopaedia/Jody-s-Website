@@ -1,0 +1,9 @@
+.navigation {
+    opacity: 0;
+
+    &:global {
+        animation: fade-in-from-right 1s;
+        animation-delay: 1s;
+        animation-fill-mode: both;
+    }
+}

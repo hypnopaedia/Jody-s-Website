@@ -24,6 +24,7 @@ Medium:
 - Alternate Post arrangement display
 - Post filtering
 - Resumé -> ATS Version
+- Icon/Title
 
 Low:
 - Other Docs(?): LoR, Business Card
@@ -31,6 +32,7 @@ Low:
 - back button fade in from right
 
 - new post ideas:
+    - website rewrite
     - spotify bad
     - temple os
     - modern artists on the cutting edge
@@ -44,7 +46,15 @@ Low:
     - we the people, and the republic we must claim | lawrence lessig
     - petscop
     - the personality machine
-    - mummy joe
+    - mummy joe / kid vampire
+    - madseasonshow: wow to ? / wow something idk
+    - voynich manuscript / codex seraphinius
+    - bill watterson's new book(?)
+    - majora's mask beta stuff
+    - morel
+    - japenese in 5 minutes (best tools, alphabets, structure, culture, etc.)
+    - best youtube creators / youtube as an art form
+    - graffiti/mural collection
 
 - add projects:
     - gpt-inu links

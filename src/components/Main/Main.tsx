@@ -2,7 +2,7 @@ import { Routes, Route } from "react-router-dom";
 
 import { Home } from "./Routes/Home/Home";
 import { PostPage } from "./Routes/PostPage/PostPage";
-import { Music } from "./Routes/Music/Music";
+// import { Music } from "./Routes/Music/Music";
 import { Code } from "./Routes/Code/Code";
 
 import classes from './Main.module.scss';

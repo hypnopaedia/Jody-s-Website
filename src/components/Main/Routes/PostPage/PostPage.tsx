@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom"
 import { getPosts } from "src/redux/Home/thunks/getPosts";
 import { PostPageParams } from "./types";
 import { useAppDispatch } from "src/redux/store";
+import { useAppTitle } from "src/hooks/useAppTitle";
 import { useIsLoading } from "src/redux/Home/hooks/useIsLoading";
 import { useError } from "src/redux/Home/hooks/useError";
 import { usePost } from "src/redux/Home/hooks/usePost";
@@ -20,6 +21,8 @@ export const PostPage = () => {
     const post = usePost(Number(params.id));
     const isLoading = useIsLoading();
     const error = useError();
+
+    useAppTitle(post.title);
 
     useEffect(() => {
         if ( !post && !isLoading && !error ) dispatch(getPosts());

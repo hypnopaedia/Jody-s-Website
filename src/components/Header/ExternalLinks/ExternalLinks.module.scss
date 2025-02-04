@@ -1,0 +1,26 @@
+.externalLinks {
+    margin-top: 2px;
+    margin-right: 8px;
+}
+
+p.follow {
+    display: block;
+    position: absolute;
+    margin-top: -16px;
+    margin-left: 4px;
+    font-size: 9pt;
+    font-style: italic;
+    text-align: end;
+    text-decoration: underline;
+}
+
+.link {
+    text-decoration: none !important;
+    & * {
+        text-decoration: none !important;
+    }
+}
+
+i.icon {
+    font-size: 18pt !important;
+}

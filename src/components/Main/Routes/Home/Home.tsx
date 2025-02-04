@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useAppDispatch } from "src/redux/store";
 
 import { getPosts } from "src/redux/Home/thunks/getPosts";
+import { useAppTitle } from "src/hooks/useAppTitle";
 import { usePosts } from "src/redux/Home/hooks/usePosts";
 import { useIsLoading } from "src/redux/Home/hooks/useIsLoading";
 import { useError } from "src/redux/Home/hooks/useError";
@@ -24,6 +25,8 @@ export const Home = () => {
     const error = useError();
 
     const didAnimationPlay = useDidAnimationPlay();
+
+    useAppTitle();
 
     useEffect(() => {
         if ( !posts.length && !isLoading && !error ) dispatch(getPosts());
