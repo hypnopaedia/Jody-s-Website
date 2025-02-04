@@ -14,6 +14,7 @@ import { BASE_ANIMATION_DELAY } from "./constants";
 import { useDidAnimationPlay } from "src/redux/Home/hooks/useDidAnimationPlay";
 import { setDidAnimationPlay } from "src/redux/Home/slice";
 import { VerticalSpace } from "src/components/shared/VerticalSpace";
+import clsx from "clsx";
 
 export const Home = () => {
     const dispatch = useAppDispatch();
@@ -50,7 +51,7 @@ export const Home = () => {
                 <hr/>
             </FlexItem>
 
-            <Flex justifyContent="md-start center" flexWrap="wrap" className={classes.posts}>
+            <Flex justifyContent="md-start center" flexWrap="wrap" className={clsx(classes.posts, 'px-3', 'px-md-5', 'px-xxl-0')}>
                 {isLoading 
                     ? <p>Loading...</p>
                     : <>{renderedPosts}</>

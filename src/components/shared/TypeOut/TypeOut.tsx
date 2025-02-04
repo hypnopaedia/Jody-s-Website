@@ -26,7 +26,6 @@ export const TypeOut = ({ children, className, delay=750, speed=10, blinkSpeed=8
     useEffect(() => {
         if ( isTyping ) {
             setTimeout(() => {
-                console.log(text[typedText.length])
                 setTypedText(typedText + text[typedText.length]);
             }, !typedText.length ? delay : speed);
         }

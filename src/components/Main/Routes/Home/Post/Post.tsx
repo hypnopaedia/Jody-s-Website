@@ -23,22 +23,26 @@ export const Post = ({ post, number }: Props) => {
     const animationDelay = BASE_ANIMATION_DELAY + (number / 10);
 
     return (
-        <FlexItem xxl={3} lg={3} md={4} sm={10} xs={12}>
-            <div 
-                className={fadeInFromRight}
-                style={{animationDelay: (didAnimationPlay ? 0 : animationDelay) + 's'}}
-            >
-                <Link to={`/${number}`} className='no-underline'>
-                    <div 
-                        {...useThemeProps(classes.postSquare, { fillOnHover: true })}
-                    >
-                        <img src={post.photo} className={classes.photo} alt="post picture" />
-                        <hr />
-                        <p className={classes.title}>{decode(post.title)}</p>
-                        <p className={classes.date}>{getDate(post.date)}</p>
-                    </div>
-                </Link>
-            </div>
-        </FlexItem>
+        <>
+            {number % 5 === 0 ? <FlexItem xxl={1} className='d-none d-xxl-block beginning'></FlexItem> : undefined}
+            <FlexItem xxl={2} lg={3} md={4} sm={10} xs={12}>
+                <div 
+                    className={fadeInFromRight}
+                    style={{animationDelay: (didAnimationPlay ? 0 : animationDelay) + 's'}}
+                >
+                    <Link to={`/${number}`} className='no-underline'>
+                        <div 
+                            {...useThemeProps(classes.postSquare, { fillOnHover: true })}
+                        >
+                            <img src={post.photo} className={classes.photo} alt="post picture" />
+                            <hr />
+                            <p className={classes.title}>{decode(post.title)}</p>
+                            <p className={classes.date}>{getDate(post.date)}</p>
+                        </div>
+                    </Link>
+                </div>
+            </FlexItem>
+            {(number + 1) % 5 === 0 ? <FlexItem xxl={1} className='d-none d-xxl-block end'></FlexItem> : undefined}
+        </>
     )
 }
