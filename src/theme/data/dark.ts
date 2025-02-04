@@ -15,6 +15,10 @@ export const DARK_THEME: ThemeData = {
             key: 'text-color',
             value: 'white'
         },
+        linkColor: {
+            key: 'link-color',
+            value: 'deepskyblue',
+        },
         detailTextColor: {
             key: 'detail-text-color',
             value: 'lightgray',

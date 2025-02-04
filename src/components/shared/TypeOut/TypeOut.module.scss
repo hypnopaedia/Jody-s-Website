@@ -1,0 +1,18 @@
+.typeout {
+    white-space: pre-wrap;
+}
+
+.cursor {
+    display: inline-block;
+    position: relative;
+
+    width: 12px;
+
+    opacity: 1;
+
+    background-color: var(--text-color);
+}
+
+.blink {
+    opacity: 0;
+}

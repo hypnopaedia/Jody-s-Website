@@ -23,7 +23,7 @@ export const Header = () => {
         <header className={classes.header}>
             <Flex flexWrap="wrap">
                 <FlexItem>
-                    <h1>Jody Salani <span className={classes.business}>• ISO ATIMA Solutions</span></h1>
+                    <h1>Jody Salani <span className={classes.business}>|| ISO ATIMA Solutions</span></h1>
                     <h5>Composer, programmer, ghost, and generally science-defying homonculus </h5>
                 </FlexItem>
                 
@@ -35,7 +35,7 @@ export const Header = () => {
                     <nav>
                         <Flex gap={2} className={classes.navigation} padding={0}>
                             <Link to="/"><Button>Home</Button></Link>
-                            <Link to="/music"><Button>Music</Button></Link>
+                            {/* <Link to="/music"><Button>Music</Button></Link> */}
                             <Link to="/code"><Button>Code</Button></Link>
                             <Link 
                                 to={`${BACKEND_URL}/media/resume.pdf`}
@@ -43,6 +43,9 @@ export const Header = () => {
                                 rel="noopener noreferrer"
                             >
                                 <Button>Resumé</Button>
+                            </Link>
+                            <Link to="mailto:jodysalani.dev@gmail.com" target="_blank" rel="noopenner noreferrer">
+                                <Button>Contact</Button>
                             </Link>
                         </Flex>
                     </nav>

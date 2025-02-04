@@ -17,7 +17,7 @@ export const Main = () => {
                 <Routes>
                     <Route path="/" element={<Home />} />
                     <Route path="/:id" element={<PostPage />} />
-                    <Route path="/music" element={<Music />} />
+                    {/* <Route path="/music" element={<Music />} /> */}
                     <Route path="/code" element={<Code />} />
                 </Routes>
             </Flex>

@@ -1,8 +1,9 @@
 import clsx from 'clsx';
 import { CSSProperties, JSX } from 'react';
+import { Children } from '../types';
 
 type Props = {
-    children?: JSX.Element[] | JSX.Element,
+    children?: Children,
     className?: string,
     style?: CSSProperties,
 

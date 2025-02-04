@@ -26,14 +26,13 @@ Enjoy!
     - petscop
     - the personality machine
     - mummy joe
-- theme primary/secondary context
-- Footer
+- add projects:
+    - gpt-inu links
+    - thruzy
+    - liveGitStatus
+    - audioJs(?)
 - back button fade in from right
 - 404 page
-- Dark Mode
 - Alternate Post arrangement display
-- RWD
-- Music
-- Code
-- Resumé
-- Other Docs(?)
+- Resumé -> ATS Version
+- Other Docs(?): LoR, Business Card

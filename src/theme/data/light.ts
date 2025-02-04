@@ -15,6 +15,10 @@ export const LIGHT_THEME: ThemeData = {
             key: 'text-color',
             value: '#15141A'
         },
+        linkColor: {
+            key: 'link-color',
+            value: 'slateblue',
+        },
         detailTextColor: {
             key: 'detail-text-color',
             value: 'dimgray',

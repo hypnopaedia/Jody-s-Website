@@ -17,6 +17,7 @@ export type ThemeData = {
         primaryColor: CSSThemeProperty,
         secondaryColor: CSSThemeProperty,
         textColor: CSSThemeProperty,
+        linkColor: CSSThemeProperty,
         detailTextColor: CSSThemeProperty,
 
         background: CSSThemeProperty,
