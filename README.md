@@ -18,6 +18,7 @@ Enjoy!
 High:
 - 404 page
 - Error handling / Toasts
+- phrase -> auth
 
 Medium:
 - Alternate Post arrangement display

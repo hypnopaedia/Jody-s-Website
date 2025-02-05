@@ -10,6 +10,7 @@ import { Flex } from '../Flex/Flex';
 
 type Props = {
     className?: string,
+    buttonClassName?: string,
     onClick?: (checked: boolean) => void,
     value: boolean | undefined,
 
@@ -17,7 +18,7 @@ type Props = {
     right?: JSX.Element | string | undefined,
 }
 
-export const Switch = ({ className, onClick, value, left, right }: Props) => {
+export const Switch = ({ className, buttonClassName, onClick, value, left, right }: Props) => {
     const inputRef = useRef<HTMLInputElement | null>(null);
 
     const themeColor = useContext(ThemeColorContext);
@@ -31,11 +32,11 @@ export const Switch = ({ className, onClick, value, left, right }: Props) => {
     },[checked]);
 
     return (
-        <Flex justifyContent='center' alignItems='center' className='width-fit-content m-0 p-0'>
+        <Flex justifyContent='center' alignItems='center' className={clsx('width-fit-content', 'm-0', 'p-0', className)}>
             {left}
             <div 
                 {...outerThemeProps}
-                className={clsx(classes.switch, outerThemeProps.className, className)}
+                className={clsx(classes.switch, outerThemeProps.className, buttonClassName)}
                 onClick={handleClick}
             >
                 <div
