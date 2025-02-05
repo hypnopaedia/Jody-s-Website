@@ -30,7 +30,7 @@ export const Post = ({ post, number }: Props) => {
                     className={fadeInFromRight}
                     style={{animationDelay: (didAnimationPlay ? 0 : animationDelay) + 's'}}
                 >
-                    <Link to={`/${number}`} className='no-underline'>
+                    <Link to={`/post/${number}`} className='no-underline'>
                         <div 
                             {...useThemeProps(classes.postSquare, { fillOnHover: true })}
                         >

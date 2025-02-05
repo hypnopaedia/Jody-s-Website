@@ -16,11 +16,10 @@ Enjoy!
 
 ## To-Do:
 High:
-- 404 page
-- Error handling / Toasts
 - phrase -> auth
 
 Medium:
+- Music
 - Alternate Post arrangement display
 - Post filtering
 - Resumé -> ATS Version
@@ -29,6 +28,7 @@ Low/Long-term:
 - Other Docs(?): LoR, Business Card
 - Noodle Page!!
 - CRA -> vite
+- Toasts
 
 - new post ideas:
     - website rewrite

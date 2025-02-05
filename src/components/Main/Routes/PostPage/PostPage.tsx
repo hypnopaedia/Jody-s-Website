@@ -12,6 +12,7 @@ import { usePost } from "src/redux/Home/hooks/usePost";
 import clsx from "clsx";
 import classes from './PostPage.module.scss';
 import { Body } from "./Body/Body";
+import { Error } from "src/components/shared/Error/Error";
 import { Flex } from "src/components/shared/Flex/Flex";
 import { Title } from "./Title/Title";
 
@@ -31,7 +32,7 @@ export const PostPage = () => {
     // @ts-ignore: initial page load only, don't include deps
     []);
 
-    if ( error || (!post && !isLoading && !error)) return <p>Uh-oh! Something went wrong :[ </p>;
+    if ( error || (!post && !isLoading && !error) || isNaN(Number(params.id)) ) return <Error />;
     if ( isLoading ) return <p>Loading...</p>;
 
     return (
