@@ -10,9 +10,8 @@ export const getProjects = () =>
     async (dispatch: Dispatch) => {
         dispatch(setIsLoading(true));
         try {
-            backend.get('projects.php').then((res: AxiosResponse<Project[]>) => {
-                dispatch(setProjects(res.data));
-            });
+            const response: AxiosResponse<Project[]> = await backend.get('projects.php');
+            dispatch(setProjects(response.data));
         } catch(e) {
             const error = `Failed to fetch Projects: ${e}`;
             dispatch(setError(error));

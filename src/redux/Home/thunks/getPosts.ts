@@ -10,9 +10,8 @@ export const getPosts = () =>
     async (dispatch: Dispatch) => {
         dispatch(setIsLoading(true));
         try {
-            backend.get('posts.php').then((res: AxiosResponse<Post[]>) => {
-                dispatch(setPosts(res.data));
-            });
+            const response: AxiosResponse<Post[]> = await backend.get('posts.php');
+            dispatch(setPosts(response.data));
         } catch(e) {
             const error = `Failed to fetch Posts: ${e}`;
             dispatch(setError(error));

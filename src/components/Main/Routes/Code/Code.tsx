@@ -9,12 +9,14 @@ import { useError } from "src/redux/Code/hooks/useError";
 import { useIsLoading } from "src/redux/Code/hooks/useIsLoading";
 import { useProjects } from "src/redux/Code/hooks/usePosts";
 
+import clsx from "clsx";
 import classes from './Code.module.scss';
 import { Flex } from "src/components/shared/Flex/Flex";
 import { Intro } from "./Intro/Intro";
+import { Loading } from "src/components/shared/Loading/Loading";
 import { Project } from "./Project/Project";
 import { VerticalSpace } from "src/components/shared/VerticalSpace";
-import clsx from "clsx";
+import { Error } from "src/components/shared/Error/Error";
 
 const BASE_ANIMATION_DELAY = 750;
 
@@ -48,10 +50,12 @@ export const Code = () => {
     return (
         <Flex justifyContent="left" alignItems="center" flexWrap="wrap" className={clsx(classes.code, 'fade-in-from-right')}>
             <Intro />
-            <Flex justifyContent="center" flexWrap="wrap" className={classes.projects}>
-                {isLoading 
-                    ? <p>Loading...</p>
-                    : <>{renderedProjects}</>
+            <Flex justifyContent="center" flexWrap="wrap" className={clsx(classes.projects)}>
+                {isLoading
+                    ? <Loading text="Loading Coding Projects..." />
+                    : !!error ? (
+                        <Error />
+                        ) : <>{renderedProjects}</>
                 }
                 <VerticalSpace height="15px" fill={true} />
             </Flex>

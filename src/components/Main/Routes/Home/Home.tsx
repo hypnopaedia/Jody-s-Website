@@ -1,21 +1,23 @@
 import { useEffect } from "react";
 import { useAppDispatch } from "src/redux/store";
 
+import { BASE_ANIMATION_DELAY } from "./constants";
 import { getPosts } from "src/redux/Home/thunks/getPosts";
+import { setDidAnimationPlay } from "src/redux/Home/slice";
 import { useAppTitle } from "src/hooks/useAppTitle";
-import { usePosts } from "src/redux/Home/hooks/usePosts";
-import { useIsLoading } from "src/redux/Home/hooks/useIsLoading";
+import { useDidAnimationPlay } from "src/redux/Home/hooks/useDidAnimationPlay";
 import { useError } from "src/redux/Home/hooks/useError";
+import { useIsLoading } from "src/redux/Home/hooks/useIsLoading";
+import { usePosts } from "src/redux/Home/hooks/usePosts";
 
+import clsx from "clsx";
 import classes from './Home.module.scss';
 import { Flex } from "src/components/shared/Flex/Flex";
 import { FlexItem } from "src/components/shared/Flex/FlexItem/FlexItem";
+import { Loading } from "src/components/shared/Loading/Loading";
 import { Post } from "./Post/Post";
-import { BASE_ANIMATION_DELAY } from "./constants";
-import { useDidAnimationPlay } from "src/redux/Home/hooks/useDidAnimationPlay";
-import { setDidAnimationPlay } from "src/redux/Home/slice";
 import { VerticalSpace } from "src/components/shared/VerticalSpace";
-import clsx from "clsx";
+import { Error } from "src/components/shared/Error/Error";
 
 export const Home = () => {
     const dispatch = useAppDispatch();
@@ -55,9 +57,11 @@ export const Home = () => {
             </FlexItem>
 
             <Flex justifyContent="md-start center" flexWrap="wrap" className={clsx(classes.posts, 'px-3', 'px-md-5', 'px-xxl-0')}>
-                {isLoading 
-                    ? <p>Loading...</p>
-                    : <>{renderedPosts}</>
+                {isLoading
+                    ? <Loading text="Loading Posts..." />
+                    : !!error ? (
+                        <Error />
+                        ) : <>{renderedPosts}</>
                 }
                 <VerticalSpace height="15px" fill={true} />
             </Flex>
