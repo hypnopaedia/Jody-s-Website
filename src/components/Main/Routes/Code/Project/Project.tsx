@@ -27,7 +27,7 @@ export const Project = ({ index }: Props) => {
                                 </Flex>
                             </Link>
                         ) : (
-                            <img src={project.photo} className={classes.photo} alt={`Project ${index} image`} />
+                            <img src={project.photo} loading="lazy" className={classes.photo} alt={`Project ${index} image`} />
                         )}
                     </Flex>
                 </FlexItem>

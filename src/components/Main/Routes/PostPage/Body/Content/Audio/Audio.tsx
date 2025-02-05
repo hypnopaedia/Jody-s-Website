@@ -1,6 +1,5 @@
 import { useParams } from "react-router-dom";
 
-import { BACKEND_URL } from "src/axios/config";
 import { PostPageParams } from "../../../types"
 import { usePost } from "src/redux/Home/hooks/usePost"
 
@@ -17,7 +16,7 @@ export const Audio = ({ className }: Props) => {
 
     if ( !post?.audio ) return null;
 
-    const audio = post.audio.startsWith('/') ? BACKEND_URL + post.audio : post.audio;
+    const audio = post.audio;
     
     return (
         <>

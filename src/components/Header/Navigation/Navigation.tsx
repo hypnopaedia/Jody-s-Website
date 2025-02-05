@@ -1,7 +1,5 @@
 import { Link } from "react-router-dom"
 
-import { BACKEND_URL } from "src/axios/config"
-
 import clsx from "clsx"
 import classes from './Navigation.module.scss'
 import { Button } from "src/components/shared/Button/Button"
@@ -14,13 +12,13 @@ export const Navigation = () => {
                 <Link to="/"><Button>Home</Button></Link>
                 {/* <Link to="/music"><Button>Music</Button></Link> */}
                 <Link to="/code"><Button>Code</Button></Link>
-                <Link 
-                    to={`${BACKEND_URL}/media/resume.pdf`}
+                <a // don't use <Link> here ... HashRouter problems
+                    href={`/media/resume.pdf`}
                     target="_blank"
                     rel="noopener noreferrer"
                 >
                     <Button>Resumé</Button>
-                </Link>
+                </a>
                 <Link to="mailto:jodysalani.dev@gmail.com" target="_blank" rel="noopenner noreferrer">
                     <Button>Contact</Button>
                 </Link>

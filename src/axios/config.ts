@@ -1,6 +1,7 @@
 import axios from "axios";
 
-export const BACKEND_URL = 'http://127.0.0.1:8000';
+export const BACKEND_URL = 'http://127.0.0.1:8000/api';
+// export const BACKEND_URL = '/api/';
 
 export const backend = axios.create({
     baseURL: BACKEND_URL,

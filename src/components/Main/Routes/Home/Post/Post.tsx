@@ -34,7 +34,7 @@ export const Post = ({ post, number }: Props) => {
                         <div 
                             {...useThemeProps(classes.postSquare, { fillOnHover: true })}
                         >
-                            <img src={post.photo} className={classes.photo} alt="post picture" />
+                            <img src={post.photo} loading="lazy" className={classes.photo} alt="post picture" />
                             <hr />
                             <p className={classes.title}>{decode(post.title)}</p>
                             <p className={classes.date}>{getDate(post.date)}</p>

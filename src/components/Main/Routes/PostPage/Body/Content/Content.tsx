@@ -1,6 +1,5 @@
 import { Link, useParams } from "react-router-dom";
 
-import { BACKEND_URL } from "src/axios/config";
 import { PostPageParams } from "../../types"
 import { usePost } from "src/redux/Home/hooks/usePost"
 
@@ -24,7 +23,7 @@ export const Content = () => {
 
     const title = `post ${!!post?.contentType ? `${post.contentType} `: ''}content`;
 
-    const content = post?.content.startsWith('/') ? BACKEND_URL + post.content : post?.content;
+    const content = post?.content;
 
     switch ( post?.contentType ) {
         case 'iframe':
@@ -65,7 +64,7 @@ export const Content = () => {
                             <img src={post.photo} className={classes.photo} title={title} alt={title} />
                         </Link>
                     ) : (
-                        <img src={post?.photo} className={classes.photo} title={title} alt={title} />
+                        <img src={post?.photo} loading="lazy" className={classes.photo} title={title} alt={title} />
                     )}
                     {!!post?.audio ? <Audio /> : undefined}
                 </div>
