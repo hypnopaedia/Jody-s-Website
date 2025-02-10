@@ -8,12 +8,12 @@ export const About = () => {
         <Flex justifyContent="center" flexWrap="wrap" className={clsx(classes.about, 'fade-in-from-right')}>
             <FlexItem col={12} md={3} className={clsx(classes.summary, 'py-0 py-md-3')}>
                 <Flex justifyContent="center" flexWrap='wrap'>
-                    <FlexItem col={12} className='d-none d-md-block'>
+                    <FlexItem col={12} display='none md-block'>
                         <Flex justifyContent="center">
                             <img className={classes.profilePhoto} src="https://s13.gifyu.com/images/b2m3U.jpg" loading="lazy" title="It's Me!" />
                         </Flex>
                     </FlexItem>
-                    <FlexItem col={9} className='d-none d-md-block py-2'>
+                    <FlexItem col={9} display='none md-block' className='py-2'>
                         <hr/>
                     </FlexItem>
                     <FlexItem col={12} className={clsx('px-2 px-md-0 px-lg-2 px-xxl-4', classes.summaryText)}>

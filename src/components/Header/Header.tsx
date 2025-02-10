@@ -18,7 +18,7 @@ export const Header = () => {
                     <h5>Composer, programmer, ghost, and generally science-defying homonculus </h5>
                 </FlexItem>
 
-                <FlexItem col={2} className='d-block d-md-none'>
+                <FlexItem col={2} display='block md-none'>
                     <Flex justifyContent='end' className='p-0'>
                         <PixelArt smallScreenMode={true} />
                     </Flex>
@@ -34,7 +34,7 @@ export const Header = () => {
 
                 <FlexItem md={5} col={2}>
                     <Flex justifyContent={'end'} className={classes.other} gap={0.5} padding={0}>
-                        <FlexItem width='fit-content' className='d-none d-md-inline-flex'><PixelArt /></FlexItem>
+                        <FlexItem width='fit-content' display='none md-inline-flex'><PixelArt /></FlexItem>
                         <ExternalLinks />
                         <ThemeSwitch />
                     </Flex>

@@ -26,7 +26,7 @@ export const Intro = () => {
                     </Link>
                 </Flex>
             </FlexItem>
-            <FlexItem col={12} md={9} lg={10} className="d-none d-md-block">
+            <FlexItem col={12} md={9} lg={10} display="none md-block">
                 <Flex justifyContent="center" alignItems="center">
                     <div className={classes.introTypeout}>
                         <TypeOut className="code" fontSize={11} skip={didAnimationPlay}>

@@ -24,7 +24,7 @@ export const Post = ({ post, number }: Props) => {
 
     return (
         <>
-            {number % 5 === 0 ? <FlexItem xxl={1} className='d-none d-xxl-block beginning'></FlexItem> : undefined}
+            {number % 5 === 0 ? <FlexItem xxl={1} display='none xxl-block' className='beginning'></FlexItem> : undefined}
             <FlexItem xxl={2} lg={3} md={4} sm={10} xs={12}>
                 <div 
                     className={fadeInFromRight}
@@ -42,7 +42,7 @@ export const Post = ({ post, number }: Props) => {
                     </Link>
                 </div>
             </FlexItem>
-            {(number + 1) % 5 === 0 ? <FlexItem xxl={1} className='d-none d-xxl-block end'></FlexItem> : undefined}
+            {(number + 1) % 5 === 0 ? <FlexItem xxl={1} display='none xxl-block' className='end'></FlexItem> : undefined}
         </>
     )
 }

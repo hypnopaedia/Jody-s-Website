@@ -18,7 +18,7 @@ export const Project = ({ index }: Props) => {
     return (
         <FlexItem col={12} className={clsx(classes.project, 'p-0', 'fade-in-from-right')}>
             <Flex justifyContent="center" flexWrap="wrap" className="p-0">
-                <FlexItem md={2} col={3} className={clsx(classes.photoWrapper,'d-none d-md-block')}>
+                <FlexItem md={2} col={3} display='none md-block' className={classes.photoWrapper}>
                     <Flex justifyContent="center" alignItems="center" className={clsx(classes.photoFlex)}>
                         {!!project.url ? (
                             <Link to={project.url} target="_blank" rel="noopener noreferrer">

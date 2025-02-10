@@ -12,6 +12,7 @@ type Props = {
     flexGrow?: number,
     flexShrink?: number,
 
+    display?: string,
     padding?: number | string,
 
     // breakpoints
@@ -27,7 +28,7 @@ type Props = {
 export const FlexItem = ({ 
     children, className, ref, style, 
     width, flexGrow, flexShrink,
-    padding,
+    display, padding,
     col=12,xs,sm,md,lg,xl,xxl
 }: Props) => (
     <div 
@@ -41,7 +42,8 @@ export const FlexItem = ({
             lg && `col-lg-${lg}`,
             xl && `col-xl-${xl}`,
             xxl && `col-xxl-${xxl}`,
-            typeof padding === 'number' ? `p-${padding}` : padding,
+            !!display && display.split(' ').map((displayClass) => displayClass.startsWith('d-') ? displayClass :`d-${displayClass}`),
+            typeof padding === 'number' ? `p-${padding}` : (padding?.startsWith('p-') ? padding : `p-${padding}`),
         )}
         style={{
             backgroundColor: 'transparent',

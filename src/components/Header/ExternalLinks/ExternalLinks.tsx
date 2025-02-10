@@ -52,7 +52,7 @@ const LINKS: Link[] = [
 
 export const ExternalLinks = () => {
     return (
-        <FlexItem width={'fit-content'} className={clsx("d-none", "d-md-flex", 'p-0', classes.externalLinks)}>
+        <FlexItem width='fit-content' display='none md-flex' className={clsx('p-0', classes.externalLinks)}>
             <p className={classes.follow}>Helpful Links:</p>
             <Flex justifyContent="center" alignItems="center" flexWrap="nowrap" gap={0.8} className='p-0'>
                 <>
