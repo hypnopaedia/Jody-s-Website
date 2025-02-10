@@ -28,11 +28,11 @@ export const Header = () => {
                     <VerticalSpace height={'12px'} />
                 </FlexItem>
 
-                <FlexItem col={6}>
+                <FlexItem md={7} col={10}>
                     <Navigation />
                 </FlexItem>
 
-                <FlexItem col={6}>
+                <FlexItem md={5} col={2}>
                     <Flex justifyContent={'end'} className={classes.other} gap={0.5} padding={0}>
                         <FlexItem width='fit-content' className='d-none d-md-inline-flex'><PixelArt /></FlexItem>
                         <ExternalLinks />

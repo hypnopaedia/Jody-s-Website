@@ -13,9 +13,9 @@ export const Intro = () => {
     
     return (
         <>
-            <FlexItem col={12} md={2}>
+            <FlexItem col={12} md={3} lg={2}>
                 <Flex justifyContent="center" alignItems="center" flexWrap="wrap" className="row-gap-3">
-                    <Link to="https://github.com/hypnopaedia" target="_blank" rel="noopener noreferrer">
+                    <Link to="https://github.com/hypnopaedia" target="_blank" rel="noopener noreferrer" className={classes.link}>
                         <Flex justifyContent="center" flexWrap="wrap" gap={1} className={classes.id}>
                             <img src="https://s13.gifyu.com/images/b297Z.jpg" className={classes.photo} />
                             <FlexItem>
@@ -26,7 +26,7 @@ export const Intro = () => {
                     </Link>
                 </Flex>
             </FlexItem>
-            <FlexItem col={12} md={10} className="d-none d-md-block">
+            <FlexItem col={12} md={9} lg={10} className="d-none d-md-block">
                 <Flex justifyContent="center" alignItems="center">
                     <div className={classes.introTypeout}>
                         <TypeOut className="code" fontSize={11} skip={didAnimationPlay}>

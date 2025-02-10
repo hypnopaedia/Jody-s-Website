@@ -1,0 +1,8 @@
+.backToTop {
+    color: var(--primary-color);
+    text-decoration: underline;
+    
+    &:hover {
+        cursor: pointer;
+    }
+}

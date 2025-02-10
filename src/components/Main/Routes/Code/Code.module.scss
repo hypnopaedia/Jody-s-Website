@@ -5,7 +5,10 @@
 }
 
 .projects {
-    padding-top: 4px;
     height: calc(100vh - $bufferHeight - 220px - 25px);
+
+    padding-top: 4px;
+
     overflow-y: scroll;
+    scroll-behavior: smooth;
 }

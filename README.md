@@ -15,6 +15,12 @@ Other libraries used:
 Enjoy!
 
 ## To-Do:
+- phrase -> prop auth
+- Alternate Post arrangement display
+- Post filtering
+- get gpt-inu demo working -OR- add thruzy project or both
+- 1 new post
+
 High:
 - phrase -> auth
 
@@ -22,7 +28,6 @@ Medium:
 - Music
 - Alternate Post arrangement display
 - Post filtering
-- Resumé -> ATS Version
 
 Low/Long-term:
 - Other Docs(?): LoR, Business Card

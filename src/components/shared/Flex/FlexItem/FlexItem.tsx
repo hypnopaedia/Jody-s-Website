@@ -1,10 +1,11 @@
-import clsx from 'clsx';
-import { CSSProperties } from 'react';
+import { CSSProperties, RefObject } from 'react';
 import { Children } from '../types';
+import clsx from 'clsx';
 
 type Props = {
     children?: Children,
     className?: string,
+    ref?: RefObject<HTMLDivElement | null>,
     style?: CSSProperties,
 
     width?: string,
@@ -24,11 +25,13 @@ type Props = {
 }
 
 export const FlexItem = ({ 
-    children, className, style, width, flexGrow, flexShrink,
+    children, className, ref, style, 
+    width, flexGrow, flexShrink,
     padding,
     col=12,xs,sm,md,lg,xl,xxl
 }: Props) => (
     <div 
+        ref={ref}
         className={clsx(
             className,
             col && `col-${col}`,

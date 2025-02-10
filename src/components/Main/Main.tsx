@@ -9,6 +9,7 @@ import { ErrorRoute } from "./Routes/ErrorRoute/ErrorRoute";
 
 import classes from './Main.module.scss';
 import { Flex } from "../shared/Flex/Flex";
+import { FlexItem } from "../shared/Flex/FlexItem/FlexItem";
 
 export const Main = () => {
     return (

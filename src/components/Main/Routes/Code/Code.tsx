@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 
 import { getProjects } from "src/redux/Code/thunks/getProjects"; 
 import { setDidAnimationPlay } from "src/redux/Code/slice";
@@ -11,16 +11,19 @@ import { useProjects } from "src/redux/Code/hooks/usePosts";
 
 import clsx from "clsx";
 import classes from './Code.module.scss';
+import { BackToTop } from "src/components/shared/BackToTop/BackToTop";
+import { Error } from "src/components/shared/Error/Error";
 import { Flex } from "src/components/shared/Flex/Flex";
 import { Intro } from "./Intro/Intro";
 import { Loading } from "src/components/shared/Loading/Loading";
 import { Project } from "./Project/Project";
 import { VerticalSpace } from "src/components/shared/VerticalSpace";
-import { Error } from "src/components/shared/Error/Error";
 
 const BASE_ANIMATION_DELAY = 750;
 
 export const Code = () => {
+    const projectsRef = useRef<HTMLDivElement | null>(null);
+    
     const dispatch = useAppDispatch();
 
     const projects = useProjects();
@@ -50,13 +53,14 @@ export const Code = () => {
     return (
         <Flex justifyContent="left" alignItems="center" flexWrap="wrap" className={clsx(classes.code, 'fade-in-from-right')}>
             <Intro />
-            <Flex justifyContent="center" flexWrap="wrap" className={clsx(classes.projects)}>
+            <Flex ref={projectsRef} justifyContent="center" flexWrap="wrap" className={clsx(classes.projects)}>
                 {isLoading
                     ? <Loading text="Loading Coding Projects..." />
                     : !!error ? (
                         <Error />
                         ) : <>{renderedProjects}</>
                 }
+                <BackToTop of={projectsRef} />
                 <VerticalSpace height="15px" fill={true} />
             </Flex>
         </Flex>

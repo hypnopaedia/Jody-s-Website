@@ -2,11 +2,13 @@
 
 .body {
     height: calc(100% - $bufferHeight - 15px);
+    
     overflow-y: scroll;
+    scroll-behavior: smooth;
 }
 
 .description {
-    padding-bottom: 25px;
+    padding-bottom: 12px;
 
     word-wrap: break-word; /* IE>=5.5 */
     white-space: pre; /* IE>=6 */

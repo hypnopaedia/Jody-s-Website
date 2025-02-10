@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { useAppDispatch } from "src/redux/store";
 
 import { BASE_ANIMATION_DELAY } from "./constants";
@@ -12,14 +12,17 @@ import { usePosts } from "src/redux/Home/hooks/usePosts";
 
 import clsx from "clsx";
 import classes from './Home.module.scss';
+import { BackToTop } from "src/components/shared/BackToTop/BackToTop";
+import { Error } from "src/components/shared/Error/Error";
 import { Flex } from "src/components/shared/Flex/Flex";
 import { FlexItem } from "src/components/shared/Flex/FlexItem/FlexItem";
 import { Loading } from "src/components/shared/Loading/Loading";
 import { Post } from "./Post/Post";
 import { VerticalSpace } from "src/components/shared/VerticalSpace";
-import { Error } from "src/components/shared/Error/Error";
 
 export const Home = () => {
+    const postsRef = useRef<HTMLDivElement | null>(null);
+
     const dispatch = useAppDispatch();
     
     const posts = usePosts();
@@ -38,7 +41,7 @@ export const Home = () => {
         if ( !didAnimationPlay ) {
             setTimeout(() => {
                 dispatch(setDidAnimationPlay(true));
-            }, BASE_ANIMATION_DELAY + 2000);
+            }, BASE_ANIMATION_DELAY + 3000);
         }
     },[]);
 
@@ -56,13 +59,14 @@ export const Home = () => {
                 <hr/>
             </FlexItem>
 
-            <Flex justifyContent="md-start center" flexWrap="wrap" className={clsx(classes.posts, 'px-3', 'px-md-5', 'px-xxl-0')}>
+            <Flex ref={postsRef} justifyContent="md-start center" flexWrap="wrap" className={clsx(classes.posts, 'px-3', 'px-md-5', 'px-xxl-0')}>
                 {isLoading
                     ? <Loading text="Loading Posts..." />
                     : !!error ? (
                         <Error />
                         ) : <>{renderedPosts}</>
                 }
+                <BackToTop of={postsRef} />
                 <VerticalSpace height="15px" fill={true} />
             </Flex>
         </Flex>

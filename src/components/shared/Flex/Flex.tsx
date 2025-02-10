@@ -1,4 +1,4 @@
-import { JSX } from "react";
+import { RefObject } from "react";
 import { Children, FlexWrap } from "./types";
 import clsx from "clsx";
 
@@ -6,6 +6,7 @@ import clsx from "clsx";
 type Props = {
     children: Children,
     className?: string,
+    ref?: RefObject<HTMLDivElement | null>,
 
     justifyContent?: string;
     alignItems?: string;
@@ -17,7 +18,9 @@ type Props = {
 }
 
 export const Flex = ({ 
-    children, className, 
+    children, 
+    className, 
+    ref,
 
     justifyContent,
     alignItems,
@@ -28,6 +31,7 @@ export const Flex = ({
     ...flexProperties 
 }: Props) => (
     <div 
+        ref={ref}
         className={clsx(
             'd-flex',
             'container-fluid',

@@ -12,6 +12,9 @@
 
 .posts {
     height: calc(100% - 72px);
-    overflow-y: scroll;
+
     padding: 0 3.5%;
+
+    overflow-y: scroll;
+    scroll-behavior: smooth;
 }
