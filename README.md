@@ -15,44 +15,41 @@ Other libraries used:
 Enjoy!
 
 ## To-Do:
-- phrase -> prop auth
+
+Upcoming:
 - Alternate Post arrangement display
 - Post filtering
-- get gpt-inu demo working -OR- add thruzy project or both
-- 1 new post
-
-High:
-- phrase -> auth
+- get gpt-inu demo working -OR- add thruzy project -OR- both
 
 Medium:
-- Music
-- Alternate Post arrangement display
-- Post filtering
+- Music Page
 
 Low/Long-term:
 - Other Docs(?): LoR, Business Card
-- Noodle Page!!
+- Noodle Page!! (hidden)
 - CRA -> vite
 - Toasts
+- Page skeleton ?
 
 - new post ideas:
-    - website rewrite
-    - spotify bad
     - temple os
-    - modern artists on the cutting edge
-    - shadows on the walls of abandoned asylum thing
+    - Polybius
     - roulette game
     - the article interview i did!
-    - lyra made a website
     - green beard altruism
-    - anything in important playlist lol
-    - Polybius
     - we the people, and the republic we must claim | lawrence lessig
     - petscop
     - the personality machine
     - mummy joe / kid vampire
-    - madseasonshow: wow to ? / wow something idk
+    - lyra made a website
     - voynich manuscript / codex seraphinius
+    - William James Sidis - the "smartest" man
+    - bone graphic nvoel
+    - shadows on the walls of abandoned asylum thing
+    - spotify bad
+    - anything in important playlist on youtube lol
+    - modern artists on the cutting edge
+    - madseasonshow: wow to ? / wow something idk
     - bill watterson's new book(?)
     - majora's mask beta stuff
     - morel
@@ -61,12 +58,10 @@ Low/Long-term:
     - graffiti/mural collection
     - stoicism
     - wolfram's universe theory
-    - bone graphic nvoel
     - habibi graphic novel
-    - 
 
 - add projects:
-    - gpt-inu links
+    - gpt-inu
     - thruzy
     - liveGitStatus
     - audioJs(?)
