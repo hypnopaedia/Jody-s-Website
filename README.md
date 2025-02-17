@@ -15,16 +15,11 @@ Other libraries used:
 Enjoy!
 
 ## To-Do:
-
 Upcoming:
-- Alternate Post arrangement display
-- Post filtering
 - get gpt-inu demo working -OR- add thruzy project -OR- both
-
-Medium:
 - Music Page
 
-Low/Long-term:
+Long-term:
 - Other Docs(?): LoR, Business Card
 - Noodle Page!! (hidden)
 - CRA -> vite
