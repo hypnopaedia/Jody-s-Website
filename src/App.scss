@@ -56,6 +56,16 @@ h1, h2, h3, h4, h5, h6 {
   margin: 0;
 }
 
+input {
+  border-radius: 8px;
+  padding: 2px 6px;
+  border-style: solid;
+
+  &:focus {
+    outline: none;
+  }
+}
+
 main {
   display: block;
   position: relative;

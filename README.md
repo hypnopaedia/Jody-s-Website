@@ -45,7 +45,8 @@ Low/Long-term:
     - voynich manuscript / codex seraphinius
     - William James Sidis - the "smartest" man
     - bone graphic nvoel
-    - shadows on the walls of abandoned asylum thing
+    - shadows on the walls of abandoned asylum thin
+    - rat utopia experiments // modern cultureg
     - spotify bad
     - anything in important playlist on youtube lol
     - modern artists on the cutting edge
@@ -59,6 +60,7 @@ Low/Long-term:
     - stoicism
     - wolfram's universe theory
     - habibi graphic novel
+    - the horror that was ratboy genius
 
 - add projects:
     - gpt-inu

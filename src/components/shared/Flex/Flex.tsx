@@ -38,7 +38,7 @@ export const Flex = ({
             !!justifyContent && justifyContent.split(' ').map(jc => `justify-content-${jc}`),
             !!alignItems && `align-items-${alignItems}`,
             !!alignContent && `align-content-${alignContent}`,
-            typeof padding === 'number' ? `p-${padding}` : padding,
+            padding !== undefined && (typeof padding === 'number' ? `p-${padding}` : (padding?.startsWith('p-') ? padding : `p-${padding}`)),
             className
         )}
         style={{

@@ -1,0 +1,13 @@
+.intro {
+    text-align: center;
+
+    & hr {
+        margin: 8px 7.5% 8px 7.5%;
+    }
+}
+
+.title {
+    color: var(--primary-color);
+    text-decoration: underline;
+    font-weight: bold;
+}

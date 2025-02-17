@@ -1,13 +1,13 @@
 import { decode } from 'html-entities';
 
 import { ANIMATION_CLASSES } from 'src/theme/constants';
-import { BASE_ANIMATION_DELAY } from '../constants';
+import { BASE_ANIMATION_DELAY } from '../../constants';
 import { getDate } from 'src/util/date';
 import { Post as PostType } from "src/redux/Home/types"
 import { useDidAnimationPlay } from 'src/redux/Home/hooks/useDidAnimationPlay';
 import { useThemeProps } from "src/theme/memo/useThemeProps";
 
-import classes from './Post.module.scss';
+import classes from './TilePost.module.scss';
 import { FlexItem } from "src/components/shared/Flex/FlexItem/FlexItem"
 import { Link } from 'react-router-dom';
 
@@ -18,7 +18,7 @@ type Props = {
 
 const { fadeInFromRight } = ANIMATION_CLASSES;
 
-export const Post = ({ post, number }: Props) => {
+export const TilePost = ({ post, number }: Props) => {
     const didAnimationPlay = useDidAnimationPlay();
     const animationDelay = BASE_ANIMATION_DELAY + (number / 10);
 

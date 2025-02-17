@@ -1,0 +1,78 @@
+$listPostHeight: 150px;
+$borderThickness: 2px;
+$contentHeight: calc($listPostHeight - ($borderThickness * 2));
+
+.listPostOuter {
+    &:hover {
+        border-radius: 8px !important;
+        outline: none;
+    }
+}
+
+.listPost {
+    padding: 0;
+    margin: 0;
+
+    border: $borderThickness solid;
+    border-radius: 8px;
+
+    height: $listPostHeight;
+
+    box-shadow: 1px 1px 5px darkgray;
+}
+
+.listPostFlex {
+    height: $contentHeight;
+
+    &:hover {
+        border-radius: 8px !important;
+    }
+}
+
+.photoWrapper {
+    height: $contentHeight;
+}
+
+.photoFlex {
+    height: 100%;
+}
+
+.photo {
+    max-width: 100%;
+    max-height: calc($contentHeight * 0.90);
+    border-radius: 4px;
+}
+
+.content{
+    height: $contentHeight;
+    max-height: $contentHeight;
+}
+
+.contentFlex {
+    height: 100%;
+    padding: 12px 0;
+}
+
+.date {
+    width: 100%;
+
+    text-align: right;
+    color: var(--detail-text-color);
+    white-space: nowrap;
+}
+
+.hr {
+    margin: 6px 0;
+}
+
+.description {
+    display: block;
+    overflow: hidden;
+    
+    height: calc($contentHeight * 0.56);
+
+    padding: 0 4px;
+
+    text-overflow: ellipsis;
+    white-space: wrap;
+}

@@ -5,6 +5,16 @@
     & span {
         font-size: 14pt;
     }
+
+    &:hover {
+        cursor: pointer;
+    }
+
+    & * {
+        &:hover {
+            cursor: pointer;
+        }
+    }
 }
 
 .iconOnly {

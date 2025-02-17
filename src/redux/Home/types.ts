@@ -12,3 +12,4 @@ export type Post = {
 
 export type PostType = 'music' | 'code' | 'project' | 'other';
 export type ContentType = 'iframe' | 'file' | 'carousel';
+export type ViewMode = 'Tile' | 'List';

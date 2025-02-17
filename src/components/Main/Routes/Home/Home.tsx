@@ -7,17 +7,18 @@ import { setDidAnimationPlay } from "src/redux/Home/slice";
 import { useAppTitle } from "src/hooks/useAppTitle";
 import { useDidAnimationPlay } from "src/redux/Home/hooks/useDidAnimationPlay";
 import { useError } from "src/redux/Home/hooks/useError";
+import { useFilteredPosts } from "src/redux/Home/hooks/useFilteredPosts";
 import { useIsLoading } from "src/redux/Home/hooks/useIsLoading";
-import { usePosts } from "src/redux/Home/hooks/usePosts";
+import { useResponsiveViewMode } from "src/redux/Home/hooks/useResponsiveViewMode";
 
 import clsx from "clsx";
 import classes from './Home.module.scss';
 import { BackToTop } from "src/components/shared/BackToTop/BackToTop";
 import { Error } from "src/components/shared/Error/Error";
 import { Flex } from "src/components/shared/Flex/Flex";
-import { FlexItem } from "src/components/shared/Flex/FlexItem/FlexItem";
+import { Intro } from "./Intro/Intro";
 import { Loading } from "src/components/shared/Loading/Loading";
-import { Post } from "./Post/Post";
+import { Posts } from "./Posts/Posts";
 import { VerticalSpace } from "src/components/shared/VerticalSpace";
 
 export const Home = () => {
@@ -25,11 +26,12 @@ export const Home = () => {
 
     const dispatch = useAppDispatch();
     
-    const posts = usePosts();
+    const posts = useFilteredPosts();
     const isLoading = useIsLoading();
     const error = useError();
 
     const didAnimationPlay = useDidAnimationPlay();
+    const viewMode = useResponsiveViewMode();
 
     useAppTitle();
 
@@ -45,29 +47,22 @@ export const Home = () => {
         }
     },[]);
 
-    const renderedPosts = posts.map((post,i) => (
-        <Post key={i} post={post} number={i}/>
-    ));
-
     return (
         <Flex justifyContent="center" flexWrap="wrap" className={classes.home}>
-            <FlexItem className={classes.intro}>
-                <h6>
-                    Hi there! Thanks for coming to my website.<br/>
-                    Stay as long as you like, be on the lookout for hidden easter eggs and, please, scroll responsibly!
-                </h6>
-                <hr/>
-            </FlexItem>
-
-            <Flex ref={postsRef} justifyContent="md-start center" flexWrap="wrap" className={clsx(classes.posts, 'px-3', 'px-md-5', 'px-xxl-0')}>
+            <Intro />
+            <Flex ref={postsRef} justifyContent="md-start center" flexWrap="wrap" 
+                    className={clsx(classes.posts, 
+                        'px-3', 'px-md-5', 'px-xxl-0',
+                        ...((viewMode === 'List') ? ['row-gap-4', 'py-3'] : [])
+                    )}>
                 {isLoading
                     ? <Loading text="Loading Posts..." />
                     : !!error ? (
                         <Error />
-                        ) : <>{renderedPosts}</>
+                        ) : <Posts />
                 }
-                <BackToTop of={postsRef} />
-                <VerticalSpace height="15px" fill={true} />
+                {!!posts.length ? <BackToTop of={postsRef} /> : undefined}
+                <VerticalSpace height={viewMode === 'Tile' ? '35px' : '5px'} fill={true} />
             </Flex>
         </Flex>
     );

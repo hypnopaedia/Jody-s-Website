@@ -43,7 +43,7 @@ export const FlexItem = ({
             xl && `col-xl-${xl}`,
             xxl && `col-xxl-${xxl}`,
             !!display && display.split(' ').map((displayClass) => displayClass.startsWith('d-') ? displayClass :`d-${displayClass}`),
-            typeof padding === 'number' ? `p-${padding}` : (padding?.startsWith('p-') ? padding : `p-${padding}`),
+            padding !== undefined && (typeof padding === 'number' ? `p-${padding}` : (padding?.startsWith('p-') ? padding : `p-${padding}`)),
         )}
         style={{
             backgroundColor: 'transparent',
