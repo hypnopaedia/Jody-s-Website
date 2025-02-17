@@ -22,16 +22,20 @@ const { fadeInFromRight } = ANIMATION_CLASSES;
 
 export const ListPost = ({ post, number }: Props) => {
     const didAnimationPlay = useDidAnimationPlay();
-    const animationDelay = BASE_ANIMATION_DELAY + (number / 10);
+    const animationDelay = BASE_ANIMATION_DELAY + (number / 8);
 
     return (
         <>
             <FlexItem col={0} xl={1} xxl={2}></FlexItem>
-            <FlexItem col={12} xl={10} xxl={8} className={classes.listPostOuter}>
+            <FlexItem 
+                col={12} 
+                xl={10} 
+                xxl={8} 
+                className={clsx(fadeInFromRight,classes.listPostOuter)}
+                style={{animationDelay: (didAnimationPlay ? 0 : animationDelay) + 's'}}
+            >
                 <Link to={`/post/${number}`} className={clsx(classes.link,'no-underline')}>
                     <div 
-                        className={fadeInFromRight}
-                        style={{animationDelay: (didAnimationPlay ? 0 : animationDelay) + 's'}}
                         {...useThemeProps(classes.listPost, { fillOnHover: true })}
                     >
                         <Flex justifyContent="left" alignItems="center" className={clsx(classes.listPostFlex, 'px-3')}>
