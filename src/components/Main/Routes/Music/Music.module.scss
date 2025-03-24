@@ -1,0 +1,18 @@
+.music {
+    height: 100%;
+}
+
+.intro {
+    height: 50px;
+
+    & * h2, & * hr {
+        margin: 0;
+        text-align: center;
+    }
+}
+
+.albums {
+    height: calc(100% - 50px);
+    overflow-y: scroll;
+    scroll-behavior: smooth;
+}

@@ -2,14 +2,13 @@ import { Routes, Route } from "react-router-dom";
 
 import { Home } from "./Routes/Home/Home";
 import { PostPage } from "./Routes/PostPage/PostPage";
-// import { Music } from "./Routes/Music/Music";
+import { Music } from "./Routes/Music/Music";
 import { Code } from "./Routes/Code/Code";
 import { About } from "./Routes/About/About";
 import { ErrorRoute } from "./Routes/ErrorRoute/ErrorRoute";
 
 import classes from './Main.module.scss';
 import { Flex } from "../shared/Flex/Flex";
-import { FlexItem } from "../shared/Flex/FlexItem/FlexItem";
 
 export const Main = () => {
     return (
@@ -20,7 +19,7 @@ export const Main = () => {
                 <Routes>
                     <Route path="/" element={<Home />} />
                     <Route path="/post/:id" element={<PostPage />} />
-                    {/* <Route path="/music" element={<Music />} /> */}
+                    <Route path="/music" element={<Music />} />
                     <Route path="/code" element={<Code />} />
                     <Route path="/about" element={<About />} />
                     <Route path="/*" element={<ErrorRoute />} />

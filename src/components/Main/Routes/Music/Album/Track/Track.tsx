@@ -1,0 +1,81 @@
+import { useEffect, useRef } from "react";
+
+import { getListeningSession } from "src/redux/Music/thunks/getListeningSession";
+import { ListeningSession } from "src/redux/Music/types";
+import { prepareAudio } from "../../functions/prepareAudio";
+import { setIsPlaying, setPlayerTrack } from "src/redux/Music/slice";
+import { Track as TrackType} from "src/redux/Music/types";
+import { useAppDispatch } from "src/redux/store";
+import { useError } from "src/redux/Music/hook/useError";
+import { useIsActiveTrack } from "../../hooks/useIsTrackActive";
+import { useListeningSession } from "src/redux/Music/hook/useListeningSession";
+import { usePlayer } from "src/redux/Music/hook/usePlayer";
+
+import classes from './Track.module.scss';
+import { Flex } from "src/components/shared/Flex/Flex";
+import { FlexItem } from "src/components/shared/Flex/FlexItem/FlexItem";
+import { IconButton } from "src/components/shared/Button/IconButton";
+
+export type Props = {
+    track: TrackType,
+    albumId: number,
+}
+
+export const Track = ({ track, albumId }: Props) => {
+    const dispatch = useAppDispatch();
+
+    const listeningSession = useListeningSession();
+    const error = useError();
+
+    const { isPlaying, trackId: playerTrackId, albumId: playerAlbumId } = usePlayer();
+    const isActiveTrack = useIsActiveTrack(track.id, albumId);
+
+    const audioRef = useRef<HTMLAudioElement | null>(null);
+
+    useEffect(() => {
+        handlePlayPause(listeningSession);
+
+        async function handlePlayPause(existingListeningSession: ListeningSession | undefined) {
+            const audio = audioRef.current;
+            if ( !audio ) return;
+
+            if ( isActiveTrack ) {
+                if ( isPlaying ) {
+                    const listeningSession = existingListeningSession ?? await dispatch(await getListeningSession());
+                    if ( !audio.src && !error ) await prepareAudio(track,audioRef,listeningSession);
+                    audio.play();
+                }
+                else audio.pause();
+            } else {
+                audio.pause();
+            }
+        }
+    },[playerTrackId, playerAlbumId, isPlaying]);
+
+    return (
+        <>
+            <FlexItem col={12}>
+                <Flex className="px-2" alignItems="center">
+                    <FlexItem col={2} md={1}>
+                        <IconButton onClick={handleClick}>{(isPlaying && isActiveTrack) ? 'pause' : 'play_arrow'}</IconButton>
+                    </FlexItem>
+                    <FlexItem col={1}>
+                        <p>{track.trackNo}</p>
+                    </FlexItem>
+                    <FlexItem col={8} md={9}>
+                        <p>{track.title}</p>
+                    </FlexItem>
+                    <FlexItem col={1}>
+                        <p className={classes.trackTime}>0:00</p>
+                    </FlexItem>
+                </Flex>
+            </FlexItem>
+            <audio hidden ref={audioRef} autoPlay={false} controls={true}></audio>
+        </>
+    );
+
+    function handleClick() {
+        if ( !isActiveTrack ) dispatch(setPlayerTrack({trackId: track.id, albumId}));
+        else dispatch(setIsPlaying(!isPlaying));
+    }
+}

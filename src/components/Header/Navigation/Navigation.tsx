@@ -10,7 +10,7 @@ export const Navigation = () => {
         <nav>
             <Flex className={clsx(classes.navigation, 'gap-2', 'gap-md-3')} padding={0}>
                 <Link to="/"><Button>Home</Button></Link>
-                {/* <Link to="/music"><Button>Music</Button></Link> */}
+                <Link to="/music"><Button>Music</Button></Link>
                 <Link to="/code"><Button>Code</Button></Link>
                 <a // don't use <Link> here ... HashRouter problems
                     href={`/media/resume.pdf`}

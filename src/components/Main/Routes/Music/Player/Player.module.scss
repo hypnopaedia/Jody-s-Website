@@ -1,0 +1,24 @@
+.player {
+    display: block;
+    position: fixed;
+
+    bottom: 0;
+    left: 0;
+
+    width: 100vw;
+    height: 65px;
+
+    border-top: 2px solid var(--primary-color);
+}
+
+.image {
+    width: 50px;
+    border-radius: 4px;
+}
+
+.playerControl {
+    height: fit-content;
+    & * span {
+        font-size: 20pt;
+    }
+}

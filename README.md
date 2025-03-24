@@ -18,6 +18,9 @@ Enjoy!
 Upcoming:
 - get gpt-inu demo working -OR- add thruzy project -OR- both
 - Music Page
+- Home > Posts controls fade in from right
+- disallow select/highlighting on a lot of stuff
+- fix flex columns on code page for images (md 3->4 ?)
 
 Long-term:
 - Other Docs(?): LoR, Business Card
@@ -25,11 +28,12 @@ Long-term:
 - CRA -> vite
 - Toasts
 - Page skeleton ?
+- ai chatbot that doesn't help with anything and is kind of weird
 
 - new post ideas:
+    - fire roulette
     - temple os
     - Polybius
-    - roulette game
     - the article interview i did!
     - green beard altruism
     - we the people, and the republic we must claim | lawrence lessig
@@ -39,9 +43,10 @@ Long-term:
     - lyra made a website
     - voynich manuscript / codex seraphinius
     - William James Sidis - the "smartest" man
-    - bone graphic nvoel
+    - bone graphic novel
+    - dr. seuss' the midnight paintings
     - shadows on the walls of abandoned asylum thin
-    - rat utopia experiments // modern cultureg
+    - rat utopia experiments // modern culture
     - spotify bad
     - anything in important playlist on youtube lol
     - modern artists on the cutting edge
