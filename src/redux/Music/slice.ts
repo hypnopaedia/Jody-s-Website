@@ -33,9 +33,20 @@ const musicSlice = createSlice({
       state.player.albumId = payload.albumId;
       state.player.trackId = payload.trackId;
       state.player.isPlaying = true;
+      state.player.currentTime = 0;
+      state.player.duration = 0;
     },
     setIsPlaying(state,{ payload: isPlaying }: PayloadAction<boolean>) {
       state.player.isPlaying = isPlaying;
+    },
+    toggleIsPlaying(state) {
+      state.player.isPlaying = !state.player.isPlaying;
+    },
+    setCurrentTime(state, { payload }: PayloadAction<number | undefined>) {
+      state.player.currentTime = payload;
+    },
+    setDuration(state, { payload }: PayloadAction<number | undefined>) {
+      state.player.duration = payload;
     },
     setIsLoading(state, { payload: isLoading }: PayloadAction<boolean>) {
         state.isLoading = isLoading;
@@ -51,6 +62,9 @@ export const {
   setMusic, 
   setPlayerTrack,
   setIsPlaying,
+  toggleIsPlaying,
+  setCurrentTime,
+  setDuration,
   setIsLoading, 
   setError
 } = musicSlice.actions;

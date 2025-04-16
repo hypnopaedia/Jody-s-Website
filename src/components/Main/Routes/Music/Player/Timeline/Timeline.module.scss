@@ -1,0 +1,79 @@
+.timeline {
+    padding: 0;
+    margin: 0;
+}
+
+.time {
+    display: block;
+    position: relative;
+    width: fit-content;
+    margin-top: -2px !important;
+    text-align: center;
+}
+
+.currentTime {
+    // margin-right: 8px;
+    text-align: end;
+    width: 100%;
+}
+
+.duration {
+    // margin-left: 2px;
+}
+
+.linesContainer {
+    display: block;
+    position: relative;
+
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.backgroundLine {
+    height: 3px;    
+    width: 100%;
+
+    background-color: darkgray;
+
+    pointer-events: none;
+    z-index: 0;
+}
+
+.foregroundLineWrapper {
+    position: absolute;
+
+    top: -5px;
+
+    width: 100%;
+}
+
+.foregroundLine {
+    height: 3px;
+    width: 0;
+
+    margin: 0;
+    padding: 0;
+    
+    background-color: var(--primary-color);
+    
+    z-index: 1;
+}
+
+.slidingWidth {
+    transition-property: width;
+    transition-timing-function: linear;
+}
+
+.stylus {
+    width: 14px;
+    height: 14px;
+
+    margin-left: -7px;
+
+    border: 2px solid;
+    border-radius: 50px;
+
+    pointer-events: none;
+    z-index: 1;
+}

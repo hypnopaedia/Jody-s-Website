@@ -2,8 +2,8 @@ import { useEffect, useRef } from "react";
 
 import { getListeningSession } from "src/redux/Music/thunks/getListeningSession";
 import { ListeningSession } from "src/redux/Music/types";
-import { prepareAudio } from "../../functions/prepareAudio";
-import { setIsPlaying, setPlayerTrack } from "src/redux/Music/slice";
+import { prepareAudio } from "../../helpers/prepareAudio";
+import { setDuration, setIsPlaying, setPlayerTrack } from "src/redux/Music/slice";
 import { Track as TrackType} from "src/redux/Music/types";
 import { useAppDispatch } from "src/redux/store";
 import { useError } from "src/redux/Music/hook/useError";
@@ -15,12 +15,14 @@ import classes from './Track.module.scss';
 import { Flex } from "src/components/shared/Flex/Flex";
 import { FlexItem } from "src/components/shared/Flex/FlexItem/FlexItem";
 import { IconButton } from "src/components/shared/Button/IconButton";
+import { getAudioElementId } from "../../helpers/getAudioElementId";
 
 export type Props = {
     track: TrackType,
     albumId: number,
 }
 
+// TODO: Reverse the flow so that the audio is play/paused first, then redux is updated
 export const Track = ({ track, albumId }: Props) => {
     const dispatch = useAppDispatch();
 
@@ -48,9 +50,24 @@ export const Track = ({ track, albumId }: Props) => {
                 else audio.pause();
             } else {
                 audio.pause();
+                audio.currentTime = 0;
             }
         }
     },[playerTrackId, playerAlbumId, isPlaying]);
+
+    useEffect(() => {
+        if ( !audioRef.current ) return;
+        
+        audioRef.current.addEventListener('loadedmetadata', sendDuration);
+
+        return () => {
+            if ( !!audioRef.current ) audioRef.current.removeEventListener('loadedmetadata', sendDuration); 
+        }
+
+        function sendDuration() {
+            if ( !!audioRef.current?.duration ) dispatch(setDuration(audioRef.current?.duration))
+        }
+    },[audioRef.current]);
 
     return (
         <>
@@ -70,7 +87,14 @@ export const Track = ({ track, albumId }: Props) => {
                     </FlexItem>
                 </Flex>
             </FlexItem>
-            <audio hidden ref={audioRef} autoPlay={false} controls={true}></audio>
+            <audio ref={audioRef}
+                id={getAudioElementId(track.id, albumId)} 
+                hidden 
+                preload="metadata" 
+                autoPlay={false} 
+                controls={true}
+                onEnded={() => { dispatch(setIsPlaying(false)) }}
+            ></audio>
         </>
     );
 

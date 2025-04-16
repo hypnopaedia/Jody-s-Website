@@ -9,6 +9,8 @@ export type Player = {
     albumId: number | undefined,
     trackId: number | undefined,
     isPlaying: boolean,
+    currentTime: number | undefined,
+    duration: number | undefined,
 }
 
 export type Album = {

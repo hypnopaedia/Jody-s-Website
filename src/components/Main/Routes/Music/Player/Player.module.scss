@@ -6,19 +6,65 @@
     left: 0;
 
     width: 100vw;
-    height: 65px;
+    height: 70px;
 
-    border-top: 2px solid var(--primary-color);
+    padding: 0 2.5%;
+
+    border-top: 3px solid var(--primary-color);
+
+    animation: pull-up-from-bottom 0.5s;
+}
+
+.flexContainer {
+    margin-top: 16px;
 }
 
 .image {
     width: 50px;
     border-radius: 4px;
+    margin-right: 8px;
+}
+
+.trackData {
+    & h6 {
+        font-size: 16px;
+    }
+}
+
+.controls {
+    margin-bottom: 2px;
 }
 
 .playerControl {
     height: fit-content;
+
+    padding: 3px;
+
+    border-radius: 8px !important;
+    border: none !important;
     & * span {
-        font-size: 20pt;
+        font-size: 24px;
     }
+}
+
+.playPause {
+    height: fit-content;
+
+    padding: 2px;
+
+    border-radius: 8px !important;
+    border: none !important;
+    
+    & * span {
+        font-size: 32px;
+    }
+}
+
+button.mobilePlayPause {
+    padding: 8px;
+}
+
+@keyframes pull-up-from-bottom {
+    from { bottom: -62px; }
+    to { bottom: 0; }
 }

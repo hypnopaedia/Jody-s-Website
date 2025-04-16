@@ -1,5 +1,7 @@
+import { useEffect } from 'react';
+
 import { NO_ALBUM_ART_IMG } from '../constants';
-import { setIsPlaying, setPlayerTrack } from 'src/redux/Music/slice';
+import { setIsPlaying, setPlayerTrack, toggleIsPlaying } from 'src/redux/Music/slice';
 
 import { useAlbum } from 'src/redux/Music/hook/useAlbum';
 import { useAppDispatch } from 'src/redux/store';
@@ -8,10 +10,13 @@ import { usePlayer } from 'src/redux/Music/hook/usePlayer';
 import { useThemeProps } from 'src/theme/memo/useThemeProps';
 import { useTrack } from 'src/redux/Music/hook/useTrack';
 
+import clsx from 'clsx';
 import classes from './Player.module.scss';
 import { Flex } from 'src/components/shared/Flex/Flex';
 import { FlexItem } from 'src/components/shared/Flex/FlexItem/FlexItem';
 import { IconButton } from 'src/components/shared/Button/IconButton';
+import { Timeline } from './Timeline/Timeline';
+import { Volume } from './Volume/Volume';
 
 export const Player = () => {
     const dispatch = useAppDispatch();
@@ -23,36 +28,59 @@ export const Player = () => {
     const album = useAlbum(albumId);
     const track = useTrack(albumId,trackId);
 
+    useEffect(() => {
+        if ( !trackId || !albumId ) return;
+        window.addEventListener('keypress', togglePlay);
+
+        return () => window.removeEventListener('keypress', togglePlay);
+    },[trackId,albumId]);
+
     if ( !trackId || !albumId ) return null;
 
     return (
         <div {...themeProps}>
-            <Flex className='p-0 m-0' h-100>
-                <FlexItem col={4} style={{border: 'thin solid red'}}>
-                    <Flex alignItems='center'>
-                        <FlexItem col={2}>
-                            <img loading='lazy' src={album?.photo ?? NO_ALBUM_ART_IMG} className={classes.image} />
-                        </FlexItem>
-                        <FlexItem col={9}>
-                            <h6>{track?.title}</h6><br/>
+            <Flex className='p-0 m-0 h-100'>
+                <FlexItem col={10} md={3} >
+                    <Flex alignItems='center' className='p-0 m-0 h-100'>
+                        <img loading='lazy' src={album?.photo ?? NO_ALBUM_ART_IMG} className={classes.image} />
+                        <FlexItem col={9} md={10} className={classes.trackData}>
+                            <h6><b>{track?.title}</b></h6>
                             <p>{album?.title}</p>
                         </FlexItem>
                     </Flex>
                 </FlexItem>
-                <FlexItem col={4}>
-                    <Flex justifyContent='center' alignItems='center' gap={1} className='h-100'>
-                        <IconButton className={classes.playerControl}>fast_rewind</IconButton>
-                        <IconButton className={classes.playerControl} onClick={() => dispatch(setIsPlaying(!isPlaying))}>{isPlaying ? 'pause' : 'play_arrow'}</IconButton>
-                        <IconButton className={classes.playerControl} onClick={fastForward}>fast_forward</IconButton>
+                <FlexItem col={2} md={6} >
+                    <Flex justifyContent='center' alignItems='center' alignContent='center' flexWrap='wrap' className='d-none d-md-flex h-100'>
+                        <FlexItem>
+                            <Flex justifyContent='center' alignItems='center' gap={1} className={classes.controls}>
+                                <IconButton className={classes.playerControl}>fast_rewind</IconButton>
+                                <IconButton className={classes.playPause} onClick={() => dispatch(setIsPlaying(!isPlaying))}>{isPlaying ? 'pause' : 'play_arrow'}</IconButton>
+                                <IconButton className={classes.playerControl} onClick={fastForward}>fast_forward</IconButton>
+                            </Flex>
+                        </FlexItem>
+                        <FlexItem>
+                            <Timeline />
+                        </FlexItem>
+                    </Flex>
+                    <Flex justifyContent='end' alignItems='center' className='d-flex d-md-none h-100 p-1'>
+                        <IconButton 
+                            className={clsx(classes.playPause,classes.mobilePlayPause)} 
+                            onClick={() => dispatch(setIsPlaying(!isPlaying))}
+                        >
+                                {isPlaying ? 'pause' : 'play_arrow'}
+                        </IconButton>
                     </Flex>
                 </FlexItem>
-                <FlexItem col={4} style={{border: 'thin solid blue'}}>
-                    volume
+                <FlexItem col={3} className='d-none d-md-block'>
+                    <Flex justifyContent='center' alignItems='center' className='h-100'>
+                        <Volume />
+                    </Flex>
                 </FlexItem>
             </Flex>
         </div>
     );
 
+    // TODO: Make this a redux action, as well as rewind
     function fastForward() {
         if ( !album?.tracks || !allAlbums ) return;
 
@@ -77,5 +105,11 @@ export const Player = () => {
                 albumId
             }))
         }
+    }
+
+    function togglePlay(e: KeyboardEvent) {
+        e.preventDefault();
+        e.stopPropagation();
+        if ( e.key === " " ) dispatch(toggleIsPlaying());
     }
 }

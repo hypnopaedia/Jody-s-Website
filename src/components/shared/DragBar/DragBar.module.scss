@@ -1,0 +1,46 @@
+.dragbar {
+
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.backgroundLine {
+    height: 3px;    
+    width: 100%;
+
+    background-color: darkgray;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.activeLineWrapper {
+    width: 100%;
+    position: absolute;
+    margin-top: -8px;
+}
+
+.activeLine {
+    height: 3px;
+    width: 1px;
+
+    margin: 0;
+    padding: 0;
+    
+    background-color: var(--primary-color);
+    
+    z-index: 1;
+}
+
+.stylus {
+    width: 14px;
+    height: 14px;
+
+    margin-left: -7px;
+
+    border: 2px solid;
+    border-radius: 50px;
+
+    pointer-events: none;
+    z-index: 1;
+}
