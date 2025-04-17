@@ -41,7 +41,6 @@ export const DragBar = ({ className, initialValue, onChange, onDrag }: Props) =>
             justifyContent="center"
             alignItems="center"
             className={clsx(className, classes.dragbar, 'p-0')}
-            
         >
             <FlexItem>
                 <div className={clsx(classes.line, classes.backgroundLine)}></div>
@@ -49,7 +48,7 @@ export const DragBar = ({ className, initialValue, onChange, onDrag }: Props) =>
                     <div 
                         ref={activeLineRef} 
                         className={clsx(classes.line, classes.activeLine, classes.slidingWidth)} 
-                    >                        
+                    >
                     </div>
                     <div 
                         ref={stylusRef} 
@@ -66,7 +65,8 @@ export const DragBar = ({ className, initialValue, onChange, onDrag }: Props) =>
         activeLineRef.current.style.width = e.offsetX + 'px';
 
         dragbarRef.current.addEventListener('mousemove', handleMouseMove);
-        dragbarRef.current.addEventListener('mouseup', handleMouseUp);
+        window.addEventListener('mouseup', handleMouseUp);
+        window.addEventListener('mouseleave', handleMouseLeave);
     }
 
     function handleMouseMove(e: MouseEvent) {
@@ -79,12 +79,20 @@ export const DragBar = ({ className, initialValue, onChange, onDrag }: Props) =>
     }
 
     function handleMouseUp(e: MouseEvent) {
-        if ( !dragbarRef.current ) return;
-
         if ( onChange ) onChange(getOffsetValue());
+        cleanup();
+    }
 
+    function handleMouseLeave(e: MouseEvent) {
+        console.log('mouseout')
+        cleanup();
+    }
+
+    function cleanup() {
+        if ( !dragbarRef.current ) return;
         dragbarRef.current.removeEventListener('mousemove', handleMouseMove);
-        dragbarRef.current.removeEventListener('mouseup', handleMouseUp);
+        window.removeEventListener('mouseup', handleMouseUp);
+        window.removeEventListener('mouseleave', handleMouseLeave);
     }
 
     // from 0 to 1 

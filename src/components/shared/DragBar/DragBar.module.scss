@@ -1,5 +1,5 @@
 .dragbar {
-
+    
     &:hover {
         cursor: pointer;
     }
@@ -15,7 +15,7 @@
 }
 
 .activeLineWrapper {
-    width: 100%;
+    width: fit-content;
     position: absolute;
     margin-top: -8px;
 }

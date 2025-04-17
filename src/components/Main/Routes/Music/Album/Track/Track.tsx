@@ -101,5 +101,6 @@ export const Track = ({ track, albumId }: Props) => {
     function handleClick() {
         if ( !isActiveTrack ) dispatch(setPlayerTrack({trackId: track.id, albumId}));
         else dispatch(setIsPlaying(!isPlaying));
+        (document.activeElement as HTMLElement).blur(); // stop spacebar play/pause; handled by global player
     }
 }

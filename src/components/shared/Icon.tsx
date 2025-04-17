@@ -14,13 +14,14 @@ export const Icon = ({ children: iconName, className, onClick, title }: IconProp
         <i 
             title={title} 
             onClick={onClick}
-            className={clsx(`${iconName.slice(SEMANTIC_UI_PREFIX.length)}`,'icon', 'semantic-ui-icons', className)}
+            className={clsx(
+                `${iconName.slice(SEMANTIC_UI_PREFIX.length)}`,'icon', 'semantic-ui-icons', className, 'no-select')}
         ></i>
     ) : (
         <span 
             title={title} 
             onClick={onClick}
-            className={clsx("material-icons", 'cursor-default', className)}
+            className={clsx("material-icons", 'cursor-default', className, 'no-select')}
         >{iconName}</span>
     )
 );

@@ -10,13 +10,13 @@ import { usePlayer } from 'src/redux/Music/hook/usePlayer';
 import { useThemeProps } from 'src/theme/memo/useThemeProps';
 import { useTrack } from 'src/redux/Music/hook/useTrack';
 
-import clsx from 'clsx';
 import classes from './Player.module.scss';
 import { Flex } from 'src/components/shared/Flex/Flex';
 import { FlexItem } from 'src/components/shared/Flex/FlexItem/FlexItem';
 import { IconButton } from 'src/components/shared/Button/IconButton';
 import { Timeline } from './Timeline/Timeline';
 import { Volume } from './Volume/Volume';
+import clsx from 'clsx';
 
 export const Player = () => {
     const dispatch = useAppDispatch();

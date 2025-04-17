@@ -3,6 +3,7 @@ import { useRef } from 'react';
 import { NULL_TIME } from '../../constants';
 import { secondsToDisplayTime } from 'src/util/secondsToDisplayTime';
 import { useActiveAudioRef } from '../../hooks/useActiveAudioRef';
+import { useCurrentDisplayTime } from './hooks/useCurrentDisplayTime';
 import { useHandleTimelineTransitions } from './hooks/useHandleTimelineTransitions';
 import { usePlayer } from 'src/redux/Music/hook/usePlayer';
 import { useThemeProps } from 'src/theme/memo/useThemeProps';
@@ -12,7 +13,6 @@ import clsx from 'clsx';
 import classes from './Timeline.module.scss';
 import { Flex } from 'src/components/shared/Flex/Flex';
 import { FlexItem } from 'src/components/shared/Flex/FlexItem/FlexItem';
-import { useCurrentDisplayTime } from './hooks/useCurrentDisplayTime';
 
 export const Timeline = () => {
     const activeAudioRef = useActiveAudioRef();
@@ -20,7 +20,7 @@ export const Timeline = () => {
     const linesContainerRef = useRef<HTMLDivElement | null>(null);
     const foregroundLineRef = useRef<HTMLDivElement | null>(null);
     const stylusRef = useRef<HTMLDivElement | null>(null);
-
+    
     const { duration } = usePlayer();
     const displayTime = useCurrentDisplayTime();
 

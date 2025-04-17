@@ -86,6 +86,14 @@ main {
   font-style: italic;
 }
 
+.no-select {
+   user-select: none;
+   -o-user-select:none;
+   -moz-user-select: none;
+   -khtml-user-select: none;
+   -webkit-user-select: none;
+}
+
 .reverse-image {
   transform: scaleX(-1);
 }
