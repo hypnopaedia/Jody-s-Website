@@ -1,8 +1,11 @@
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 
+import { getNextTrack } from './helpers/getNextTrack';
+import { getPreviousTrack } from './helpers/getPreviousTrack';
 import { NO_ALBUM_ART_IMG } from '../constants';
-import { setIsPlaying, setPlayerTrack, toggleIsPlaying } from 'src/redux/Music/slice';
+import { setCurrentTime, setIsPlaying, setPlayerTrack, toggleIsPlaying } from 'src/redux/Music/slice';
 
+import { useActiveAudioRef } from '../hooks/useActiveAudioRef';
 import { useAlbum } from 'src/redux/Music/hook/useAlbum';
 import { useAppDispatch } from 'src/redux/store';
 import { useMusic } from 'src/redux/Music/hook/useMusic';
@@ -10,16 +13,18 @@ import { usePlayer } from 'src/redux/Music/hook/usePlayer';
 import { useThemeProps } from 'src/theme/memo/useThemeProps';
 import { useTrack } from 'src/redux/Music/hook/useTrack';
 
+import clsx from 'clsx';
 import classes from './Player.module.scss';
 import { Flex } from 'src/components/shared/Flex/Flex';
 import { FlexItem } from 'src/components/shared/Flex/FlexItem/FlexItem';
 import { IconButton } from 'src/components/shared/Button/IconButton';
 import { Timeline } from './Timeline/Timeline';
 import { Volume } from './Volume/Volume';
-import clsx from 'clsx';
 
 export const Player = () => {
     const dispatch = useAppDispatch();
+
+    const audio = useActiveAudioRef();
 
     const { trackId, albumId, isPlaying } = usePlayer();
     const themeProps = useThemeProps(classes.player);
@@ -27,6 +32,8 @@ export const Player = () => {
     const allAlbums = useMusic();
     const album = useAlbum(albumId);
     const track = useTrack(albumId,trackId);
+
+    const recentRewindRef = useRef(false);
 
     useEffect(() => {
         if ( !trackId || !albumId ) return;
@@ -53,9 +60,9 @@ export const Player = () => {
                     <Flex justifyContent='center' alignItems='center' alignContent='center' flexWrap='wrap' className='d-none d-md-flex h-100'>
                         <FlexItem>
                             <Flex justifyContent='center' alignItems='center' gap={1} className={classes.controls}>
-                                <IconButton className={classes.playerControl}>fast_rewind</IconButton>
+                                <IconButton className={classes.playerControl} onClick={handleRewind}>fast_rewind</IconButton>
                                 <IconButton className={classes.playPause} onClick={() => dispatch(setIsPlaying(!isPlaying))}>{isPlaying ? 'pause' : 'play_arrow'}</IconButton>
-                                <IconButton className={classes.playerControl} onClick={fastForward}>fast_forward</IconButton>
+                                <IconButton className={classes.playerControl} onClick={handleFastForward}>fast_forward</IconButton>
                             </Flex>
                         </FlexItem>
                         <FlexItem>
@@ -80,31 +87,36 @@ export const Player = () => {
         </div>
     );
 
+    function handleRewind() {
+        if ( !album?.tracks || !allAlbums || !audio.current ) return;
+
+        if ( !recentRewindRef.current ) {
+            rewindTrack();
+
+            recentRewindRef.current = true;
+            setTimeout(() => recentRewindRef.current = false, 3000);
+        } else {
+            const previousTrack = getPreviousTrack(track, album, allAlbums);
+
+            if ( !!previousTrack ) dispatch(setPlayerTrack(previousTrack));
+            else rewindTrack(); // don't loop around to the back, just keep going back to 0
+        }
+    }
+
+    function rewindTrack() {
+        if ( !audio.current ) return;
+
+        // if last start time was already 0, this results in equal state; set to current time, then switch back to 0
+        dispatch(setCurrentTime(audio.current.currentTime));
+        setTimeout(() => dispatch(setCurrentTime(0)), 50); 
+    }
+
     // TODO: Make this a redux action, as well as rewind
-    function fastForward() {
+    function handleFastForward() {
         if ( !album?.tracks || !allAlbums ) return;
 
-        const lastTrackOfAlbum = album.tracks[album.tracks.length - 1];
-        const lastAlbum = allAlbums[allAlbums.length - 1];
-
-        if ( track?.id === lastTrackOfAlbum.id ) {
-            if ( album.id === lastAlbum.id ) {
-                dispatch(setPlayerTrack({ trackId: allAlbums[0].tracks[0].id, albumId: allAlbums[0].id }))
-            } else {
-                const currentAlbumIndex = allAlbums.findIndex((a) => a.id === albumId);
-                if ( currentAlbumIndex === -1 ) return;
-                dispatch(setPlayerTrack({ 
-                    trackId: allAlbums[currentAlbumIndex+1].tracks[0].id, 
-                    albumId: allAlbums[currentAlbumIndex+1].id 
-                }));
-            }
-        } else {
-            const currentTrackIndex = album.tracks.findIndex((t) => t.id === trackId);
-            dispatch(setPlayerTrack({
-                trackId: album.tracks[currentTrackIndex + 1].id,
-                albumId
-            }))
-        }
+        const nextTrack = getNextTrack(track, album, allAlbums);
+        if ( !!nextTrack ) dispatch(setPlayerTrack(nextTrack));
     }
 
     function togglePlay(e: KeyboardEvent) {

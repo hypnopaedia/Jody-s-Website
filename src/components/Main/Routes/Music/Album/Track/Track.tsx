@@ -1,5 +1,6 @@
 import { useEffect, useRef } from "react";
 
+import { getAudioElementId } from "../../helpers/getAudioElementId";
 import { getListeningSession } from "src/redux/Music/thunks/getListeningSession";
 import { ListeningSession } from "src/redux/Music/types";
 import { prepareAudio } from "../../helpers/prepareAudio";
@@ -15,7 +16,6 @@ import classes from './Track.module.scss';
 import { Flex } from "src/components/shared/Flex/Flex";
 import { FlexItem } from "src/components/shared/Flex/FlexItem/FlexItem";
 import { IconButton } from "src/components/shared/Button/IconButton";
-import { getAudioElementId } from "../../helpers/getAudioElementId";
 
 export type Props = {
     track: TrackType,
@@ -29,7 +29,7 @@ export const Track = ({ track, albumId }: Props) => {
     const listeningSession = useListeningSession();
     const error = useError();
 
-    const { isPlaying, trackId: playerTrackId, albumId: playerAlbumId } = usePlayer();
+    const { currentTime: lastStartTime, isPlaying, trackId: playerTrackId, albumId: playerAlbumId } = usePlayer();
     const isActiveTrack = useIsActiveTrack(track.id, albumId);
 
     const audioRef = useRef<HTMLAudioElement | null>(null);
@@ -68,6 +68,12 @@ export const Track = ({ track, albumId }: Props) => {
             if ( !!audioRef.current?.duration ) dispatch(setDuration(audioRef.current?.duration))
         }
     },[audioRef.current]);
+
+    useEffect(() => {
+        if (!isActiveTrack || !audioRef.current) return;
+        
+        audioRef.current.currentTime = lastStartTime ?? 0;
+    },[lastStartTime]);
 
     return (
         <>

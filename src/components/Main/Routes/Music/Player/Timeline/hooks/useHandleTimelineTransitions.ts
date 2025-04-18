@@ -9,7 +9,7 @@ export const useHandleTimelineTransitions = (
     activeAudioRef: RefObject<HTMLAudioElement | null>,
     foregroundLineRef: RefObject<HTMLDivElement | null>,
 ) => {
-    const { duration, isPlaying, albumId, trackId } = usePlayer();
+    const { currentTime: lastStartTime, duration, isPlaying, albumId, trackId } = usePlayer();
     const isSongChange = useRef(false);
 
     const [isRenderTimeline,setIsRenderTimeline] = useState(window.innerWidth >= MD_BREAKPOINT);
@@ -25,6 +25,7 @@ export const useHandleTimelineTransitions = (
     // Song Change - Reset the timeline width with no transitions
     useEffect(() => {
         if ( !foregroundLineRef.current ) return;
+
         isSongChange.current = true; // block the other hook while this is happening
 
         foregroundLineRef.current.style.transitionDuration = '0ms';
@@ -36,18 +37,33 @@ export const useHandleTimelineTransitions = (
         }, AUDIO_TIMEOUT_MS);
     }, [albumId,trackId]);
 
+    // Time Change - apply transition from proper width when time is changed by user via click/drag timeline or rewind button
+    useEffect(() => {
+        if ( !foregroundLineRef.current || isSongChange.current ) return;
+        
+        foregroundLineRef.current.style.transitionDuration = '0ms';
+
+        setTimeout(() => {
+            if ( !foregroundLineRef.current ) return;
+
+            const percentagePlayed = ((activeAudioRef.current?.currentTime ?? 0) / (duration ?? 1) * 100);
+            foregroundLineRef.current.style.width = `calc(${percentagePlayed}% + 1px)`; // 1px helps to smooth
+
+            if ( isPlaying ) setTimeout(() => applyPlayTransition(lastStartTime, duration, foregroundLineRef), AUDIO_TIMEOUT_MS);
+        },AUDIO_TIMEOUT_MS);
+    },[lastStartTime]);
+
     // Play/Pause - if playing, apply transition; if paused, set the current width to prepare for the next play
     useEffect(() => {
         if ( !foregroundLineRef.current || !activeAudioRef.current || !duration || isSongChange.current ) return;
         
         foregroundLineRef.current.style.transitionDuration = '0ms';
-        const currentTime = activeAudioRef.current?.currentTime;
-        
+
         if ( isPlaying ) {
-            applyPlayTransition(duration,activeAudioRef,foregroundLineRef);
+            applyPlayTransition(lastStartTime, duration, foregroundLineRef);
         } else {
-            const percentagePlayed = ((currentTime ?? 0) / (duration ?? 1) * 100);
-            foregroundLineRef.current.style.width = percentagePlayed + '%';
+            const percentagePlayed = ((activeAudioRef.current.currentTime ?? 0) / (duration ?? 1) * 100);
+            foregroundLineRef.current.style.width = `calc(${percentagePlayed}% + 1px)`; // 1px helps to smooth
         }
     }, [duration, isPlaying, foregroundLineRef, isSongChange.current]);
 
@@ -61,7 +77,7 @@ export const useHandleTimelineTransitions = (
             const percent = (currentTime / (duration ?? 1) * 100);
             foregroundLineRef.current.style.width = percent + '%';
             
-            setTimeout(() => applyPlayTransition(duration,activeAudioRef,foregroundLineRef), AUDIO_TIMEOUT_MS);
+            setTimeout(() => applyPlayTransition(lastStartTime,duration,foregroundLineRef), AUDIO_TIMEOUT_MS);
         }
 
         // When passing the breakpoint to hide the timeline: remove transitions and set static values

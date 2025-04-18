@@ -1,9 +1,6 @@
 import { RefObject, useEffect } from "react";
 
-import { applyPlayTransition } from "../helpers/applyPlayTransition";
-import { AUDIO_TIMEOUT_MS } from "../../../constants";
 import { setCurrentTime as setPlayerStartTime } from 'src/redux/Music/slice';
-
 import { useAppDispatch } from "src/redux/store";
 import { usePlayer } from "src/redux/Music/hook/usePlayer";
 
@@ -66,30 +63,11 @@ export const useUpdateTrackTimeOnClick = (
         const offsetPercentage = offsetX / fullWidth;
         
         const updatedTimeSeconds = (activeAudioRef.current.duration ?? 0) * offsetPercentage;
-        activeAudioRef.current.currentTime = updatedTimeSeconds;
+        
+        // remove transition for instantaneous switch
+        if ( !!foregroundLineRef.current ) foregroundLineRef.current.style.transitionDuration = '0ms';
         
         // redux to reflect new time
-        if ( !foregroundLineRef.current ) {
-            dispatch(setPlayerStartTime(updatedTimeSeconds));
-            return;
-        }
-
-        // remove transition temporarily so visual switch is instantaneous
-        foregroundLineRef.current.style.transitionDuration = '0ms';
         dispatch(setPlayerStartTime(updatedTimeSeconds));
-        
-        // apply width at a delay to give time for transition removal
-        setTimeout(() => {
-            if ( !foregroundLineRef.current ) return;
-
-            const percentageWidth = fullWidth * offsetPercentage;
-            foregroundLineRef.current.style.width = percentageWidth + 'px';
-
-            if ( isPlaying ) {
-                setTimeout(() => {
-                    applyPlayTransition(duration,activeAudioRef,foregroundLineRef)
-                }, AUDIO_TIMEOUT_MS);
-            }
-        }, AUDIO_TIMEOUT_MS);
     }
 }
