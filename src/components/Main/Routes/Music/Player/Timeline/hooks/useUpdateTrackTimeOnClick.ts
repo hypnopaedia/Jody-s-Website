@@ -1,6 +1,6 @@
 import { RefObject, useEffect } from "react";
 
-import { setCurrentTime as setPlayerStartTime } from 'src/redux/Music/slice';
+import { setLastStartTime } from 'src/redux/Music/slice';
 import { useAppDispatch } from "src/redux/store";
 import { usePlayer } from "src/redux/Music/hook/usePlayer";
 
@@ -11,7 +11,7 @@ export const useUpdateTrackTimeOnClick = (
 ) => {
     const dispatch = useAppDispatch();
 
-    const { duration, isPlaying } = usePlayer();
+    const { isPlaying } = usePlayer();
 
     useEffect(() => {
         linesContainerRef.current?.addEventListener('mousedown', handleMouseDown);
@@ -19,7 +19,7 @@ export const useUpdateTrackTimeOnClick = (
         return () => { 
             linesContainerRef.current?.removeEventListener('mousedown', handleMouseDown); 
         }
-    },[duration, isPlaying, activeAudioRef, linesContainerRef, foregroundLineRef]);
+    },[isPlaying, activeAudioRef, linesContainerRef, foregroundLineRef]);
 
     function handleMouseDown(e: MouseEvent) {
         if ( !foregroundLineRef.current ) return;
@@ -58,16 +58,18 @@ export const useUpdateTrackTimeOnClick = (
         if ( !linesContainerRef.current || !activeAudioRef.current ) return;
         
         // calculate and apply new time
-        const offsetX = e.offsetX
+        const duration = activeAudioRef.current.duration ?? 0;
+
+        const offsetX = e.offsetX;
         const fullWidth = linesContainerRef.current?.clientWidth;
         const offsetPercentage = offsetX / fullWidth;
         
-        const updatedTimeSeconds = (activeAudioRef.current.duration ?? 0) * offsetPercentage;
+        const updatedTimeSeconds = duration * offsetPercentage;
         
         // remove transition for instantaneous switch
         if ( !!foregroundLineRef.current ) foregroundLineRef.current.style.transitionDuration = '0ms';
         
         // redux to reflect new time
-        dispatch(setPlayerStartTime(updatedTimeSeconds));
+        dispatch(setLastStartTime(updatedTimeSeconds));
     }
 }

@@ -2,10 +2,11 @@ import { useRef } from 'react';
 
 import { NULL_TIME } from '../../constants';
 import { secondsToDisplayTime } from 'src/util/secondsToDisplayTime';
+
 import { useActiveAudioRef } from '../../hooks/useActiveAudioRef';
 import { useCurrentDisplayTime } from './hooks/useCurrentDisplayTime';
+import { useDuration } from './hooks/useDuration';
 import { useHandleTimelineTransitions } from './hooks/useHandleTimelineTransitions';
-import { usePlayer } from 'src/redux/Music/hook/usePlayer';
 import { useThemeProps } from 'src/theme/memo/useThemeProps';
 import { useUpdateTrackTimeOnClick } from './hooks/useUpdateTrackTimeOnClick';
 
@@ -21,8 +22,8 @@ export const Timeline = () => {
     const foregroundLineRef = useRef<HTMLDivElement | null>(null);
     const stylusRef = useRef<HTMLDivElement | null>(null);
     
-    const { duration } = usePlayer();
     const displayTime = useCurrentDisplayTime();
+    const duration = useDuration();
 
     useHandleTimelineTransitions(activeAudioRef,foregroundLineRef);
     useUpdateTrackTimeOnClick(activeAudioRef, foregroundLineRef, linesContainerRef);
@@ -46,7 +47,7 @@ export const Timeline = () => {
                 </div>
             </FlexItem>
             <FlexItem col={1}>
-                <p className={clsx(classes.time,classes.duration)}>{duration !== undefined ? secondsToDisplayTime(duration) : NULL_TIME}</p>
+                <p className={clsx(classes.time,classes.duration)}>{duration ? secondsToDisplayTime(duration) : NULL_TIME}</p>
             </FlexItem>
         </Flex>
     );

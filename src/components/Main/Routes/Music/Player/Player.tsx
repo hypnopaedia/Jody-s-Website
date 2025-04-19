@@ -1,9 +1,9 @@
-import { useEffect, useRef } from 'react';
+import { useEffect } from 'react';
 
 import { getNextTrack } from './helpers/getNextTrack';
 import { getPreviousTrack } from './helpers/getPreviousTrack';
 import { NO_ALBUM_ART_IMG } from '../constants';
-import { setCurrentTime, setIsPlaying, setPlayerTrack, toggleIsPlaying } from 'src/redux/Music/slice';
+import { setLastStartTime, setIsPlaying, setPlayerTrack, toggleIsPlaying } from 'src/redux/Music/slice';
 
 import { useActiveAudioRef } from '../hooks/useActiveAudioRef';
 import { useAlbum } from 'src/redux/Music/hook/useAlbum';
@@ -24,7 +24,7 @@ import { Volume } from './Volume/Volume';
 export const Player = () => {
     const dispatch = useAppDispatch();
 
-    const audio = useActiveAudioRef();
+    const activeAudioRef = useActiveAudioRef();
 
     const { trackId, albumId, isPlaying } = usePlayer();
     const themeProps = useThemeProps(classes.player);
@@ -32,8 +32,6 @@ export const Player = () => {
     const allAlbums = useMusic();
     const album = useAlbum(albumId);
     const track = useTrack(albumId,trackId);
-
-    const recentRewindRef = useRef(false);
 
     useEffect(() => {
         if ( !trackId || !albumId ) return;
@@ -88,13 +86,10 @@ export const Player = () => {
     );
 
     function handleRewind() {
-        if ( !album?.tracks || !allAlbums || !audio.current ) return;
+        if ( !album?.tracks || !allAlbums || !activeAudioRef.current ) return;
 
-        if ( !recentRewindRef.current ) {
+        if ( activeAudioRef.current.currentTime > 1.5 ) {
             rewindTrack();
-
-            recentRewindRef.current = true;
-            setTimeout(() => recentRewindRef.current = false, 3000);
         } else {
             const previousTrack = getPreviousTrack(track, album, allAlbums);
 
@@ -104,11 +99,11 @@ export const Player = () => {
     }
 
     function rewindTrack() {
-        if ( !audio.current ) return;
+        if ( !activeAudioRef.current ) return;
 
         // if last start time was already 0, this results in equal state; set to current time, then switch back to 0
-        dispatch(setCurrentTime(audio.current.currentTime));
-        setTimeout(() => dispatch(setCurrentTime(0)), 50); 
+        dispatch(setLastStartTime(activeAudioRef.current.currentTime));
+        setTimeout(() => dispatch(setLastStartTime(0)), 50); 
     }
 
     // TODO: Make this a redux action, as well as rewind

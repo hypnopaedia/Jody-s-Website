@@ -9,15 +9,15 @@ export const useCurrentDisplayTime = () => {
     const activeAudio = useActiveAudioRef();
     const timeoutsRef = useRef<NodeJS.Timeout[]>([]);
 
-    const { albumId, trackId, currentTime: playerStartTime, isPlaying } = usePlayer();
-    const [trackedTime, setTrackedTime] = useState(playerStartTime ?? 0);
+    const { albumId, trackId, lastStartTime, isPlaying } = usePlayer();
+    const [trackedTime, setTrackedTime] = useState(lastStartTime ?? 0);
 
     // update on any changes to last recorded start time from external sources
     useEffect(() => {
-        setTrackedTime(playerStartTime ?? 0);
+        setTrackedTime(lastStartTime ?? 0);
         timeoutsRef.current.forEach((t) => clearTimeout(t)); // clear existing
         updateTrackedTime(); // start anew
-    },[albumId, trackId, playerStartTime]);
+    },[albumId, trackId, lastStartTime]);
 
     // keep tracked time updated via timeout
     useEffect(() => {

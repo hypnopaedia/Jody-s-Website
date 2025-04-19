@@ -33,8 +33,7 @@ const musicSlice = createSlice({
       state.player.albumId = payload.albumId;
       state.player.trackId = payload.trackId;
       state.player.isPlaying = true;
-      state.player.currentTime = 0;
-      state.player.duration = 0;
+      state.player.lastStartTime = 0;
     },
     setIsPlaying(state,{ payload: isPlaying }: PayloadAction<boolean>) {
       state.player.isPlaying = isPlaying;
@@ -42,11 +41,16 @@ const musicSlice = createSlice({
     toggleIsPlaying(state) {
       state.player.isPlaying = !state.player.isPlaying;
     },
-    setCurrentTime(state, { payload }: PayloadAction<number | undefined>) {
-      state.player.currentTime = payload;
+    setLastStartTime(state, { payload }: PayloadAction<number | undefined>) {
+      state.player.lastStartTime = payload;
     },
-    setDuration(state, { payload }: PayloadAction<number | undefined>) {
-      state.player.duration = payload;
+    setVolume(state, { payload }: PayloadAction<number>) {
+      state.player.volume = payload;
+      localStorage['volume'] = payload;
+    },
+    setIsMuted(state, { payload }: PayloadAction<boolean>) {
+      state.player.isMuted = payload;
+      localStorage['isMuted'] = payload;
     },
     setIsLoading(state, { payload: isLoading }: PayloadAction<boolean>) {
         state.isLoading = isLoading;
@@ -59,12 +63,17 @@ const musicSlice = createSlice({
 
 export const { 
   setListeningSession, 
+  
   setMusic, 
   setPlayerTrack,
+  
   setIsPlaying,
   toggleIsPlaying,
-  setCurrentTime,
-  setDuration,
+  setLastStartTime,
+  
+  setVolume,
+  setIsMuted,
+  
   setIsLoading, 
   setError
 } = musicSlice.actions;

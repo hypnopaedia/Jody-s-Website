@@ -4,8 +4,9 @@ import { getAudioElementId } from "../../helpers/getAudioElementId";
 import { getListeningSession } from "src/redux/Music/thunks/getListeningSession";
 import { ListeningSession } from "src/redux/Music/types";
 import { prepareAudio } from "../../helpers/prepareAudio";
-import { setDuration, setIsPlaying, setPlayerTrack } from "src/redux/Music/slice";
+import { setIsPlaying, setPlayerTrack } from "src/redux/Music/slice";
 import { Track as TrackType} from "src/redux/Music/types";
+
 import { useAppDispatch } from "src/redux/store";
 import { useError } from "src/redux/Music/hook/useError";
 import { useIsActiveTrack } from "../../hooks/useIsTrackActive";
@@ -29,7 +30,7 @@ export const Track = ({ track, albumId }: Props) => {
     const listeningSession = useListeningSession();
     const error = useError();
 
-    const { currentTime: lastStartTime, isPlaying, trackId: playerTrackId, albumId: playerAlbumId } = usePlayer();
+    const { lastStartTime, isPlaying, trackId: playerTrackId, albumId: playerAlbumId } = usePlayer();
     const isActiveTrack = useIsActiveTrack(track.id, albumId);
 
     const audioRef = useRef<HTMLAudioElement | null>(null);
@@ -54,20 +55,6 @@ export const Track = ({ track, albumId }: Props) => {
             }
         }
     },[playerTrackId, playerAlbumId, isPlaying]);
-
-    useEffect(() => {
-        if ( !audioRef.current ) return;
-        
-        audioRef.current.addEventListener('loadedmetadata', sendDuration);
-
-        return () => {
-            if ( !!audioRef.current ) audioRef.current.removeEventListener('loadedmetadata', sendDuration); 
-        }
-
-        function sendDuration() {
-            if ( !!audioRef.current?.duration ) dispatch(setDuration(audioRef.current?.duration))
-        }
-    },[audioRef.current]);
 
     useEffect(() => {
         if (!isActiveTrack || !audioRef.current) return;

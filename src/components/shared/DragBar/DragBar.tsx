@@ -31,7 +31,7 @@ export const DragBar = ({ className, initialValue, onChange, onDrag }: Props) =>
         if ( !initialValue || !dragbarRef.current || !activeLineRef.current ) return;
 
         const fullWidth = dragbarRef.current?.clientWidth;
-
+        
         activeLineRef.current.style.width = `${fullWidth * initialValue}px`;
     },[initialValue]);
 
@@ -84,7 +84,6 @@ export const DragBar = ({ className, initialValue, onChange, onDrag }: Props) =>
     }
 
     function handleMouseLeave(e: MouseEvent) {
-        console.log('mouseout')
         cleanup();
     }
 

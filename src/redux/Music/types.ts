@@ -8,9 +8,12 @@ export type ListeningSession = {
 export type Player = {
     albumId: number | undefined,
     trackId: number | undefined,
+
     isPlaying: boolean,
-    currentTime: number | undefined,
-    duration: number | undefined,
+    lastStartTime: number | undefined,
+
+    volume: number,
+    isMuted: boolean,
 }
 
 export type Album = {
