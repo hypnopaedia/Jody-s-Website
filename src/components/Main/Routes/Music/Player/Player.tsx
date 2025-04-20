@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { MouseEvent, useEffect } from 'react';
 
 import { getNextTrack } from './helpers/getNextTrack';
 import { getPreviousTrack } from './helpers/getPreviousTrack';
@@ -58,9 +58,9 @@ export const Player = () => {
                     <Flex justifyContent='center' alignItems='center' alignContent='center' flexWrap='wrap' className='d-none d-md-flex h-100'>
                         <FlexItem>
                             <Flex justifyContent='center' alignItems='center' gap={1} className={classes.controls}>
-                                <IconButton className={classes.playerControl} onClick={handleRewind}>fast_rewind</IconButton>
+                                <IconButton className={clsx(classes.playerControl,'no-select')} onClick={handleRewind}>fast_rewind</IconButton>
                                 <IconButton className={classes.playPause} onClick={() => dispatch(setIsPlaying(!isPlaying))}>{isPlaying ? 'pause' : 'play_arrow'}</IconButton>
-                                <IconButton className={classes.playerControl} onClick={handleFastForward}>fast_forward</IconButton>
+                                <IconButton className={clsx(classes.playerControl,'no-select')} onClick={handleFastForward}>fast_forward</IconButton>
                             </Flex>
                         </FlexItem>
                         <FlexItem>
@@ -85,7 +85,8 @@ export const Player = () => {
         </div>
     );
 
-    function handleRewind() {
+    function handleRewind(e: MouseEvent<HTMLButtonElement>) {
+        (e.target as HTMLButtonElement)?.blur();
         if ( !album?.tracks || !allAlbums || !activeAudioRef.current ) return;
 
         if ( activeAudioRef.current.currentTime > 1.5 ) {
@@ -107,7 +108,8 @@ export const Player = () => {
     }
 
     // TODO: Make this a redux action, as well as rewind
-    function handleFastForward() {
+    function handleFastForward(e: MouseEvent<HTMLButtonElement>) {
+        (e.target as HTMLButtonElement)?.blur();
         if ( !album?.tracks || !allAlbums ) return;
 
         const nextTrack = getNextTrack(track, album, allAlbums);
