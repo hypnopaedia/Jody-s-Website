@@ -30,4 +30,5 @@ export type Track = {
     title: string,
     url: string,
     trackNo: number,
+    duration: number,
 }

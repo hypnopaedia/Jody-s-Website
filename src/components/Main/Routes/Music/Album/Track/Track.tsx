@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 
 import { getAudioElementId } from "../../helpers/getAudioElementId";
 import { getListeningSession } from "src/redux/Music/thunks/getListeningSession";
@@ -36,7 +36,6 @@ export const Track = ({ track, albumId }: Props) => {
     const isActiveTrack = useIsActiveTrack(track.id, albumId);
 
     const audioRef = useRef<HTMLAudioElement | null>(null);
-    const [duration,setDuration] = useState<number | undefined>();
 
     useEffect(() => {
         handlePlayPause(listeningSession);
@@ -65,12 +64,6 @@ export const Track = ({ track, albumId }: Props) => {
         audioRef.current.currentTime = lastStartTime ?? 0;
     },[lastStartTime]);
 
-    useEffect(() => {
-        audioRef.current?.addEventListener('loadedmetadata',handleLoadedMetadata);
-
-        return () => audioRef.current?.removeEventListener('loadedmetadata',handleLoadedMetadata);
-    },[])
-
     return (
         <>
             <FlexItem col={12}>
@@ -85,7 +78,7 @@ export const Track = ({ track, albumId }: Props) => {
                         <p>{track.title}</p>
                     </FlexItem>
                     <FlexItem col={1}>
-                        <p className={classes.trackTime}>{secondsToDisplayTime(duration ?? 0) ?? NULL_TIME}</p>
+                        <p className={classes.trackTime}>{secondsToDisplayTime(track.duration) ?? NULL_TIME}</p>
                     </FlexItem>
                 </Flex>
             </FlexItem>
@@ -104,10 +97,5 @@ export const Track = ({ track, albumId }: Props) => {
         if ( !isActiveTrack ) dispatch(setPlayerTrack({trackId: track.id, albumId}));
         else dispatch(setIsPlaying(!isPlaying));
         (document.activeElement as HTMLElement).blur(); // stop spacebar play/pause; handled by global player
-    }
-
-    function handleLoadedMetadata() {
-        if ( !audioRef.current ) return;
-        setDuration(audioRef.current.duration);
     }
 }
