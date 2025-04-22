@@ -23,6 +23,10 @@ export const DARK_THEME: ThemeData = {
             key: 'detail-text-color',
             value: 'lightgray',
         },
+        progressBarColor: {
+            key: 'progress-bar-color',
+            value: 'white'
+        },
 
         background: {
             key: 'background',

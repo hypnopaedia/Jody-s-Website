@@ -33,11 +33,20 @@ export const Player = () => {
     const album = useAlbum(albumId);
     const track = useTrack(albumId,trackId);
 
+    // Play/Pause on space key press universal
     useEffect(() => {
         if ( !trackId || !albumId ) return;
         window.addEventListener('keypress', togglePlay);
 
         return () => window.removeEventListener('keypress', togglePlay);
+    },[trackId,albumId]);
+
+    // Queue next song on audio end
+    useEffect(() => {
+        if ( !trackId || !albumId || !activeAudioRef.current ) return;
+        activeAudioRef.current?.addEventListener('ended', handleAudioEnded);
+
+        return () =>  activeAudioRef.current?.addEventListener('ended', handleAudioEnded);
     },[trackId,albumId]);
 
     if ( !trackId || !albumId ) return null;
@@ -58,9 +67,9 @@ export const Player = () => {
                     <Flex justifyContent='center' alignItems='center' alignContent='center' flexWrap='wrap' className='d-none d-md-flex h-100'>
                         <FlexItem>
                             <Flex justifyContent='center' alignItems='center' gap={1} className={classes.controls}>
-                                <IconButton className={clsx(classes.playerControl,'no-select')} onClick={handleRewind}>fast_rewind</IconButton>
+                                <IconButton className={clsx(classes.playerControl,'no-select')} onClick={handleClickRewind}>fast_rewind</IconButton>
                                 <IconButton className={classes.playPause} onClick={() => dispatch(setIsPlaying(!isPlaying))}>{isPlaying ? 'pause' : 'play_arrow'}</IconButton>
-                                <IconButton className={clsx(classes.playerControl,'no-select')} onClick={handleFastForward}>fast_forward</IconButton>
+                                <IconButton className={clsx(classes.playerControl,'no-select')} onClick={handleClickFastForward}>fast_forward</IconButton>
                             </Flex>
                         </FlexItem>
                         <FlexItem>
@@ -85,21 +94,21 @@ export const Player = () => {
         </div>
     );
 
-    function handleRewind(e: MouseEvent<HTMLButtonElement>) {
+    function handleClickRewind(e: MouseEvent<HTMLButtonElement>) {
         (e.target as HTMLButtonElement)?.blur();
         if ( !album?.tracks || !allAlbums || !activeAudioRef.current ) return;
 
         if ( activeAudioRef.current.currentTime > 1.5 ) {
-            rewindTrack();
+            rewind();
         } else {
             const previousTrack = getPreviousTrack(track, album, allAlbums);
 
             if ( !!previousTrack ) dispatch(setPlayerTrack(previousTrack));
-            else rewindTrack(); // don't loop around to the back, just keep going back to 0
+            else rewind(); // don't loop around to the back, just keep going back to 0
         }
     }
 
-    function rewindTrack() {
+    function rewind() {
         if ( !activeAudioRef.current ) return;
 
         // if last start time was already 0, this results in equal state; set to current time, then switch back to 0
@@ -108,12 +117,23 @@ export const Player = () => {
     }
 
     // TODO: Make this a redux action, as well as rewind
-    function handleFastForward(e: MouseEvent<HTMLButtonElement>) {
+    function handleClickFastForward(e: MouseEvent<HTMLButtonElement>) {
         (e.target as HTMLButtonElement)?.blur();
+        fastForward();
+    }
+
+    function fastForward() {
         if ( !album?.tracks || !allAlbums ) return;
 
         const nextTrack = getNextTrack(track, album, allAlbums);
         if ( !!nextTrack ) dispatch(setPlayerTrack(nextTrack));
+    }
+
+    function handleAudioEnded() {
+        setTimeout(() => {
+            fastForward();
+            activeAudioRef.current?.removeEventListener('ended', handleAudioEnded); // self cleanup
+        }, 1000);
     }
 
     function togglePlay(e: KeyboardEvent) {

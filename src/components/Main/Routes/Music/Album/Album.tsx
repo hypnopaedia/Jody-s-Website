@@ -20,7 +20,7 @@ export const Album = ({ album }: Props) => (
             </Flex>
             <FlexItem className="pt-2 ms-4">
                 <h4>{album.title}</h4>
-                <h6>{dayjs(album.date).year()}</h6>
+                <h6>{dayjs(album.date).year()} • {album.genre}</h6>
             </FlexItem>
         </Flex>
         <Flex justifyContent="center">

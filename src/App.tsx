@@ -1,8 +1,10 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 
 import { ThemeColorContext } from './theme/context/ThemeColorContext';
 import { THEME_DATA } from './theme/constants';
 import { ThemeData } from './theme/types';
+
+import { useSetThemeCssVars } from './hooks/useSetThemeCssVars';
 import { useTheme } from './redux/Theme/hooks/useTheme';
 
 import { Header } from './components/Header/Header';
@@ -13,7 +15,8 @@ import './App.scss';
 function App() {
   const theme = useTheme();
   const themeData: ThemeData = THEME_DATA[theme];
-  useApplyTheme();
+  
+  useSetThemeCssVars();
 
   return (
     <>
@@ -25,15 +28,6 @@ function App() {
         </ThemeColorContext.Provider>
     </>
   );
-
-  function useApplyTheme() {
-    return useEffect(() => {
-      Object.values(themeData.vars).forEach((cssVar) => {
-        const { key, value } = cssVar;
-        document.documentElement.style.setProperty(`--${key}`, String(value) ?? 'none');
-      })
-    },[theme]);
-  }
 }
 
 export default App;

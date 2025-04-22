@@ -19,6 +19,7 @@ export type ThemeData = {
         textColor: CSSThemeProperty,
         linkColor: CSSThemeProperty,
         detailTextColor: CSSThemeProperty,
+        progressBarColor: CSSThemeProperty,
 
         background: CSSThemeProperty,
         backgroundOpacity: CSSThemeProperty<number>,
