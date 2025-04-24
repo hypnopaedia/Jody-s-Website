@@ -4,8 +4,8 @@ import { NULL_TIME } from '../../constants';
 import { secondsToDisplayTime } from 'src/util/secondsToDisplayTime';
 
 import { useActiveAudioRef } from '../../hooks/useActiveAudioRef';
+import { useActiveTrack } from 'src/redux/Music/hook/active/useActiveTrack';
 import { useCurrentDisplayTime } from './hooks/useCurrentDisplayTime';
-import { useDuration } from './hooks/useDuration';
 import { useHandleTimelineTransitions } from './hooks/useHandleTimelineTransitions';
 import { useThemeProps } from 'src/theme/memo/useThemeProps';
 import { useUpdateTrackTimeOnClick } from './hooks/useUpdateTrackTimeOnClick';
@@ -23,7 +23,7 @@ export const Timeline = () => {
     const stylusRef = useRef<HTMLDivElement | null>(null);
     
     const displayTime = useCurrentDisplayTime();
-    const duration = useDuration();
+    const { duration } = useActiveTrack() ?? {};
 
     useHandleTimelineTransitions(activeAudioRef,foregroundLineRef);
     useUpdateTrackTimeOnClick(activeAudioRef, foregroundLineRef, linesContainerRef);
