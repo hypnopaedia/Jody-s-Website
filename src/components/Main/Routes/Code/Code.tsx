@@ -1,7 +1,9 @@
 import { useEffect, useRef } from "react";
 
 import { getProjects } from "src/redux/Code/thunks/getProjects"; 
+import { ROUTE_HEADER_ANIMATION_DELAY } from "../../constants";
 import { setDidAnimationPlay } from "src/redux/Code/slice";
+
 import { useAppDispatch } from "src/redux/store";
 import { useAppTitle } from "src/hooks/useAppTitle";
 import { useDidAnimationPlay } from "src/redux/Code/hooks/useDidAnimationPlay";
@@ -11,6 +13,7 @@ import { useProjects } from "src/redux/Code/hooks/usePosts";
 
 import clsx from "clsx";
 import classes from './Code.module.scss';
+import { ANIMATION_CLASSES } from "src/theme/constants";
 import { BackToTop } from "src/components/shared/BackToTop/BackToTop";
 import { Error } from "src/components/shared/Error/Error";
 import { Flex } from "src/components/shared/Flex/Flex";
@@ -19,39 +22,37 @@ import { Loading } from "src/components/shared/Loading/Loading";
 import { Project } from "./Project/Project";
 import { VerticalSpace } from "src/components/shared/VerticalSpace";
 
-const BASE_ANIMATION_DELAY = 750;
-
 export const Code = () => {
-    const projectsRef = useRef<HTMLDivElement | null>(null);
-    
+    useAppTitle('Code');
+
     const dispatch = useAppDispatch();
 
+    const projectsRef = useRef<HTMLDivElement | null>(null);
+    
     const projects = useProjects();
     const isLoading = useIsLoading();
     const error = useError();
-
-    const didAnimationPlay = useDidAnimationPlay();
-
-    useAppTitle('Code');
 
     useEffect(() => {
         if ( !projects.length && !isLoading && !error ) dispatch(getProjects());
     },[]);
 
+    const didAnimationPlay = useDidAnimationPlay();
+
     useEffect(() => {
         if ( !didAnimationPlay ) {
             setTimeout(() => {
                 dispatch(setDidAnimationPlay(true));
-            }, BASE_ANIMATION_DELAY + 3000);
+            }, ROUTE_HEADER_ANIMATION_DELAY);
         }
     },[]);
 
     const renderedProjects = projects.map((project,i) => (
-        <Project key={i} index={i}/>
+        <Project key={i} project={project} number={i}/>
     ));
 
     return (
-        <Flex justifyContent="left" alignItems="center" flexWrap="wrap" className={clsx(classes.code, 'fade-in-from-right')}>
+        <Flex justifyContent="left" alignItems="center" flexWrap="wrap" className={clsx(classes.code, ANIMATION_CLASSES.fadeInFromRight)}>
             <Intro />
             <Flex ref={projectsRef} justifyContent="center" flexWrap="wrap" className={clsx(classes.projects)}>
                 {isLoading

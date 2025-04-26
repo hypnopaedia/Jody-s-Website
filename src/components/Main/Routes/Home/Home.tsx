@@ -1,9 +1,10 @@
 import { useEffect, useRef } from "react";
 import { useAppDispatch } from "src/redux/store";
 
-import { BASE_ANIMATION_DELAY } from "./constants";
 import { getPosts } from "src/redux/Home/thunks/getPosts";
+import { ROUTE_HEADER_ANIMATION_DELAY } from "../../constants";
 import { setDidAnimationPlay } from "src/redux/Home/slice";
+
 import { useAppTitle } from "src/hooks/useAppTitle";
 import { useDidAnimationPlay } from "src/redux/Home/hooks/useDidAnimationPlay";
 import { useError } from "src/redux/Home/hooks/useError";
@@ -22,15 +23,14 @@ import { Posts } from "./Posts/Posts";
 import { VerticalSpace } from "src/components/shared/VerticalSpace";
 
 export const Home = () => {
-    const postsRef = useRef<HTMLDivElement | null>(null);
-
     const dispatch = useAppDispatch();
+
+    const postsRef = useRef<HTMLDivElement | null>(null);
     
     const posts = useFilteredPosts();
     const isLoading = useIsLoading();
     const error = useError();
 
-    const didAnimationPlay = useDidAnimationPlay();
     const viewMode = useResponsiveViewMode();
 
     useAppTitle();
@@ -39,11 +39,13 @@ export const Home = () => {
         if ( !posts.length && !isLoading && !error ) dispatch(getPosts());
     },[]);
 
+    const didAnimationPlay = useDidAnimationPlay();
+
     useEffect(() => {
         if ( !didAnimationPlay ) {
             setTimeout(() => {
                 dispatch(setDidAnimationPlay(true));
-            }, BASE_ANIMATION_DELAY + 3000);
+            }, ROUTE_HEADER_ANIMATION_DELAY);
         }
     },[]);
 

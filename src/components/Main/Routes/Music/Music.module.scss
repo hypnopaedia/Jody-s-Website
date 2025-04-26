@@ -3,12 +3,16 @@
 }
 
 .intro {
+    & * {
+        text-align: center;
+    }
+
     & * h2, & * hr {
         margin: 0;
     }
 
-    & * {
-        text-align: center;
+    & * p {
+        animation-delay: 0.5s;
     }
 }
 

@@ -1,7 +1,7 @@
 import { decode } from 'html-entities';
 
 import { ANIMATION_CLASSES } from 'src/theme/constants';
-import { BASE_ANIMATION_DELAY } from '../../constants';
+import { BASE_ANIMATION_DELAY } from '../../../../constants';
 import { getDate } from 'src/util/date';
 import { Post as PostType } from "src/redux/Home/types"
 import { useDidAnimationPlay } from 'src/redux/Home/hooks/useDidAnimationPlay';

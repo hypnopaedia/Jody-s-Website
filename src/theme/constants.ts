@@ -21,6 +21,7 @@ export const THEME_CLASS_DATA: { [ key in ThemeClassPrefix ]: ThemeClassData} = 
 
 export const ANIMATION_CLASSES = {
     fadeInFromRight: 'fade-in-from-right',
+    shakeOnHover: 'shake-on-hover',
 }
 
 export const THEME_DATA: { [key in Theme]: ThemeData } = {

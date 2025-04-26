@@ -32,7 +32,7 @@ export const Intro = () => {
                         <TypeOut className="code" fontSize={11} skip={didAnimationPlay}>
                             {[
                                 'I\'ve been involved with a lot of cool projects over the years.',
-                                'Sadly, I can\'t show off everything I\'ve worked on. But I\'ve tried to compile anything that might be interesting here!',
+                                'Sadly, I can\'t show off everything I\'ve worked on. But I\'m working on compiling anything that might be interesting here!',
                                 'Take a look at some of the code I can share with you below:',
                                 '',
                                 '// TODO: this Terminal effect is sick, gotta make this available to people'

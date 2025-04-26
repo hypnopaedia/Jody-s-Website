@@ -1,11 +1,15 @@
 import { useMemo } from "react";
 
 import { setFilter, setViewMode } from "src/redux/Home/slice";
+
 import { useAppDispatch } from "src/redux/store";
+import { useDidAnimationPlay } from "src/redux/Home/hooks/useDidAnimationPlay";
 import { useFilter } from "src/redux/Home/hooks/useFilter";
 import { useResponsiveViewMode } from "src/redux/Home/hooks/useResponsiveViewMode";
 
 import classes from './Intro.module.scss';
+import clsx from "clsx";
+import { ANIMATION_CLASSES } from "src/theme/constants";
 import { Flex } from "src/components/shared/Flex/Flex";
 import { FlexItem } from "src/components/shared/Flex/FlexItem/FlexItem";
 import { IconButton } from "src/components/shared/Button/IconButton";
@@ -13,16 +17,20 @@ import { SearchBar } from "src/components/shared/Input/SearchBar";
 
 export const Intro = () => {
     const dispatch = useAppDispatch();
+
+    const didAnimationPlay = useDidAnimationPlay();
     const filter = useFilter();
     const viewMode = useResponsiveViewMode();
 
-    const controlsFlexColumns = useMemo(() => (
-        (viewMode === 'Tile' ? { xxl: 10, xl: 10, lg: 10, md: 10, col: 9 } : { md: 11, xl: 9, xxl: 8 })
+    const controlsFlexColumns = useMemo(() => viewMode === 'Tile' ? (
+        { xxl: 10, xl: 10, lg: 10, md: 10, col: 9 }
+    ) : (
+        { xxl:  8, xl:  9, md: 11 }
     ),[viewMode]);
 
     return (
         <>
-            <FlexItem className={classes.intro}>
+            <FlexItem className={clsx(classes.intro, !didAnimationPlay && ANIMATION_CLASSES.fadeInFromRight)}>
                 <h6>
                     Hi there! Thanks for coming to my website.<br/>
                     Stay as long as you like{' '}
@@ -31,7 +39,11 @@ export const Intro = () => {
                 </h6>
                 <hr/>
             </FlexItem>
-            <FlexItem {...controlsFlexColumns} padding={0}>
+            <FlexItem 
+                {...controlsFlexColumns} 
+                padding={0} 
+                className={clsx(classes.controls, !didAnimationPlay && ANIMATION_CLASSES.fadeInFromRight)}
+            >
                 <Flex alignItems="center" padding={0}>
                     <FlexItem col={1} padding={0} >
                         {/* <h5 className={classes.title}>Posts:</h5> */}

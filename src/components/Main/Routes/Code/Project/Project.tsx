@@ -1,33 +1,42 @@
 import { Link } from "react-router-dom";
 
-import { useProject } from "src/redux/Code/hooks/useProject"
+import { BASE_ANIMATION_DELAY } from "src/components/Main/constants";
+import { Project as ProjectType } from "src/redux/Code/types";
+
+import { useDidAnimationPlay } from "src/redux/Code/hooks/useDidAnimationPlay";
 
 import clsx from "clsx";
 import classes from './Project.module.scss';
+import { ANIMATION_CLASSES } from "src/theme/constants";
 import { Flex } from "src/components/shared/Flex/Flex"
 import { FlexItem } from "src/components/shared/Flex/FlexItem/FlexItem"
 import { IconButton } from "src/components/shared/Button/IconButton";
 
 type Props = {
-    index: number
+    number: number,
+    project: ProjectType
 }
 
-export const Project = ({ index }: Props) => {
-    const project = useProject(index);
+export const Project = ({ number, project }: Props) => {
+    const didAnimationPlay = useDidAnimationPlay();
+    const animationDelay = (BASE_ANIMATION_DELAY / 4) + (number / 4);
 
     return (
-        <FlexItem col={12} className={clsx(classes.project, 'p-0', 'fade-in-from-right')}>
+        <FlexItem col={12} 
+            className={clsx(classes.project, !didAnimationPlay && ANIMATION_CLASSES.fadeInFromRight, 'p-0')}
+            style={{animationDelay: animationDelay + 's'}}
+        >
             <Flex justifyContent="center" flexWrap="wrap" className="p-0">
                 <FlexItem md={2} col={3} display='none md-block' className={classes.photoWrapper}>
                     <Flex justifyContent="center" alignItems="center" className={clsx(classes.photoFlex)}>
                         {!!project.url ? (
                             <Link to={project.url} target="_blank" rel="noopener noreferrer">
                                 <Flex justifyContent="center" alignItems="center" className="p-0">
-                                    <img src={project.photo} className={classes.photo} alt={`Project ${index} image`} />
+                                    <ProjectImage />
                                 </Flex>
                             </Link>
                         ) : (
-                            <img src={project.photo} loading="lazy" className={classes.photo} alt={`Project ${index} image`} />
+                            <ProjectImage />
                         )}
                     </Flex>
                 </FlexItem>
@@ -56,5 +65,15 @@ export const Project = ({ index }: Props) => {
                 </FlexItem>
             </Flex>
         </FlexItem>
-    )
+    );
+
+    function ProjectImage() {
+        return (
+            <img src={project.photo} 
+                className={classes.photo} 
+                alt={`Project ${number} image`} 
+                loading="lazy" 
+            />
+        );
+    }
 }

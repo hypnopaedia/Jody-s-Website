@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 
 import clsx from 'clsx';
 import classes from './ExternalLinks.module.scss';
+import { ANIMATION_CLASSES } from 'src/theme/constants';
 import { Flex } from "src/components/shared/Flex/Flex";
 import { FlexItem } from "src/components/shared/Flex/FlexItem/FlexItem";
 import { Icon } from "../../shared/Icon";
@@ -57,7 +58,7 @@ export const ExternalLinks = () => {
             <Flex justifyContent="center" alignItems="center" flexWrap="nowrap" gap={0.8} className='p-0'>
                 <>
                     {LINKS.map(({title, icon, url}, i) => (
-                        <Link key={i} to={url} target='_blank' rel="noopener noreferrer" className={clsx(classes.link,'shake-on-hover')}>
+                        <Link key={i} to={url} target='_blank' rel="noopener noreferrer" className={clsx(classes.link,ANIMATION_CLASSES.shakeOnHover)}>
                             <Icon title={title} className={classes.icon}>{`semantic-ui_${icon}`}</Icon>
                         </Link>
                     ))}

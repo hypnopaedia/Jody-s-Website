@@ -11,6 +11,7 @@ import { usePost } from "src/redux/Home/hooks/usePost";
 
 import clsx from "clsx";
 import classes from './PostPage.module.scss';
+import { ANIMATION_CLASSES } from "src/theme/constants";
 import { Body } from "./Body/Body";
 import { Error } from "src/components/shared/Error/Error";
 import { Flex } from "src/components/shared/Flex/Flex";
@@ -36,7 +37,12 @@ export const PostPage = () => {
     if ( isLoading ) return <p>Loading...</p>;
 
     return (
-        <Flex justifyContent='center' alignContent='flex-start' flexWrap='wrap' className={clsx(classes.postPage, 'fade-in-from-right', 'px-4')}>
+        <Flex 
+            justifyContent='center' 
+            alignContent='flex-start' 
+            flexWrap='wrap' 
+            className={clsx(classes.postPage, ANIMATION_CLASSES.fadeInFromRight, 'px-4')}
+        >
             <Title />
             <Body />
         </Flex>

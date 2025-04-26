@@ -7,6 +7,9 @@ type MusicState = {
   listeningSession: ListeningSession | undefined,
   music: Album[],
   player: Player,
+
+  didAnimationPlay: boolean,
+
   isLoading: boolean,
   error: string | undefined,
 }
@@ -15,6 +18,9 @@ const initialState: MusicState = {
     listeningSession: undefined, 
     music: [],
     player: DEFAULT_PLAYER,
+
+    didAnimationPlay: false,
+
     isLoading: false,
     error: undefined,
 } satisfies MusicState as MusicState;
@@ -52,6 +58,9 @@ const musicSlice = createSlice({
       state.player.isMuted = payload;
       localStorage['isMuted'] = payload;
     },
+    setDidAnimationPlay(state, { payload: didAnimationPlay }: PayloadAction<boolean>) {
+      state.didAnimationPlay = didAnimationPlay;
+    },
     setIsLoading(state, { payload: isLoading }: PayloadAction<boolean>) {
         state.isLoading = isLoading;
     },
@@ -73,6 +82,8 @@ export const {
   
   setVolume,
   setIsMuted,
+
+  setDidAnimationPlay,
   
   setIsLoading, 
   setError

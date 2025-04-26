@@ -1,0 +1,2 @@
+export const BASE_ANIMATION_DELAY = 0.75;
+export const ROUTE_HEADER_ANIMATION_DELAY = 3000;
