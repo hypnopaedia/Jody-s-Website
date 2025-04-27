@@ -21,36 +21,6 @@ body {
   height: 100vh;
 }
 
-code {
-  border-radius: 4px;
-  padding: 2px 4px;
-}
-
-code, .code, .codeblock {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
-}
-
-.codeblock {
-  width: 95%;
-  margin: 0 8px 0 8px;
-  padding: 8px 16px;
-  border-radius: 8px;
-
-  & p {
-    margin: 0;
-  }
-}
-
-code, .codeblock {
-  background-color: #2b2937;
-  color: white;
-  font-size: 10pt;
-
-  & * {
-    color: white;
-  }
-}
-
 h1, h2, h3, h4, h5, h6 {
   padding: 0;
   margin: 0;
@@ -71,6 +41,23 @@ main {
   position: relative;
   
   height: 100vh;
+}
+
+pre {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+
+  background-color: #2b2937;
+  color: white;
+
+  padding: 12px;
+  margin: 0 12px;
+  
+  border-radius: 8px;
+  line-height: 1;
+
+  & code {
+    font-size: 12px !important;
+  }
 }
 
 /* GLOBAL CLASSES */

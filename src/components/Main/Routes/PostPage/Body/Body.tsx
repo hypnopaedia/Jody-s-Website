@@ -1,7 +1,8 @@
-import { useRef } from "react";
+import { useMemo, useRef } from "react";
 import { useParams } from "react-router-dom"
+import Markdown from "react-markdown";
 
-import { applyMarkup } from "src/util/applyMarkup";
+import { prepareMarkdown } from "src/util/prepareMarkdown";
 import { PostPageParams } from "../types"
 import { usePost } from "src/redux/Home/hooks/usePost"
 
@@ -18,9 +19,11 @@ export const Body = () => {
     const params = useParams<PostPageParams>();
     const post = usePost(Number(params.id));    
 
+    const formattedMarkdown = useMemo(() => prepareMarkdown(post?.description), [post?.description]); 
+
     return (
         <FlexItem ref={bodyRef} className={classes.body}>
-            <Flex justifyContent="center" flexWrap='wrap'>
+            <Flex justifyContent="center" flexWrap='wrap' gap={2}>
                 <FlexItem>
                     <Flex justifyContent="center" flexWrap='wrap'>
                         <Content />
@@ -28,7 +31,27 @@ export const Body = () => {
                 </FlexItem>
                 <FlexItem>
                     <div className={classes.description}>
-                        {!!post?.description ? applyMarkup(post.description) : undefined}
+                        <div>
+                        {!!post?.description ? (
+                            <Markdown
+                                components={{
+                                    a({children, href, ...props}) {
+                                        return (
+                                            <a href={href}
+                                                target="_blank" 
+                                                rel="noopener noreferrer"
+                                            >{children}</a>
+                                        );
+                                    },
+                                    ul({children, ...props}) { 
+                                        return (
+                                        <ul className={classes.ul}>
+                                            {children}
+                                        </ul>); },
+                                }}
+                            >{formattedMarkdown}</Markdown>
+                        ) : undefined}
+                        </div>
                     </div>
                 </FlexItem>
                 <BackToTop of={bodyRef} />

@@ -16,11 +16,12 @@ Enjoy!
 
 ## To-Do:
 Upcoming:
-- get gpt-inu demo working -OR- add thruzy project -OR- both
-- Music Page
-- Home > Posts controls fade in from right
 - disallow select/highlighting on a lot of stuff
 - fix flex columns on code page for images (md 3->4 ?)
+- track & clear existing timeouts for music player on hook execution (?)
+- proper attribution of images, gifs, etc. 
+- highlight text colors
+- Music top-left timeline component
 
 Long-term:
 - Other Docs(?): LoR, Business Card
@@ -29,8 +30,9 @@ Long-term:
 - Toasts
 - Page skeleton ?
 - ai chatbot that doesn't help with anything and is kind of weird
+- get gpt-inu demo working -OR- add thruzy project -OR- both
 
-- new post ideas:
+new post ideas:
     - fire roulette
     - temple os
     - Polybius

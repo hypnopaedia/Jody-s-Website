@@ -16,4 +16,32 @@
     white-space: pre-wrap; /* Fx>3, Opera>8, Safari>3*/
 
     max-width: 100%;
+
+    & p {
+        margin-bottom: 0;
+    }
 }
+
+ul.ul {
+    list-style-type: none;
+
+    width: calc(100% - 32px);
+    
+    padding-left: 16px;
+    
+    margin-top: -16px;
+    margin-bottom: -16px;
+
+    & li {
+        display: flex;
+        
+        &:before {
+            content: "-";
+            text-indent: -5px;
+        }
+        
+        & p {
+            margin-left: 8px;
+        }
+    }
+  }
