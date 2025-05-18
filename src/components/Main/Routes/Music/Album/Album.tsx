@@ -27,11 +27,11 @@ export const Album = ({ album, number }: Props) => {
             className={clsx(!didAnimationPlay && ANIMATION_CLASSES.fadeInFromRight, "px-0 px-md-3 py-1")}
             style={{ animationDelay: animationDelay + 's' }}
         >
-            <Flex className={classes.albumHeader}>
-                <Flex alignItems="center">
+            <Flex className={classes.albumHeader} justifyContent="center">
+                <Flex justifyContent="center" alignItems="center">
                     <img loading="lazy" src={!!album.photo ? album.photo : NO_ALBUM_ART_IMG} className={classes.albumArt} />
                 </Flex>
-                <FlexItem className="pt-2 ms-4">
+                <FlexItem md={10} sm={9} col={8} className="pt-2 ms-sm-4 ms-2">
                     <h4>{album.title}</h4>
                     <h6>{dayjs(album.date).year()} • {album.genre}</h6>
                 </FlexItem>
