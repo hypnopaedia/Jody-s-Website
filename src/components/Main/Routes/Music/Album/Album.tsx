@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import dayjs from "dayjs";
 
 import { Album as AlbumType } from "src/redux/Music/types";
@@ -11,6 +12,7 @@ import clsx from "clsx";
 import { ANIMATION_CLASSES } from "src/theme/constants";
 import { Flex } from "src/components/shared/Flex/Flex";
 import { FlexItem } from "src/components/shared/Flex/FlexItem/FlexItem";
+import { Icon } from "src/components/shared/Icon";
 import { Track } from "./Track/Track";
 
 type Props = {
@@ -23,8 +25,8 @@ export const Album = ({ album, number }: Props) => {
     const animationDelay = BASE_ANIMATION_DELAY + (number / 6);
 
     return (
-        <FlexItem col={12} md={10} 
-            className={clsx(!didAnimationPlay && ANIMATION_CLASSES.fadeInFromRight, "px-0 px-md-3 py-1")}
+        <FlexItem col={12} md={10} id={getAlbumId()}
+            className={clsx(!didAnimationPlay && ANIMATION_CLASSES.fadeInFromRight, classes.album, "px-0 px-md-3 py-1")}
             style={{ animationDelay: animationDelay + 's' }}
         >
             <Flex className={classes.albumHeader} justifyContent="center">
@@ -32,7 +34,12 @@ export const Album = ({ album, number }: Props) => {
                     <img loading="lazy" src={!!album.photo ? album.photo : NO_ALBUM_ART_IMG} className={classes.albumArt} />
                 </Flex>
                 <FlexItem md={10} sm={9} col={8} className="pt-2 ms-sm-4 ms-2">
-                    <h4>{album.title}</h4>
+                    <h4>
+                        {album.title}
+                        <span className={classes.albumAnchor}>
+                            <Link to={`/music/#${getAlbumId()}`}><Icon>link</Icon></Link>
+                        </span>
+                    </h4>
                     <h6>{dayjs(album.date).year()} • {album.genre}</h6>
                 </FlexItem>
             </Flex>
@@ -48,4 +55,8 @@ export const Album = ({ album, number }: Props) => {
             </Flex>
         </FlexItem>
     );
+
+    function getAlbumId() {
+        return `album-${album.id}`
+    }
 }

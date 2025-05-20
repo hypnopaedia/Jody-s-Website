@@ -8,7 +8,7 @@ import { setLastStartTime, setIsPlaying, setPlayerTrack, toggleIsPlaying } from 
 import { useActiveAudioRef } from '../hooks/useActiveAudioRef';
 import { useAlbum } from 'src/redux/Music/hook/useAlbum';
 import { useAppDispatch } from 'src/redux/store';
-import { useMusic } from 'src/redux/Music/hook/useMusic';
+import { useMusic } from 'src/redux/Music/hook/music/useMusic';
 import { usePlayer } from 'src/redux/Music/hook/usePlayer';
 import { useThemeProps } from 'src/theme/memo/useThemeProps';
 import { useTrack } from 'src/redux/Music/hook/useTrack';
@@ -81,7 +81,7 @@ export const Player = () => {
                             className={clsx(classes.playPause,classes.mobilePlayPause)} 
                             onClick={() => dispatch(setIsPlaying(!isPlaying))}
                         >
-                                {isPlaying ? 'pause' : 'play_arrow'}
+                            {isPlaying ? 'pause' : 'play_arrow'}
                         </IconButton>
                     </Flex>
                 </FlexItem>

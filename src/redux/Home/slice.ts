@@ -1,13 +1,11 @@
 import { createSlice } from '@reduxjs/toolkit'
 import type { PayloadAction } from '@reduxjs/toolkit'
 import { Post, ViewMode } from './types';
+import { RouteSlice } from '../types';
 
-type HomeState = {
+type HomeState = RouteSlice & {
   posts: Post[],
-  isLoading: boolean,
-  error: string | undefined,
 
-  didAnimationPlay: boolean,
   filter: string | undefined,
   viewMode: ViewMode,
 }

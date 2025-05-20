@@ -1,3 +1,9 @@
+@import 'src/theme/variables';
+
+.album {
+    scroll-margin-top: 16px;
+}
+
 .albumHeader {
     height: 125px;
 }
@@ -6,4 +12,31 @@
     width: 125px;
     border-radius: 8px;
     box-shadow: 1px 1px 3px grey;
+}
+
+.albumAnchor {
+    display: inline-block;
+    position: relative;
+
+    margin-left: 8px;
+
+    height: 24px;
+
+    & a {
+        display: block;
+        position: absolute;
+        
+        top: 5px;
+
+        height: fit-content;
+        text-decoration: none;
+        
+        & span {
+            font-size: 24px;
+
+            &:hover {
+                cursor: pointer;
+            }
+        }
+    }
 }

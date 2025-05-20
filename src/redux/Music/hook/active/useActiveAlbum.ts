@@ -1,5 +1,5 @@
 import { useMemo } from "react";
-import { useMusic } from "../useMusic";
+import { useMusic } from "../music/useMusic";
 import { usePlayer } from "../usePlayer"
 
 export const useActiveAlbum = () => {

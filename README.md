@@ -22,6 +22,7 @@ Upcoming:
 - proper attribution of images, gifs, etc. 
 - highlight text colors
 - Music top-left timeline component
+- toasts
 
 Long-term:
 - Other Docs(?): LoR, Business Card

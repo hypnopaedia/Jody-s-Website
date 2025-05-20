@@ -59,9 +59,9 @@ export const Home = () => {
                     )}>
                 {isLoading
                     ? <Loading text="Loading Posts..." />
-                    : !!error ? (
-                        <Error />
-                        ) : <Posts />
+                    : !!error 
+                        ? <Error />
+                        : <Posts />
                 }
                 {!!posts.length ? <BackToTop of={postsRef} /> : undefined}
                 <VerticalSpace height={viewMode === 'Tile' ? '35px' : '5px'} fill={true} />

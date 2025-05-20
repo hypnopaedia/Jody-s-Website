@@ -1,12 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit'
 import type { PayloadAction } from '@reduxjs/toolkit'
 import { Project } from './types';
+import { RouteSlice } from '../types';
 
-type CodeState = {
+type CodeState = RouteSlice & {
   projects: Project[],
-  didAnimationPlay: boolean,
-  isLoading: boolean,
-  error: string | undefined,
 }
 
 const initialState: CodeState = { 

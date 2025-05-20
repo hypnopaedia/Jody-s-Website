@@ -55,12 +55,13 @@ export const Code = () => {
         <Flex justifyContent="left" alignItems="center" flexWrap="wrap" className={clsx(classes.code, ANIMATION_CLASSES.fadeInFromRight)}>
             <Intro />
             <Flex ref={projectsRef} justifyContent="center" flexWrap="wrap" className={clsx(classes.projects)}>
-                {isLoading
-                    ? <Loading text="Loading Coding Projects..." />
-                    : !!error ? (
-                        <Error />
-                        ) : <>{renderedProjects}</>
-                }
+                <>
+                    {isLoading
+                        ? <Loading text="Loading Coding Projects..." />
+                        : !!error
+                            ? <Error />
+                            : renderedProjects}
+                </>
                 <BackToTop of={projectsRef} />
                 <VerticalSpace height="15px" fill={true} />
             </Flex>

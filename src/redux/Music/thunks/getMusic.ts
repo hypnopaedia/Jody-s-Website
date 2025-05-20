@@ -3,12 +3,12 @@ import { AxiosResponse } from "axios";
 
 import { backend } from 'src/axios/config';
 
-import { setMusic, setError, setIsLoading } from "../slice";
+import { setMusic, setMusicError, setIsMusicLoading } from "../slice";
 import { Album } from "../types";
 
 export const getMusic = () =>
     async (dispatch: Dispatch) => {
-        dispatch(setIsLoading(true));
+        dispatch(setIsMusicLoading(true));
         try {
             const response: AxiosResponse<Album[]> = await backend.get('listening/music.php');
             dispatch(setMusic(response.data));
@@ -17,9 +17,9 @@ export const getMusic = () =>
             return response.data;
         } catch(e) {
             const error = `Failed to fetch Music: ${e}`;
-            dispatch(setError(error));
+            dispatch(setMusicError(error));
             throw error;
         } finally {
-            dispatch(setIsLoading(false));
+            dispatch(setIsMusicLoading(false));
         }
     }

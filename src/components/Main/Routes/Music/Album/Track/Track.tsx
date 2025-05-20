@@ -10,9 +10,9 @@ import { setIsPlaying, setPlayerTrack } from "src/redux/Music/slice";
 import { Track as TrackType} from "src/redux/Music/types";
 
 import { useAppDispatch } from "src/redux/store";
-import { useError } from "src/redux/Music/hook/useError";
+import { useMusicError } from "src/redux/Music/hook/music/useMusicError";
 import { useIsActiveTrack } from "../../hooks/useIsTrackActive";
-import { useListeningSession } from "src/redux/Music/hook/useListeningSession";
+import { useListeningSession } from "src/redux/Music/hook/listeningSession/useListeningSession";
 import { usePlayer } from "src/redux/Music/hook/usePlayer";
 
 import classes from './Track.module.scss';
@@ -30,7 +30,7 @@ export const Track = ({ track, albumId }: Props) => {
     const dispatch = useAppDispatch();
 
     const listeningSession = useListeningSession();
-    const error = useError();
+    const error = useMusicError();
 
     const { lastStartTime, isPlaying, trackId: playerTrackId, albumId: playerAlbumId } = usePlayer();
     const isActiveTrack = useIsActiveTrack(track.id, albumId);
@@ -68,13 +68,13 @@ export const Track = ({ track, albumId }: Props) => {
         <>
             <FlexItem col={12}>
                 <Flex className="px-2" alignItems="center">
-                    <FlexItem col={2} md={1}>
+                    <FlexItem col={2} lg={1}>
                         <IconButton onClick={handleClick}>{(isPlaying && isActiveTrack) ? 'pause' : 'play_arrow'}</IconButton>
                     </FlexItem>
                     <FlexItem col={1}>
                         <p>{track.trackNo}</p>
                     </FlexItem>
-                    <FlexItem col={8} md={9}>
+                    <FlexItem col={8} lg={9}>
                         <p>{track.title}</p>
                     </FlexItem>
                     <FlexItem col={1}>
