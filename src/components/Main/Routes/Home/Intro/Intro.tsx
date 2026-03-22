@@ -1,4 +1,4 @@
-import { useMemo } from "react";
+import { useLayoutEffect, useMemo, useState } from "react";
 
 import { setFilter, setViewMode } from "src/redux/Home/slice";
 
@@ -14,12 +14,14 @@ import { Flex } from "src/components/shared/Flex/Flex";
 import { FlexItem } from "src/components/shared/Flex/FlexItem/FlexItem";
 import { IconButton } from "src/components/shared/Button/IconButton";
 import { SearchBar } from "src/components/shared/Input/SearchBar";
+import { MD_BREAKPOINT } from "src/util/breakpoints";
 
 export const Intro = () => {
     const dispatch = useAppDispatch();
 
     const didAnimationPlay = useDidAnimationPlay();
     const filter = useFilter();
+    const [showViewModes,setShowViewModes] = useState(window.innerWidth > MD_BREAKPOINT);
     const viewMode = useResponsiveViewMode();
 
     const controlsFlexColumns = useMemo(() => viewMode === 'Tile' ? (
@@ -27,6 +29,11 @@ export const Intro = () => {
     ) : (
         { xxl:  8, xl:  9, md: 11 }
     ),[viewMode]);
+
+    useLayoutEffect(() => {
+        window.addEventListener('resize', displayViewModes);
+        return () => window.removeEventListener('resize', displayViewModes);
+    },[showViewModes]);
 
     return (
         <>
@@ -45,18 +52,23 @@ export const Intro = () => {
                 className={clsx(classes.controls, !didAnimationPlay && ANIMATION_CLASSES.fadeInFromRight)}
             >
                 <Flex alignItems="center" padding={0}>
-                    <FlexItem col={1} padding={0} >
-                        {/* <h5 className={classes.title}>Posts:</h5> */}
-                    </FlexItem>
-                    <FlexItem col={11} padding={0} >
-                        <Flex alignItems="center" justifyContent="end" gap={1} className="py-1" padding={0}>
+                    <FlexItem col={12} padding={0} >
+                        <Flex alignItems="center" justifyContent={showViewModes ? "end" : "center"} gap={1} className="py-1" padding={0}>
                             <SearchBar value={filter} onChange={(e) => dispatch(setFilter(e))} placeholder="Filter Posts"/>
-                            <IconButton onClick={() => dispatch(setViewMode('Tile'))}>grid_view</IconButton>
-                            <IconButton onClick={() => dispatch(setViewMode('List'))}>list</IconButton>
+                            {showViewModes ? (
+                                <>
+                                    <IconButton onClick={() => dispatch(setViewMode('Tile'))}>grid_view</IconButton>
+                                    <IconButton onClick={() => dispatch(setViewMode('List'))}>list</IconButton>
+                                </>
+                            ) : undefined}
                         </Flex>
                     </FlexItem>
                 </Flex>
             </FlexItem>
         </>
     );
+
+    function displayViewModes() {
+        setShowViewModes(window.innerWidth > MD_BREAKPOINT);
+    }
 }
