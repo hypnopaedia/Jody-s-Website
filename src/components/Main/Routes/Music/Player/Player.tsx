@@ -56,6 +56,7 @@ export const Player = () => {
             <Flex className='p-0 m-0 h-100'>
                 <FlexItem col={10} md={3} >
                     <Flex alignItems='center' className='p-0 m-0 h-100'>
+                        {/* TODO: fix NO_ALBUM_ART_IMG not displaying */}
                         <img loading='lazy' src={album?.photo ?? NO_ALBUM_ART_IMG} className={classes.image} />
                         <FlexItem col={9} md={10} className={classes.trackData}>
                             <h6><b>{track?.title}</b></h6>

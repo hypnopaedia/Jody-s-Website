@@ -11,6 +11,7 @@ Personal, MySpace-style app made with the following stack:
 Other libraries used:
     - Semantic UI
     - Dayjs
+    - react-markdown
 
 Enjoy!
 
@@ -34,9 +35,28 @@ Long-term:
 - get gpt-inu demo working -OR- add thruzy project -OR- both
 
 new post ideas:
+    - Rod Fisher's Games
+    - puer aeternus
+    - liminality series (multiple posts)
+        • YT vids
+        • the pool rooms jared pike
+        • house of leaves
+        • petscop
+        • strawberry cubes
+        • lsd dream emulator
+        • the stanley parable
+        • doom mod - MyHouse.WAD
+    - guide to learning japenese (best tools, alphabets, structure, culture, etc.)
+        • steps (hira, kata, etc.)
+        • renshuu
+        • conversation partner
+        • ai
     - fire roulette
     - temple os
-    - Polybius
+    - games you can't play: 
+        • Polybius
+        • petscop
+        • ???
     - the article interview i did!
     - green beard altruism
     - we the people, and the republic we must claim | lawrence lessig
@@ -57,7 +77,6 @@ new post ideas:
     - bill watterson's new book(?)
     - majora's mask beta stuff
     - morel
-    - japenese in 5 minutes (best tools, alphabets, structure, culture, etc.)
     - best youtube creators / youtube as an art form
     - graffiti/mural collection
     - stoicism
