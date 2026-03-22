@@ -25,7 +25,7 @@ export const TilePost = ({ post, number }: Props) => {
     return (
         <>
             {number % 5 === 0 ? <FlexItem xxl={1} display='none xxl-block' className='beginning'></FlexItem> : undefined}
-            <FlexItem xxl={2} lg={3} md={4} sm={10} xs={12}>
+            <FlexItem xxl={2} lg={3} md={4} sm={10} xs={12} className='no-select'>
                 <div 
                     className={fadeInFromRight}
                     style={{animationDelay: (didAnimationPlay ? 0 : animationDelay) + 's'}}
@@ -34,7 +34,7 @@ export const TilePost = ({ post, number }: Props) => {
                         <div 
                             {...useThemeProps(classes.postSquare, { fillOnHover: true })}
                         >
-                            <img src={post.photo} loading="lazy" className={classes.photo} alt="post picture" />
+                            <img src={post.photo} loading="lazy" className={classes.photo} alt="post" />
                             <hr />
                             <p className={classes.title}>{decode(post.title)}</p>
                             <p className={classes.date}>{getDate(post.date)}</p>

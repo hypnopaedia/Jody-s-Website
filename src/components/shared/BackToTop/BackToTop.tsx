@@ -10,7 +10,7 @@ type Props = {
 }
 
 export const BackToTop = ({ of }: Props) => (
-    <FlexItem>
+    <FlexItem className="no-select">
         <Flex justifyContent="center" alignItems="center">
             <ScrollTo scrollToElement={of}>
                 <div className={classes.backToTop}>^ Back To Top</div>

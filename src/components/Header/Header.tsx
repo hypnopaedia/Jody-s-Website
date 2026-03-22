@@ -6,12 +6,11 @@ import { Navigation } from "./Navigation/Navigation";
 import { PixelArt } from "./PixelArt/PixelArt";
 import { ThemeSwitch } from "./ThemeSwitch/ThemeSwitch";
 import { VerticalSpace } from 'src/components/shared/VerticalSpace';
+import clsx from 'clsx';
 
 export const Header = () => {
-    
-
     return (
-        <header className={classes.header}>
+        <header className={clsx(classes.header, 'no-select')}>
             <Flex flexWrap="wrap">
                 <FlexItem col={10}>
                     <h1>Jody Salani <span className={classes.business}>| ISO ATIMA Solutions</span></h1>
@@ -28,11 +27,11 @@ export const Header = () => {
                     <VerticalSpace height={'12px'} />
                 </FlexItem>
 
-                <FlexItem md={7} col={10}>
+                <FlexItem md={7} sm={10} col={11}>
                     <Navigation />
                 </FlexItem>
 
-                <FlexItem md={5} col={2}>
+                <FlexItem md={5} sm={2} col={1}>
                     <Flex justifyContent={'end'} className={classes.other} gap={0.5} padding={0}>
                         <FlexItem width='fit-content' display='none md-inline-flex'><PixelArt /></FlexItem>
                         <ExternalLinks />

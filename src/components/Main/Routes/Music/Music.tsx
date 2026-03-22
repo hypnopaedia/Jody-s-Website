@@ -82,7 +82,7 @@ export const Music = () => {
                         <hr className="px-5"/>
                     </FlexItem>
                 </Flex>
-                <Flex ref={musicRef} justifyContent="center" flexWrap="wrap" className={classes.albums} gap={5}>
+                <Flex ref={musicRef} justifyContent="center" flexWrap="wrap" className={clsx(classes.albums, 'no-select')} gap={5}>
                     <>
                         {isLoading
                             ? <Loading text="Loading Posts..." />

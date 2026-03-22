@@ -1,5 +1,7 @@
 .navigation {
     opacity: 0;
+    max-width: 85vw;
+    overflow-x: scroll;
 
     &:global {
         animation: fade-in-from-right 1s;

@@ -28,6 +28,15 @@ export const DARK_THEME: ThemeData = {
             value: 'white'
         },
 
+        textSelectColor: {
+            key: 'text-select-color',
+            value: '#2b2937',
+        },
+        textSelectBackgroundColor: {
+            key: 'text-select-background-color',
+            value: 'white',
+        },
+
         background: {
             key: 'background',
             value: 'url(https://s13.gifyu.com/images/b2Mft.jpg)'

@@ -52,7 +52,7 @@ export const Code = () => {
     ));
 
     return (
-        <Flex justifyContent="left" alignItems="center" flexWrap="wrap" className={clsx(classes.code, ANIMATION_CLASSES.fadeInFromRight)}>
+        <Flex justifyContent="left" alignItems="center" flexWrap="wrap" className={clsx(classes.code, ANIMATION_CLASSES.fadeInFromRight, 'no-select')}>
             <Intro />
             <Flex ref={projectsRef} justifyContent="center" flexWrap="wrap" className={clsx(classes.projects)}>
                 <>

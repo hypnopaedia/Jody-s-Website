@@ -27,6 +27,15 @@ export const LIGHT_THEME: ThemeData = {
             key: 'progress-bar-color',
             value: 'slateblue'
         },
+
+        textSelectColor: {
+            key: 'text-select-color',
+            value: 'white',
+        },
+        textSelectBackgroundColor: {
+            key: 'text-select-background-color',
+            value: 'slateblue',
+        },
         
         background: {
             key: 'background',

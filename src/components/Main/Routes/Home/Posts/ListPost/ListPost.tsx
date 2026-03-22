@@ -32,7 +32,7 @@ export const ListPost = ({ post, number }: Props) => {
                 col={12} 
                 xl={10} 
                 xxl={8} 
-                className={clsx(fadeInFromRight,classes.listPostOuter)}
+                className={clsx(fadeInFromRight,classes.listPostOuter,'no-select')}
                 style={{animationDelay: (didAnimationPlay ? 0 : animationDelay) + 's'}}
             >
                 <Link to={`/post/${number}`} className={clsx(classes.link,'no-underline')}>
@@ -45,7 +45,7 @@ export const ListPost = ({ post, number }: Props) => {
                                     <img src={post.photo} 
                                         loading="lazy"
                                         className={classes.photo} 
-                                        alt="post picture" 
+                                        alt="post" 
                                     />
                                 </Flex>
                             </FlexItem>

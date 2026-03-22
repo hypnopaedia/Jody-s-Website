@@ -25,7 +25,7 @@ export const Body = () => {
         <FlexItem ref={bodyRef} className={classes.body}>
             <Flex justifyContent="center" flexWrap='wrap' gap={2}>
                 <FlexItem>
-                    <Flex justifyContent="center" flexWrap='wrap'>
+                    <Flex justifyContent="center" flexWrap='wrap' className="no-select">
                         <Content />
                     </Flex>
                 </FlexItem>

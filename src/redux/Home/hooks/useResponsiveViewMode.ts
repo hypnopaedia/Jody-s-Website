@@ -5,7 +5,7 @@ import { ViewMode } from "../types";
 
 export const useResponsiveViewMode = (): ViewMode => {
     const viewMode = useViewMode();
-    const [overrideViewMode, setOverrideViewMode] = useState<boolean>(false);
+    const [overrideViewMode, setOverrideViewMode] = useState<boolean>(window.innerWidth <= MD_BREAKPOINT);
 
     useLayoutEffect(() => {
         window.addEventListener('resize', resizeListener);

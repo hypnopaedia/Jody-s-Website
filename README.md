@@ -17,7 +17,6 @@ Enjoy!
 
 ## To-Do:
 Upcoming:
-- disallow select/highlighting on a lot of stuff
 - fix flex columns on code page for images (md 3->4 ?)
 - track & clear existing timeouts for music player on hook execution (?)
 - proper attribution of images, gifs, etc. 

@@ -14,7 +14,7 @@ export const About = () => {
                 <Flex justifyContent="center" flexWrap='wrap'>
                     <FlexItem col={12} display='none md-block'>
                         <Flex justifyContent="center">
-                            <img className={classes.profilePhoto} src="https://s13.gifyu.com/images/b2m3U.jpg" loading="lazy" title="It's Me!" />
+                            <img className={clsx(classes.profilePhoto, 'no-select')} src="https://s13.gifyu.com/images/b2m3U.jpg" loading="lazy" title="It's Me!" />
                         </Flex>
                     </FlexItem>
                     <FlexItem col={9} display='none md-block' className='py-2'>
