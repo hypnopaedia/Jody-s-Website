@@ -7,9 +7,14 @@ hr {
   border-color: var(--text-color);
 }
 
-::selection, ::-moz-selection {
-  color: var(--text-select-color);
-  background-color: var(--text-select-background-color);
+::selection {
+  color: var(--text-select-color) !important;
+  background-color: var(--text-select-background-color) !important;
+}
+
+::-moz-selection { // Firefox
+  color: var(--text-select-color) !important;
+  background-color: var(--text-select-background-color) !important;
 }
 
 .detail-text {
